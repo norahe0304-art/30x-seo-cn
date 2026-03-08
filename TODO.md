@@ -1,49 +1,47 @@
-# TODO — claude-seo
+# TODO — 30x SEO
 
-## Completed in v1.2.0
+## v1.2.0 已完成
 
-- [x] **Fix YAML frontmatter parsing** — Removed HTML comments before `---` in 8 files (from @kylewhirl fork)
-- [x] **SSRF prevention in Python scripts** — Private IP blocking in fetch_page.py and analyze_visual.py (from @artyomsv #7)
-- [x] **Install hardening** — venv-based pip, no `--break-system-packages` (from @JawandS #2)
-- [x] **Windows install fixes** — `python -m pip`, `py -3` fallback, requirements.txt persistence (from @kfrancis #5, PR #6)
-- [x] **requirements.txt persistence** — Copied to skill dir after install (from @edustef #1)
-- [x] **Path traversal prevention** — Output path sanitization in capture_screenshot.py, file validation in parse_html.py
+- [x] **修复 YAML frontmatter 解析** — 移除 8 个文件中 `---` 前的 HTML 注释
+- [x] **SSRF 防护** — fetch_page.py 和 analyze_visual.py 添加私有 IP 阻止
+- [x] **安装加固** — 基于 venv 的 pip，移除 `--break-system-packages`
+- [x] **Windows 安装修复** — `python -m pip`、`py -3` 回退、requirements.txt 持久化
+- [x] **requirements.txt 持久化** — 安装后复制到技能目录
+- [x] **路径遍历防护** — capture_screenshot.py 输出路径清理，parse_html.py 文件验证
 
-## Deferred from Community Feedback
+## 待办事项
 
-- [ ] **Reduce Bash scope on agents** (Priority: Medium, from @artyomsv #7)
-  Evaluate which agents truly need Bash access. Consider replacing with WebFetch where possible.
+- [ ] **减少 agents 的 Bash 权限范围**（优先级：中）
+  评估哪些 agents 真正需要 Bash 访问。考虑用 WebFetch 替代。
 
-- [ ] **Docker-based script execution** (Priority: Low, from @artyomsv #7)
-  Sandbox Python scripts in Docker for users who want extra isolation.
+- [ ] **Docker 沙箱执行**（优先级：低）
+  为需要额外隔离的用户在 Docker 中沙箱运行 Python 脚本。
 
-- [ ] **Opencode compatibility** (Priority: Low, from @Ehtz #4)
-  Adapt skill architecture for Opencode. @kylewhirl already ported to OpenAI Codex.
+- [ ] **Opencode 兼容性**（优先级：低）
+  适配 Opencode 的技能架构。
 
-- [ ] **Subagent timeout/compact handling** (Priority: Medium, from @JawandS #3)
-  Primary agent sometimes terminates before subagents finish. Consider encouraging subagents
-  to run /compact and adding explicit wait logic.
+- [ ] **子代理超时/压缩处理**（优先级：中）
+  主代理有时在子代理完成前终止。考虑鼓励子代理运行 /compact 并添加显式等待逻辑。
 
-- [ ] **Native Chrome tools vs Playwright** (Priority: Medium, from @artyomsv #7, @btafoya PR #8)
-  Claude Code has native browser automation. Evaluate replacing Playwright with built-in tools
-  to eliminate the ~200MB Chromium dependency.
+- [ ] **原生 Chrome 工具 vs Playwright**（优先级：中）
+  Claude Code 有原生浏览器自动化。评估用内置工具替换 Playwright 以消除 ~200MB Chromium 依赖。
 
-## Deferred from February 2026 Research Report
+## 研究报告待办
 
-- [ ] **Fake freshness detection** (Priority: Medium)
-  Compare visible dates (`datePublished`, `dateModified`) against actual content modification signals.
-  Flag pages with updated dates but unchanged body content.
+- [ ] **虚假新鲜度检测**（优先级：中）
+  比较可见日期（`datePublished`、`dateModified`）与实际内容修改信号。
+  标记更新日期但正文未变的页面。
 
-- [ ] **Mobile content parity check** (Priority: Medium)
-  Compare mobile vs desktop meta tags, structured data presence, and content completeness.
-  Flag discrepancies that could affect mobile-first indexing.
+- [ ] **移动端内容一致性检查**（优先级：中）
+  比较移动端 vs 桌面端的 meta 标签、结构化数据和内容完整性。
+  标记可能影响移动优先索引的差异。
 
-- [ ] **Discover optimization checks** (Priority: Low-Medium)
-  Clickbait title detection, content depth scoring, local relevance signals, sensationalism flags.
+- [ ] **Discover 优化检查**（优先级：低-中）
+  标题党检测、内容深度评分、本地相关性信号、煽情标记。
 
-- [ ] **Brand mention analysis Python implementation** (Priority: Low)
-  Currently documented in `seo-geo/SKILL.md` but no programmatic scoring.
+- [ ] **品牌提及分析 Python 实现**（优先级：低）
+  目前在 `seo-geo/SKILL.md` 中有文档，但无程序化评分。
 
 ---
 
-*Last updated: February 19, 2026*
+*最后更新：2026年3月*
