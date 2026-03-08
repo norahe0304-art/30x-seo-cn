@@ -1,6 +1,6 @@
 # 30x SEO 中文版
 
-> 22 个生产级 SEO 技能，8 大类，专为 Claude Code 打造。覆盖审计、技术 SEO、链接、内容、规划、程序化 SEO、监控、数据全链路。
+> 22 个生产级 SEO 技能 + Squirrelscan CLI，8 大类，专为 Claude Code 打造。覆盖审计、技术 SEO、链接、内容、规划、程序化 SEO、监控、数据全链路。
 
 ## 为什么选择 30x SEO？
 
@@ -31,11 +31,12 @@ chmod 600 ~/.config/dataforseo/auth
 
 ## 技能全览（8 大类 22 技能）
 
-### 一、诊断审计类（1 技能）
+### 一、诊断审计类（1 技能 + CLI）
 
 | 技能 | 功能 |
 |------|------|
 | `30x-seo-page` | 单页深度分析：标题、meta、H1-H6、链接、图片、Schema、E-E-A-T |
+| `squirrelscan` *(CLI)* | 整站体检：230+ 条规则、21 个类别、健康评分 0-100。安装：`npm i -g squirrelscan` |
 
 ### 二、技术 SEO 类（5 技能）
 
@@ -100,6 +101,7 @@ chmod 600 ~/.config/dataforseo/auth
 ```bash
 # 诊断审计
 /30x-seo page https://example.com/page
+squirrelscan audit https://example.com --format llm
 
 # 技术 SEO
 /30x-seo technical https://example.com
