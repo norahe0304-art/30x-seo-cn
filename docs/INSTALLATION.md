@@ -12,7 +12,7 @@
 ## 快速安装
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/30x-seo-cn.git ~/.openclaw/skills/30x-seo
+git clone https://github.com/norahe0304-art/30x-seo-cn.git ~/.openclaw/skills/30x-seo
 ```
 
 ## 配置 DataForSEO（可选）
@@ -119,7 +119,7 @@ cp -r ~/.openclaw/skills/30x-seo ~/.openclaw/skills/30x-seo-backup
 rm -rf ~/.openclaw/skills/30x-seo
 
 # 3. 安装新版
-git clone https://github.com/YOUR_USERNAME/30x-seo-cn.git ~/.openclaw/skills/30x-seo
+git clone https://github.com/norahe0304-art/30x-seo-cn.git ~/.openclaw/skills/30x-seo
 ```
 
 ---

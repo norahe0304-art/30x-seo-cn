@@ -19,7 +19,7 @@
 ### 安装
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/30x-seo-cn.git ~/.openclaw/skills/30x-seo
+git clone https://github.com/norahe0304-art/30x-seo-cn.git ~/.openclaw/skills/30x-seo
 ```
 
 ### 配置 DataForSEO（关键词/外链/SERP/AI 可见性功能需要）
