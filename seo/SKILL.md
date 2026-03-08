@@ -1,19 +1,18 @@
 ---
 name: seo
 description: >
-  Master SEO orchestrator with 23 specialized sub-skills. Comprehensive SEO analysis
-  for any website or business type. Performs full site audits (squirrelscan 230+ rules,
-  parallel subagent delegation), single-page deep analysis, technical SEO checks
-  (crawlability, indexability, Core Web Vitals with INP), schema markup, content quality
-  (E-E-A-T framework), image optimization, sitemap analysis, site architecture planning,
-  metadata fixes, AI search optimization (GEO for ChatGPT, Perplexity, AI Overviews),
-  backlink analysis (link building, toxic links, competitor links), and keyword research
-  (search volume, difficulty, keyword gap).
+  Master SEO orchestrator with 23 specialized sub-skills across 8 categories.
+  Comprehensive SEO analysis for any website or business type. Performs full site
+  audits, single-page deep analysis, technical SEO checks (crawlability, indexability,
+  Core Web Vitals with INP), schema markup, content quality (E-E-A-T framework),
+  image optimization, sitemap analysis, site architecture planning, AI search
+  optimization (GEO for ChatGPT, Perplexity, AI Overviews), backlink analysis,
+  keyword research, SERP tracking, and AI visibility monitoring.
   Industry detection for SaaS, e-commerce, local business, publishers, agencies.
   Triggers on: "SEO", "audit", "schema", "Core Web Vitals", "sitemap", "E-E-A-T",
   "AI Overviews", "GEO", "technical SEO", "content quality", "page speed",
   "structured data", "site architecture", "metadata", "AI SEO", "backlinks",
-  "link building", "keywords", "keyword research".
+  "link building", "keywords", "keyword research", "SERP", "AI visibility".
 allowed-tools:
   - Read
   - Grep
@@ -22,112 +21,118 @@ allowed-tools:
   - WebFetch
 ---
 
-# SEO — Master SEO Orchestrator (21 Sub-Skills)
+# SEO — Master Orchestrator (23 Sub-Skills)
+
+[PROTOCOL]: Update this header on changes
 
 Comprehensive SEO analysis across all industries (SaaS, local services,
-e-commerce, publishers, agencies). Orchestrates **21 specialized sub-skills**
-and 6 subagents.
+e-commerce, publishers, agencies). Orchestrates **23 specialized sub-skills**
+organized in 8 categories, plus 6 parallel subagents for audits.
+
+---
 
 ## Quick Reference
 
-### Diagnosis & Audit
+### 1. Audit
 | Command | What it does |
 |---------|-------------|
-| `/seo audit <url>` | Squirrelscan 230+ rules comprehensive audit |
-| `/seo audit-lite <url>` | Quick SEO diagnosis (no CLI required) |
-| `/seo page <url>` | Deep single-page analysis |
+| `/seo page <url>` | Deep single-page analysis: title, meta, headings, links, images, Schema, E-E-A-T |
+| `squirrelscan audit <url>` | Full-site 230+ rules audit via CLI (`npm i -g squirrelscan`) |
 
-### Technical SEO
+### 2. Technical SEO
 | Command | What it does |
 |---------|-------------|
-| `/seo technical <url>` | Technical SEO audit (8 categories) |
-| `/seo sitemap <url or generate>` | Analyze or generate XML sitemaps |
-| `/seo hreflang [url]` | Hreflang/i18n SEO audit and generation |
-| `/seo metadata <url>` | Fix title, OG tags, canonical, Twitter cards |
-| `/seo schema <url>` | Detect, validate, and generate Schema.org markup |
+| `/seo technical <url>` | 8-category audit: crawl, index, security, URLs, mobile, CWV, structured data, JS |
+| `/seo sitemap <url>` | Validate XML sitemaps, detect issues, generate new ones |
+| `/seo hreflang <url>` | Multi-language SEO: self-refs, return tags, x-default, ISO codes |
+| `/seo schema <url>` | Detect, validate, generate JSON-LD structured data |
+| `/seo geo-technical <url>` | AI crawler management: GPTBot, ClaudeBot, llms.txt, SSR check |
 
-### Content & Images
+### 3. Links
 | Command | What it does |
 |---------|-------------|
-| `/seo content <url>` | E-E-A-T and content quality analysis |
-| `/seo images <url>` | Image optimization analysis |
-| `/seo content-strategy` | Plan what content to create |
+| `/seo internal-links <url>` | Orphan pages, click depth, anchor text, link equity |
+| `/seo backlinks profile <domain>` | Backlink profile analysis *(DataForSEO)* |
+| `/seo backlinks gap <domain> <competitor>` | Find link gap opportunities *(DataForSEO)* |
+| `/seo redirects <url>` | Chains, loops, 301/302 mix, protocol issues, trailing slashes |
 
-### Planning & Architecture
+### 4. Content
 | Command | What it does |
 |---------|-------------|
-| `/seo plan <business-type>` | Strategic SEO planning |
-| `/seo architecture` | Site structure, URL patterns, internal linking |
-| `/seo programmatic [url\|plan]` | Programmatic SEO analysis and planning |
-| `/seo competitor-pages [url\|generate]` | X vs Y comparison page generation |
+| `/seo content-audit <url>` | E-E-A-T scoring + AI citability analysis |
+| `/seo images <url>` | Alt text, file sizes, formats (WebP/AVIF), lazy loading, CLS |
+| `/seo content-decay <url>` | Detect declining content, recommend refresh priorities |
+| `/seo cannibalization <domain>` | Find keyword conflicts between pages |
+| `/seo content-brief <keyword>` | Analyze SERP top 10, generate content briefs |
+| `/seo content-writer` | SEO + AI optimized writing guidelines |
 
-### AI Search Optimization
+### 5. Planning
 | Command | What it does |
 |---------|-------------|
-| `/seo geo <url>` | GEO optimization (traditional + AI search) |
-| `/seo ai <url>` | AI-specific optimization (ChatGPT, Perplexity citations) |
+| `/seo plan <business-type>` | Competitor analysis, keyword strategy, content calendar, 4-phase roadmap |
+| `/seo architecture <url>` | URL structure, navigation design, internal linking strategy |
 
-### Link Building
+### 6. Programmatic SEO
 | Command | What it does |
 |---------|-------------|
-| `/seo backlinks <domain>` | Full backlink profile analysis |
-| `/seo backlinks gap <domain> <competitor>` | Find link gap opportunities |
-| `/seo backlinks toxic <domain>` | Detect potentially toxic links |
+| `/seo programmatic plan` | Scale content: data sources, templates, quality gates, index control |
+| `/seo competitor-pages generate` | X vs Y comparisons, alternatives pages, feature matrices |
 
-### Keyword Research
+### 7. Monitoring
 | Command | What it does |
 |---------|-------------|
-| `/seo keywords <seed>` | Keyword research and ideas |
-| `/seo keywords site <domain>` | Keywords a site ranks for |
-| `/seo keywords gap <domain> <competitor>` | Find keyword opportunities |
+| `/seo monitor overview` | Monitor your site: rankings, clicks, CTR, position changes *(GSC)* |
+| `/seo serp check <keyword>` | Live SERP check for any keyword *(DataForSEO)* |
+| `/seo ai-visibility domain <domain>` | Track mentions in ChatGPT, Claude, Perplexity, AI Overview *(DataForSEO)* |
 
-### AI Monitoring
+### 8. Data
 | Command | What it does |
 |---------|-------------|
-| `/seo ai-monitor brand <brand>` | Track brand presence in AI search |
-| `/seo ai-monitor keywords <kw1, kw2>` | Monitor AI citations for keywords |
-| `/seo ai-monitor competitors <brand> <comp>` | Compare AI visibility vs competitors |
+| `/seo keywords research <seed>` | Ideas, volume, difficulty, intent, trends *(DataForSEO)* |
+| `/seo keywords site <domain>` | Keywords a site ranks for *(DataForSEO)* |
+| `/seo keywords gap <domain> <competitor>` | Find keyword opportunities *(DataForSEO)* |
 
-### SERP Tracking
-| Command | What it does |
-|---------|-------------|
-| `/seo serp rank <domain>` | Get all keywords domain ranks for |
-| `/seo serp check <keyword>` | Live SERP check for keyword |
-| `/seo serp history <keyword>` | Historical SERP changes |
+---
 
-## Orchestration Logic
-
-When the user invokes `/seo audit`, delegate to subagents in parallel:
-1. Detect business type (SaaS, local, ecommerce, publisher, agency, other)
-2. Spawn subagents: seo-technical, seo-content, seo-schema, seo-sitemap, seo-performance, seo-visual
-3. Collect results and generate unified report with SEO Health Score (0-100)
-4. Create prioritized action plan (Critical → High → Medium → Low)
-
-For individual commands, load the relevant sub-skill directly:
+## Command → Skill Routing
 
 | Command | Loads Skill |
 |---------|-------------|
-| `audit` | squirrelscan-audit |
-| `audit-lite` | seo-audit-lite |
-| `page` | seo-page |
-| `technical` | seo-technical |
-| `sitemap` | seo-sitemap |
-| `hreflang` | seo-hreflang |
-| `metadata` | fixing-metadata |
-| `schema` | seo-schema |
-| `content` | seo-content |
-| `images` | seo-images |
-| `content-strategy` | content-strategy |
-| `plan` | seo-plan |
-| `architecture` | site-architecture |
-| `programmatic` | seo-programmatic |
-| `competitor-pages` | seo-competitor-pages |
-| `geo` | seo-geo |
-| `ai` | ai-seo |
-| `backlinks` | seo-backlinks |
-| `keywords` | seo-keywords |
-| `ai-monitor` | seo-ai-monitor |
-| `serp` | seo-serp |
+| `page` | 30x-seo-page |
+| `technical` | 30x-seo-technical |
+| `sitemap` | 30x-seo-sitemap |
+| `hreflang` | 30x-seo-hreflang |
+| `schema` | 30x-seo-schema |
+| `geo-technical` | 30x-seo-geo-technical |
+| `internal-links` | 30x-seo-internal-links |
+| `backlinks` | 30x-seo-backlinks |
+| `redirects` | 30x-seo-redirects |
+| `content-audit` | 30x-seo-content-audit |
+| `images` | 30x-seo-images |
+| `content-decay` | 30x-seo-content-decay |
+| `cannibalization` | 30x-seo-cannibalization |
+| `content-brief` | 30x-seo-content-brief |
+| `content-writer` | 30x-seo-content-writer |
+| `plan` | 30x-seo-plan |
+| `architecture` | 30x-seo-architecture |
+| `programmatic` | 30x-seo-programmatic |
+| `competitor-pages` | 30x-seo-competitor-pages |
+| `monitor` | 30x-seo-monitor |
+| `serp` | 30x-seo-serp |
+| `ai-visibility` | 30x-seo-ai-visibility |
+| `keywords` | 30x-seo-keywords |
+
+---
+
+## Orchestration Logic
+
+When user invokes `/seo audit`, delegate to subagents in parallel:
+1. Detect business type (SaaS, local, ecommerce, publisher, agency, other)
+2. Spawn subagents: technical, content, schema, sitemap, performance, visual
+3. Collect results and generate unified report with SEO Health Score (0-100)
+4. Create prioritized action plan (Critical → High → Medium → Low)
+
+---
 
 ## Industry Detection
 
@@ -138,9 +143,10 @@ Detect business type from homepage signals:
 - **Publisher**: /blog, /articles, /topics, article schema, author pages, publication dates
 - **Agency**: /case-studies, /portfolio, /industries, "our work", client logos
 
+---
+
 ## Quality Gates
 
-Read `references/quality-gates.md` for thin content thresholds per page type.
 Hard rules:
 - WARNING at 30+ location pages (enforce 60%+ unique content)
 - HARD STOP at 50+ location pages (require user justification)
@@ -148,18 +154,11 @@ Hard rules:
 - FAQ schema only for government and healthcare sites
 - All Core Web Vitals references use INP, never FID
 
-## Reference Files
-
-Load these on-demand as needed — do NOT load all at startup:
-- `references/cwv-thresholds.md` — Current Core Web Vitals thresholds and measurement details
-- `references/schema-types.md` — All supported schema types with deprecation status
-- `references/eeat-framework.md` — E-E-A-T evaluation criteria (Sept 2025 QRG update)
-- `references/quality-gates.md` — Content length minimums, uniqueness thresholds
+---
 
 ## Scoring Methodology
 
 ### SEO Health Score (0-100)
-Weighted aggregate of all categories:
 
 | Category | Weight |
 |----------|--------|
@@ -172,51 +171,89 @@ Weighted aggregate of all categories:
 | AI Search Readiness | 5% |
 
 ### Priority Levels
-- **Critical**: Blocks indexing or causes penalties (immediate fix required)
+- **Critical**: Blocks indexing or causes penalties (immediate fix)
 - **High**: Significantly impacts rankings (fix within 1 week)
 - **Medium**: Optimization opportunity (fix within 1 month)
 - **Low**: Nice to have (backlog)
 
-## Sub-Skills (21 Total)
+---
 
-### Diagnosis & Audit (3)
-1. **squirrelscan-audit** — Comprehensive 230+ rules audit via squirrelscan CLI
-2. **seo-audit-lite** — Quick SEO diagnosis for fast insights
-3. **seo-page** — Deep single-page analysis
+## Sub-Skills (23 Total, 8 Categories)
 
-### Technical SEO (5)
-4. **seo-technical** — Technical SEO (8 categories: crawl, index, security, CWV)
-5. **seo-sitemap** — Sitemap analysis and generation
-6. **seo-hreflang** — International SEO / hreflang tags
-7. **fixing-metadata** — HTML meta tags, OG, canonical, Twitter cards
-8. **seo-schema** — Schema.org JSON-LD detection, validation, generation
+### 1. Audit (1 skill + CLI)
+| Skill | What it does |
+|-------|-------------|
+| **30x-seo-page** | Deep single-page analysis |
+| **squirrelscan** *(CLI)* | Full-site 230+ rules audit |
 
-### Content & Images (3)
-9. **seo-content** — E-E-A-T and content quality analysis
-10. **seo-images** — Image optimization (alt, format, lazy load)
-11. **content-strategy** — Content planning and topic clusters
+### 2. Technical SEO (5 skills)
+| Skill | What it does |
+|-------|-------------|
+| **30x-seo-technical** | 8-category technical audit |
+| **30x-seo-sitemap** | Sitemap validation and generation |
+| **30x-seo-hreflang** | International SEO / hreflang |
+| **30x-seo-schema** | Schema.org JSON-LD |
+| **30x-seo-geo-technical** | AI crawler management |
 
-### Planning & Architecture (4)
-12. **seo-plan** — Strategic SEO planning with templates
-13. **site-architecture** — URL structure, page hierarchy, internal linking
-14. **seo-programmatic** — Programmatic SEO at scale
-15. **seo-competitor-pages** — X vs Y comparison page generation
+### 3. Links (3 skills)
+| Skill | What it does |
+|-------|-------------|
+| **30x-seo-internal-links** | Internal link analysis |
+| **30x-seo-backlinks** | Backlink profile *(DataForSEO)* |
+| **30x-seo-redirects** | Redirect chain analysis |
 
-### AI Search Optimization (2)
-16. **seo-geo** — GEO optimization (traditional + AI search combined)
-17. **ai-seo** — AI citation optimization (ChatGPT, Perplexity, Claude)
+### 4. Content (6 skills)
+| Skill | What it does |
+|-------|-------------|
+| **30x-seo-content-audit** | E-E-A-T + AI citability |
+| **30x-seo-images** | Image optimization |
+| **30x-seo-content-decay** | Content freshness analysis |
+| **30x-seo-cannibalization** | Keyword conflict detection |
+| **30x-seo-content-brief** | SERP-based content briefs |
+| **30x-seo-content-writer** | SEO writing guidelines |
 
-### Link Building (1)
-18. **seo-backlinks** — Backlink profile analysis, link gap, toxic link detection (DataForSEO)
+### 5. Planning (2 skills)
+| Skill | What it does |
+|-------|-------------|
+| **30x-seo-plan** | Strategic SEO planning |
+| **30x-seo-architecture** | Site structure planning |
 
-### Keyword Research (1)
-19. **seo-keywords** — Keyword research, search volume, difficulty, ranking analysis (DataForSEO)
+### 6. Programmatic SEO (2 skills)
+| Skill | What it does |
+|-------|-------------|
+| **30x-seo-programmatic** | Scale content with templates |
+| **30x-seo-competitor-pages** | X vs Y comparison pages |
 
-### AI Monitoring (1)
-20. **seo-ai-monitor** — Brand visibility tracking in AI search (ChatGPT, Perplexity, AI Overviews)
+### 7. Monitoring (3 skills)
+| Skill | What it does |
+|-------|-------------|
+| **30x-seo-monitor** | Your site via GSC |
+| **30x-seo-serp** | Any site via DataForSEO |
+| **30x-seo-ai-visibility** | AI search visibility |
 
-### SERP Tracking (1)
-21. **seo-serp** — SERP rankings, position monitoring, SERP feature analysis (DataForSEO)
+### 8. Data (1 skill)
+| Skill | What it does |
+|-------|-------------|
+| **30x-seo-keywords** | Keyword research *(DataForSEO)* |
+
+---
+
+## Dependencies
+
+| Category | Skills | Dependency |
+|----------|--------|------------|
+| Audit | 1 | WebFetch |
+| Technical SEO | 5 | WebFetch |
+| Links | 3 | WebFetch + DataForSEO (backlinks) |
+| Content | 6 | WebFetch |
+| Planning | 2 | WebFetch |
+| Programmatic SEO | 2 | WebFetch |
+| Monitoring | 3 | GSC + DataForSEO |
+| Data | 1 | DataForSEO |
+
+**18 skills work without any API. 4 skills require DataForSEO. 1 skill requires Google Search Console.**
+
+---
 
 ## Subagents
 
@@ -227,12 +264,3 @@ For parallel analysis during audits:
 - `seo-sitemap` — Structure, coverage, quality gates
 - `seo-performance` — Core Web Vitals measurement
 - `seo-visual` — Screenshots, mobile testing, above-fold
-
-## Skill Paths
-
-External skills are loaded from these paths:
-- `claude-seo/skills/` — Core SEO skills (15) including seo-backlinks, seo-keywords, seo-ai-monitor, seo-serp
-- `marketingskills/skills/` — ai-seo, seo-audit-lite, site-architecture
-- `squirrelscan/audit-website/` — squirrelscan-audit
-- `ui-skills/` — fixing-metadata
-- Root openclaw/skills/ — content-strategy
