@@ -1,253 +1,252 @@
 ---
 name: 30x-seo-architecture
 description: >
-  Website architecture planning: page hierarchy, navigation, URL structure,
-  internal linking strategy. Use when user says "site structure", "page
-  hierarchy", "URL structure", "navigation design", or "information architecture".
-  NOT for XML sitemaps (use seo-sitemap).
+  网站架构规划：页面层级、导航、URL结构、内部链接策略。
+  当用户说"网站结构"、"页面层级"、"URL结构"、"导航设计"
+  或"信息架构"时使用。不适用于XML站点地图（请用seo-sitemap）。
 allowed-tools:
   - WebFetch
   - Read
 ---
 
-# Site Architecture
+# 网站架构
 
-[PROTOCOL]: 变更时更新此头部
+[PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md
 
-You are an information architecture expert. Your goal is to help plan website structure — page hierarchy, navigation, URL patterns, and internal linking — so the site is intuitive for users and optimized for search engines.
+你是信息架构专家。你的目标是帮助规划网站结构——页面层级、导航、URL模式和内部链接——使网站对用户直观且对搜索引擎优化。
 
-## Before Planning
+## 规划前准备
 
-**Check for product marketing context first:**
-If `.agents/product-marketing-context.md` exists (or `.claude/product-marketing-context.md` in older setups), read it before asking questions. Use that context and only ask for information not already covered or specific to this task.
+**首先检查产品营销上下文：**
+如果存在 `.agents/product-marketing-context.md`（或旧版设置中的 `.claude/product-marketing-context.md`），在提问前先阅读它。使用该上下文，仅询问未涵盖或特定于此任务的信息。
 
-Gather this context (ask if not provided):
+收集以下上下文（如未提供则询问）：
 
-### 1. Business Context
-- What does the company do?
-- Who are the primary audiences?
-- What are the top 3 goals for the site? (conversions, SEO traffic, education, support)
+### 1. 业务背景
+- 公司是做什么的？
+- 主要受众是谁？
+- 网站的前 3 个目标是什么？（转化、SEO流量、教育、支持）
 
-### 2. Current State
-- New site or restructuring an existing one?
-- If restructuring: what's broken? (high bounce, poor SEO, users can't find things)
-- Existing URLs that must be preserved (for redirects)?
+### 2. 当前状态
+- 新建网站还是重构现有网站？
+- 如果重构：哪里出了问题？（高跳出率、SEO差、用户找不到内容）
+- 必须保留的现有 URL（用于重定向）？
 
-### 3. Site Type
-- SaaS marketing site
-- Content/blog site
-- E-commerce
-- Documentation
-- Hybrid (SaaS + content)
-- Small business / local
+### 3. 网站类型
+- SaaS 营销网站
+- 内容/博客网站
+- 电商
+- 文档
+- 混合型（SaaS + 内容）
+- 小型企业/本地服务
 
-### 4. Content Inventory
-- How many pages exist or are planned?
-- What are the most important pages? (by traffic, conversions, or business value)
-- Any planned sections or expansions?
-
----
-
-## Site Types and Starting Points
-
-| Site Type | Typical Depth | Key Sections | URL Pattern |
-|-----------|--------------|--------------|-------------|
-| SaaS marketing | 2-3 levels | Home, Features, Pricing, Blog, Docs | `/features/name`, `/blog/slug` |
-| Content/blog | 2-3 levels | Home, Blog, Categories, About | `/blog/slug`, `/category/slug` |
-| E-commerce | 3-4 levels | Home, Categories, Products, Cart | `/category/subcategory/product` |
-| Documentation | 3-4 levels | Home, Guides, API Reference | `/docs/section/page` |
-| Hybrid SaaS+content | 3-4 levels | Home, Product, Blog, Resources, Docs | `/product/feature`, `/blog/slug` |
-| Small business | 1-2 levels | Home, Services, About, Contact | `/services/name` |
-
-**For full page hierarchy templates**: See [references/site-type-templates.md](references/site-type-templates.md)
+### 4. 内容清单
+- 现有或计划多少页面？
+- 最重要的页面是哪些？（按流量、转化或业务价值）
+- 计划的版块或扩展？
 
 ---
 
-## Page Hierarchy Design
+## 网站类型和起点
 
-### The 3-Click Rule
+| 网站类型 | 典型深度 | 关键版块 | URL 模式 |
+|----------|----------|----------|----------|
+| SaaS 营销 | 2-3 层 | 首页、功能、定价、博客、文档 | `/features/name`、`/blog/slug` |
+| 内容/博客 | 2-3 层 | 首页、博客、分类、关于 | `/blog/slug`、`/category/slug` |
+| 电商 | 3-4 层 | 首页、分类、产品、购物车 | `/category/subcategory/product` |
+| 文档 | 3-4 层 | 首页、指南、API 参考 | `/docs/section/page` |
+| 混合 SaaS+内容 | 3-4 层 | 首页、产品、博客、资源、文档 | `/product/feature`、`/blog/slug` |
+| 小型企业 | 1-2 层 | 首页、服务、关于、联系 | `/services/name` |
 
-Users should reach any important page within 3 clicks from the homepage. This isn't absolute, but if critical pages are buried 4+ levels deep, something is wrong.
+**完整页面层级模板**：参见 [references/site-type-templates.md](references/site-type-templates.md)
 
-### Flat vs Deep
+---
 
-| Approach | Best For | Tradeoff |
-|----------|----------|----------|
-| Flat (2 levels) | Small sites, portfolios | Simple but doesn't scale |
-| Moderate (3 levels) | Most SaaS, content sites | Good balance of depth and findability |
-| Deep (4+ levels) | E-commerce, large docs | Scales but risks burying content |
+## 页面层级设计
 
-**Rule of thumb**: Go as flat as possible while keeping navigation clean. If a nav dropdown has 20+ items, add a level of hierarchy.
+### 三次点击规则
 
-### Hierarchy Levels
+用户应在从首页开始的 3 次点击内到达任何重要页面。这不是绝对的，但如果关键页面被埋在 4+ 层深处，就有问题了。
 
-| Level | What It Is | Example |
-|-------|-----------|---------|
-| L0 | Homepage | `/` |
-| L1 | Primary sections | `/features`, `/blog`, `/pricing` |
-| L2 | Section pages | `/features/analytics`, `/blog/seo-guide` |
-| L3+ | Detail pages | `/docs/api/authentication` |
+### 扁平 vs 深层
 
-### ASCII Tree Format
+| 方式 | 最适合 | 权衡 |
+|------|--------|------|
+| 扁平（2 层） | 小型网站、作品集 | 简单但不易扩展 |
+| 适中（3 层） | 大多数 SaaS、内容网站 | 深度和可发现性的良好平衡 |
+| 深层（4+ 层） | 电商、大型文档 | 可扩展但有埋没内容的风险 |
 
-Use this format for page hierarchies:
+**经验法则**：在保持导航清晰的前提下尽可能扁平。如果一个导航下拉菜单有 20+ 项，就需要增加一层层级。
+
+### 层级级别
+
+| 层级 | 含义 | 示例 |
+|------|------|------|
+| L0 | 首页 | `/` |
+| L1 | 主要版块 | `/features`、`/blog`、`/pricing` |
+| L2 | 版块页面 | `/features/analytics`、`/blog/seo-guide` |
+| L3+ | 详情页面 | `/docs/api/authentication` |
+
+### ASCII 树格式
+
+使用此格式表示页面层级：
 
 ```
-Homepage (/)
-├── Features (/features)
-│   ├── Analytics (/features/analytics)
-│   ├── Automation (/features/automation)
-│   └── Integrations (/features/integrations)
-├── Pricing (/pricing)
-├── Blog (/blog)
-│   ├── [Category: SEO] (/blog/category/seo)
-│   └── [Category: CRO] (/blog/category/cro)
-├── Resources (/resources)
-│   ├── Case Studies (/resources/case-studies)
-│   └── Templates (/resources/templates)
-├── Docs (/docs)
-│   ├── Getting Started (/docs/getting-started)
-│   └── API Reference (/docs/api)
-├── About (/about)
-│   └── Careers (/about/careers)
-└── Contact (/contact)
+首页 (/)
+├── 功能 (/features)
+│   ├── 数据分析 (/features/analytics)
+│   ├── 自动化 (/features/automation)
+│   └── 集成 (/features/integrations)
+├── 定价 (/pricing)
+├── 博客 (/blog)
+│   ├── [分类: SEO] (/blog/category/seo)
+│   └── [分类: CRO] (/blog/category/cro)
+├── 资源 (/resources)
+│   ├── 案例研究 (/resources/case-studies)
+│   └── 模板 (/resources/templates)
+├── 文档 (/docs)
+│   ├── 入门指南 (/docs/getting-started)
+│   └── API 参考 (/docs/api)
+├── 关于 (/about)
+│   └── 招聘 (/about/careers)
+└── 联系 (/contact)
 ```
 
-**When to use ASCII vs Mermaid**:
-- ASCII: quick hierarchy drafts, text-only contexts, simple structures
-- Mermaid: visual presentations, complex relationships, showing nav zones or linking patterns
+**何时使用 ASCII vs Mermaid**：
+- ASCII：快速层级草稿、纯文本环境、简单结构
+- Mermaid：可视化展示、复杂关系、展示导航区域或链接模式
 
 ---
 
-## Navigation Design
+## 导航设计
 
-### Navigation Types
+### 导航类型
 
-| Nav Type | Purpose | Placement |
-|----------|---------|-----------|
-| Header nav | Primary navigation, always visible | Top of every page |
-| Dropdown menus | Organize sub-pages under parent | Expands from header items |
-| Footer nav | Secondary links, legal, sitemap | Bottom of every page |
-| Sidebar nav | Section navigation (docs, blog) | Left side within a section |
-| Breadcrumbs | Show current location in hierarchy | Below header, above content |
-| Contextual links | Related content, next steps | Within page content |
+| 导航类型 | 用途 | 位置 |
+|----------|------|------|
+| 顶部导航 | 主要导航，始终可见 | 每个页面顶部 |
+| 下拉菜单 | 在父项下组织子页面 | 从顶部导航项展开 |
+| 底部导航 | 次要链接、法律、站点地图 | 每个页面底部 |
+| 侧边栏导航 | 版块导航（文档、博客） | 版块内的左侧 |
+| 面包屑 | 显示在层级中的当前位置 | 顶部导航下方、内容上方 |
+| 上下文链接 | 相关内容、下一步 | 页面内容中 |
 
-### Header Navigation Rules
+### 顶部导航规则
 
-- **4-7 items max** in the primary nav (more causes decision paralysis)
-- **CTA button** goes rightmost (e.g., "Start Free Trial," "Get Started")
-- **Logo** links to homepage (left side)
-- **Order by priority**: most important/visited pages first
-- If you have a mega menu, limit to 3-4 columns
+- **最多 4-7 项**（更多会导致决策困难）
+- **CTA 按钮**放最右边（如"免费试用"、"开始使用"）
+- **Logo** 链接到首页（左侧）
+- **按优先级排序**：最重要/访问量最高的页面优先
+- 如果有超级菜单，限制在 3-4 列
 
-### Footer Organization
+### 底部导航组织
 
-Group footer links into columns:
-- **Product**: Features, Pricing, Integrations, Changelog
-- **Resources**: Blog, Case Studies, Templates, Docs
-- **Company**: About, Careers, Contact, Press
-- **Legal**: Privacy, Terms, Security
+将底部链接分组为列：
+- **产品**：功能、定价、集成、更新日志
+- **资源**：博客、案例研究、模板、文档
+- **公司**：关于、招聘、联系、新闻
+- **法律**：隐私、条款、安全
 
-### Breadcrumb Format
+### 面包屑格式
 
 ```
-Home > Features > Analytics
-Home > Blog > SEO Category > Post Title
+首页 > 功能 > 数据分析
+首页 > 博客 > SEO 分类 > 文章标题
 ```
 
-Breadcrumbs should mirror the URL hierarchy. Every breadcrumb segment should be a clickable link except the current page.
+面包屑应该镜像 URL 层级。除当前页面外，每个面包屑段都应该是可点击的链接。
 
-**For detailed navigation patterns**: See [references/navigation-patterns.md](references/navigation-patterns.md)
+**详细导航模式**：参见 [references/navigation-patterns.md](references/navigation-patterns.md)
 
 ---
 
-## URL Structure
+## URL 结构
 
-### Design Principles
+### 设计原则
 
-1. **Readable by humans** — `/features/analytics` not `/f/a123`
-2. **Hyphens, not underscores** — `/blog/seo-guide` not `/blog/seo_guide`
-3. **Reflect the hierarchy** — URL path should match site structure
-4. **Consistent trailing slash policy** — pick one (with or without) and enforce it
-5. **Lowercase always** — `/About` should redirect to `/about`
-6. **Short but descriptive** — `/blog/how-to-improve-landing-page-conversion-rates` is too long; `/blog/landing-page-conversions` is better
+1. **人类可读** — `/features/analytics` 而非 `/f/a123`
+2. **连字符，不用下划线** — `/blog/seo-guide` 而非 `/blog/seo_guide`
+3. **反映层级** — URL 路径应匹配网站结构
+4. **一致的尾部斜杠策略** — 选择一种（有或没有）并强制执行
+5. **始终小写** — `/About` 应重定向到 `/about`
+6. **简短但描述性** — `/blog/how-to-improve-landing-page-conversion-rates` 太长；`/blog/landing-page-conversions` 更好
 
-### URL Patterns by Page Type
+### 按页面类型的 URL 模式
 
-| Page Type | Pattern | Example |
-|-----------|---------|---------|
-| Homepage | `/` | `example.com` |
-| Feature page | `/features/{name}` | `/features/analytics` |
-| Pricing | `/pricing` | `/pricing` |
-| Blog post | `/blog/{slug}` | `/blog/seo-guide` |
-| Blog category | `/blog/category/{slug}` | `/blog/category/seo` |
-| Case study | `/customers/{slug}` | `/customers/acme-corp` |
-| Documentation | `/docs/{section}/{page}` | `/docs/api/authentication` |
-| Legal | `/{page}` | `/privacy`, `/terms` |
-| Landing page | `/{slug}` or `/lp/{slug}` | `/free-trial`, `/lp/webinar` |
-| Comparison | `/compare/{competitor}` or `/vs/{competitor}` | `/compare/competitor-name` |
-| Integration | `/integrations/{name}` | `/integrations/slack` |
-| Template | `/templates/{slug}` | `/templates/marketing-plan` |
+| 页面类型 | 模式 | 示例 |
+|----------|------|------|
+| 首页 | `/` | `example.com` |
+| 功能页 | `/features/{name}` | `/features/analytics` |
+| 定价 | `/pricing` | `/pricing` |
+| 博客文章 | `/blog/{slug}` | `/blog/seo-guide` |
+| 博客分类 | `/blog/category/{slug}` | `/blog/category/seo` |
+| 案例研究 | `/customers/{slug}` | `/customers/acme-corp` |
+| 文档 | `/docs/{section}/{page}` | `/docs/api/authentication` |
+| 法律 | `/{page}` | `/privacy`、`/terms` |
+| 落地页 | `/{slug}` 或 `/lp/{slug}` | `/free-trial`、`/lp/webinar` |
+| 对比页 | `/compare/{competitor}` 或 `/vs/{competitor}` | `/compare/competitor-name` |
+| 集成 | `/integrations/{name}` | `/integrations/slack` |
+| 模板 | `/templates/{slug}` | `/templates/marketing-plan` |
 
-### Common Mistakes
+### 常见错误
 
-- **Dates in blog URLs** — `/blog/2024/01/15/post-title` adds no value and makes URLs long. Use `/blog/post-title`.
-- **Over-nesting** — `/products/category/subcategory/item/detail` is too deep. Flatten where possible.
-- **Changing URLs without redirects** — Every old URL must 301 redirect to its new URL. No exceptions.
-- **IDs in URLs** — `/product/12345` is not human-readable. Use slugs.
-- **Query parameters for content** — `/blog?id=123` should be `/blog/post-title`.
-- **Inconsistent patterns** — Don't mix `/features/analytics` and `/product/automation`. Pick one parent.
+- **博客 URL 中的日期** — `/blog/2024/01/15/post-title` 没有价值且使 URL 变长。使用 `/blog/post-title`。
+- **过度嵌套** — `/products/category/subcategory/item/detail` 太深。尽可能扁平化。
+- **更改 URL 不做重定向** — 每个旧 URL 必须 301 重定向到新 URL。没有例外。
+- **URL 中的 ID** — `/product/12345` 不是人类可读的。使用 slug。
+- **内容用查询参数** — `/blog?id=123` 应该是 `/blog/post-title`。
+- **不一致的模式** — 不要混用 `/features/analytics` 和 `/product/automation`。选择一个父级。
 
-### Breadcrumb-URL Alignment
+### 面包屑-URL 对齐
 
-The breadcrumb trail should mirror the URL path:
+面包屑路径应镜像 URL 路径：
 
-| URL | Breadcrumb |
-|-----|-----------|
-| `/features/analytics` | Home > Features > Analytics |
-| `/blog/seo-guide` | Home > Blog > SEO Guide |
-| `/docs/api/auth` | Home > Docs > API > Authentication |
+| URL | 面包屑 |
+|-----|--------|
+| `/features/analytics` | 首页 > 功能 > 数据分析 |
+| `/blog/seo-guide` | 首页 > 博客 > SEO 指南 |
+| `/docs/api/auth` | 首页 > 文档 > API > 认证 |
 
 ---
 
-## Visual Sitemap Output (Mermaid)
+## 可视化站点地图输出（Mermaid）
 
-Use Mermaid `graph TD` for visual sitemaps. This makes hierarchy relationships clear and can annotate navigation zones.
+使用 Mermaid `graph TD` 制作可视化站点地图。这使层级关系清晰，可以标注导航区域。
 
-### Basic Hierarchy
+### 基本层级
 
 ```mermaid
 graph TD
-    HOME[Homepage] --> FEAT[Features]
-    HOME --> PRICE[Pricing]
-    HOME --> BLOG[Blog]
-    HOME --> ABOUT[About]
+    HOME[首页] --> FEAT[功能]
+    HOME --> PRICE[定价]
+    HOME --> BLOG[博客]
+    HOME --> ABOUT[关于]
 
-    FEAT --> F1[Analytics]
-    FEAT --> F2[Automation]
-    FEAT --> F3[Integrations]
+    FEAT --> F1[数据分析]
+    FEAT --> F2[自动化]
+    FEAT --> F3[集成]
 
-    BLOG --> B1[Post 1]
-    BLOG --> B2[Post 2]
+    BLOG --> B1[文章 1]
+    BLOG --> B2[文章 2]
 ```
 
-### With Navigation Zones
+### 带导航区域
 
 ```mermaid
 graph TD
-    subgraph Header Nav
-        HOME[Homepage]
-        FEAT[Features]
-        PRICE[Pricing]
-        BLOG[Blog]
-        CTA[Get Started]
+    subgraph 顶部导航
+        HOME[首页]
+        FEAT[功能]
+        PRICE[定价]
+        BLOG[博客]
+        CTA[开始使用]
     end
 
-    subgraph Footer Nav
-        ABOUT[About]
-        CAREERS[Careers]
-        CONTACT[Contact]
-        PRIVACY[Privacy]
+    subgraph 底部导航
+        ABOUT[关于]
+        CAREERS[招聘]
+        CONTACT[联系]
+        PRIVACY[隐私]
     end
 
     HOME --> FEAT
@@ -255,110 +254,110 @@ graph TD
     HOME --> BLOG
     HOME --> ABOUT
 
-    FEAT --> F1[Analytics]
-    FEAT --> F2[Automation]
+    FEAT --> F1[数据分析]
+    FEAT --> F2[自动化]
 ```
 
-**For more Mermaid templates**: See [references/mermaid-templates.md](references/mermaid-templates.md)
+**更多 Mermaid 模板**：参见 [references/mermaid-templates.md](references/mermaid-templates.md)
 
 ---
 
-## Internal Linking Strategy
+## 内部链接策略
 
-### Link Types
+### 链接类型
 
-| Type | Purpose | Example |
-|------|---------|---------|
-| Navigational | Move between sections | Header, footer, sidebar links |
-| Contextual | Related content within text | "Learn more about [analytics](/features/analytics)" |
-| Hub-and-spoke | Connect cluster content to hub | Blog posts linking to pillar page |
-| Cross-section | Connect related pages across sections | Feature page linking to related case study |
+| 类型 | 用途 | 示例 |
+|------|------|------|
+| 导航型 | 在版块间移动 | 顶部、底部、侧边栏链接 |
+| 上下文型 | 文本中的相关内容 | "了解更多关于[数据分析](/features/analytics)" |
+| 中心-辐射 | 将集群内容连接到中心 | 博客文章链接到支柱页面 |
+| 跨版块 | 连接不同版块的相关页面 | 功能页链接到相关案例研究 |
 
-### Internal Linking Rules
+### 内部链接规则
 
-1. **No orphan pages** — every page must have at least one internal link pointing to it
-2. **Descriptive anchor text** — "our analytics features" not "click here"
-3. **5-10 internal links per 1000 words** of content (approximate guideline)
-4. **Link to important pages more often** — homepage, key feature pages, pricing
-5. **Use breadcrumbs** — free internal links on every page
-6. **Related content sections** — "Related Posts" or "You might also like" at page bottom
+1. **无孤立页面** — 每个页面必须至少有一个指向它的内部链接
+2. **描述性锚文本** — "我们的数据分析功能" 而非 "点击这里"
+3. **每 1000 字 5-10 个内部链接**（近似指南）
+4. **更频繁地链接到重要页面** — 首页、关键功能页、定价
+5. **使用面包屑** — 每个页面的免费内部链接
+6. **相关内容区域** — 页面底部的"相关文章"或"你可能还喜欢"
 
-### Hub-and-Spoke Model
+### 中心-辐射模型
 
-For content-heavy sites, organize around hub pages:
+对于内容密集型网站，围绕中心页面组织：
 
 ```
-Hub: /blog/seo-guide (comprehensive overview)
-├── Spoke: /blog/keyword-research (links back to hub)
-├── Spoke: /blog/on-page-seo (links back to hub)
-├── Spoke: /blog/technical-seo (links back to hub)
-└── Spoke: /blog/link-building (links back to hub)
+中心: /blog/seo-guide (全面概述)
+├── 辐射: /blog/keyword-research (链接回中心)
+├── 辐射: /blog/on-page-seo (链接回中心)
+├── 辐射: /blog/technical-seo (链接回中心)
+└── 辐射: /blog/link-building (链接回中心)
 ```
 
-Each spoke links back to the hub. The hub links to all spokes. Spokes link to each other where relevant.
+每个辐射链接回中心。中心链接到所有辐射。辐射在相关时互相链接。
 
-### Link Audit Checklist
+### 链接审核清单
 
-- [ ] Every page has at least one inbound internal link
-- [ ] No broken internal links (404s)
-- [ ] Anchor text is descriptive (not "click here" or "read more")
-- [ ] Important pages have the most inbound internal links
-- [ ] Breadcrumbs are implemented on all pages
-- [ ] Related content links exist on blog posts
-- [ ] Cross-section links connect features to case studies, blog to product pages
-
----
-
-## Output Format
-
-When creating a site architecture plan, provide these deliverables:
-
-### 1. Page Hierarchy (ASCII Tree)
-Full site structure with URLs at each node. Use the ASCII tree format from the Page Hierarchy Design section.
-
-### 2. Visual Sitemap (Mermaid)
-Mermaid diagram showing page relationships and navigation zones. Use `graph TD` with subgraphs for nav zones where helpful.
-
-### 3. URL Map Table
-
-| Page | URL | Parent | Nav Location | Priority |
-|------|-----|--------|-------------|----------|
-| Homepage | `/` | — | Header | High |
-| Features | `/features` | Homepage | Header | High |
-| Analytics | `/features/analytics` | Features | Header dropdown | Medium |
-| Pricing | `/pricing` | Homepage | Header | High |
-| Blog | `/blog` | Homepage | Header | Medium |
-
-### 4. Navigation Spec
-- Header nav items (ordered, with CTA)
-- Footer sections and links
-- Sidebar nav (if applicable)
-- Breadcrumb implementation notes
-
-### 5. Internal Linking Plan
-- Hub pages and their spokes
-- Cross-section link opportunities
-- Orphan page audit (if restructuring)
-- Recommended links per key page
+- [ ] 每个页面至少有一个入站内部链接
+- [ ] 无断链（404）
+- [ ] 锚文本是描述性的（不是"点击这里"或"阅读更多"）
+- [ ] 重要页面有最多的入站内部链接
+- [ ] 所有页面都实现了面包屑
+- [ ] 博客文章有相关内容链接
+- [ ] 跨版块链接连接功能到案例研究、博客到产品页面
 
 ---
 
-## Task-Specific Questions
+## 输出格式
 
-1. Is this a new site or are you restructuring an existing one?
-2. What type of site is it? (SaaS, content, e-commerce, docs, hybrid, small business)
-3. How many pages exist or are planned?
-4. What are the 5 most important pages on the site?
-5. Are there existing URLs that need to be preserved or redirected?
-6. Who are the primary audiences, and what are they trying to accomplish on the site?
+创建网站架构规划时，提供以下交付物：
+
+### 1. 页面层级（ASCII 树）
+带有每个节点 URL 的完整网站结构。使用页面层级设计部分的 ASCII 树格式。
+
+### 2. 可视化站点地图（Mermaid）
+显示页面关系和导航区域的 Mermaid 图表。在有帮助的地方使用 `graph TD` 配合 subgraph 表示导航区域。
+
+### 3. URL 地图表
+
+| 页面 | URL | 父级 | 导航位置 | 优先级 |
+|------|-----|------|----------|--------|
+| 首页 | `/` | — | 顶部导航 | 高 |
+| 功能 | `/features` | 首页 | 顶部导航 | 高 |
+| 数据分析 | `/features/analytics` | 功能 | 顶部下拉 | 中 |
+| 定价 | `/pricing` | 首页 | 顶部导航 | 高 |
+| 博客 | `/blog` | 首页 | 顶部导航 | 中 |
+
+### 4. 导航规格
+- 顶部导航项（有序，含 CTA）
+- 底部导航版块和链接
+- 侧边栏导航（如适用）
+- 面包屑实现说明
+
+### 5. 内部链接规划
+- 中心页面及其辐射
+- 跨版块链接机会
+- 孤立页面审核（如果重构）
+- 关键页面的推荐链接
 
 ---
 
-## Related Skills
+## 特定任务问题
 
-- **content-strategy**: For planning what content to create and topic clusters
-- **programmatic-seo**: For building SEO pages at scale with templates and data
-- **seo-audit**: For technical SEO, on-page optimization, and indexation issues
-- **page-cro**: For optimizing individual pages for conversion
-- **schema-markup**: For implementing breadcrumb and site navigation structured data
-- **competitor-alternatives**: For comparison page frameworks and URL patterns
+1. 这是新建网站还是重构现有网站？
+2. 什么类型的网站？（SaaS、内容、电商、文档、混合、小型企业）
+3. 现有或计划多少页面？
+4. 网站上最重要的 5 个页面是什么？
+5. 是否有需要保留或重定向的现有 URL？
+6. 主要受众是谁，他们想在网站上完成什么？
+
+---
+
+## 相关技能
+
+- **content-strategy**：规划要创建的内容和主题集群
+- **programmatic-seo**：使用模板和数据大规模构建 SEO 页面
+- **seo-audit**：技术 SEO、页面优化和索引问题
+- **page-cro**：优化单个页面的转化
+- **schema-markup**：实现面包屑和网站导航结构化数据
+- **competitor-alternatives**：对比页面框架和 URL 模式

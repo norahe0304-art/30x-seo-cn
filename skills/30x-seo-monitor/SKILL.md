@@ -1,36 +1,36 @@
 ---
 name: 30x-seo-monitor
 description: >
-  Monitor your own website's SEO performance using Google Search Console data.
-  Track keyword rankings, clicks, impressions, CTR, and position changes over time.
-  Identify top performing pages, declining keywords, and new ranking opportunities.
-  Use when user says "monitor my site", "my rankings", "GSC data", "Search Console",
-  "my keywords", "position changes", "CTR", "impressions", or "clicks".
+  使用 Google Search Console 数据监控网站 SEO 表现。
+  追踪关键词排名、点击、展示、CTR 和位置变化。
+  识别表现最佳的页面、下滑的关键词和新排名机会。
+  当用户说"监控我的网站"、"我的排名"、"GSC数据"、"Search Console"、
+  "我的关键词"、"位置变化"、"CTR"、"展示"或"点击"时使用。
 allowed-tools:
   - Bash
   - Read
 ---
 
-# SEO Monitor (Google Search Console)
+# SEO 监控 (Google Search Console)
 
-Monitor your own website's SEO performance using Google Search Console API.
+使用 Google Search Console API 监控网站 SEO 表现。
 
-[PROTOCOL]: 变更时更新此头部
+[PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md
 
-## Prerequisites
+## 前提条件
 
-Requires `gws` CLI with Google Search Console access, or GSC MCP server.
+需要 `gws` CLI 并有 Google Search Console 访问权限，或 GSC MCP 服务器。
 
-### Option 1: gws CLI
+### 选项 1：gws CLI
 
 ```bash
 gws auth status
-gws auth login  # if needed
+gws auth login  # 如需要
 ```
 
-### Option 2: GSC MCP Server
+### 选项 2：GSC MCP 服务器
 
-Configure in `~/.config/claude/mcp.json`:
+在 `~/.config/claude/mcp.json` 中配置：
 
 ```json
 {
@@ -48,116 +48,116 @@ Configure in `~/.config/claude/mcp.json`:
 
 ---
 
-## Commands
+## 命令
 
-| Command | What it does |
-|---------|--------------|
-| `/30x-seo monitor overview` | Dashboard: top queries, pages, CTR, position |
-| `/30x-seo monitor keywords` | All ranking keywords with metrics |
-| `/30x-seo monitor pages` | Top performing pages |
-| `/30x-seo monitor changes` | Position changes (gains/losses) |
-| `/30x-seo monitor opportunities` | High impression, low CTR keywords |
-
----
-
-## Metrics Explained
-
-| Metric | What it means |
-|--------|---------------|
-| **Clicks** | Users clicked your result |
-| **Impressions** | Your result appeared in search |
-| **CTR** | Click-through rate (clicks / impressions) |
-| **Position** | Average ranking position (1 = top) |
+| 命令 | 功能 |
+|------|------|
+| `/seo monitor overview` | 仪表板：热门查询、页面、CTR、位置 |
+| `/seo monitor keywords` | 所有排名关键词及指标 |
+| `/seo monitor pages` | 表现最佳的页面 |
+| `/seo monitor changes` | 位置变化（上升/下降） |
+| `/seo monitor opportunities` | 高展示、低 CTR 关键词 |
 
 ---
 
-## Analysis Workflows
+## 指标说明
 
-### 1. Weekly Performance Check
-
-```
-/30x-seo monitor overview
-```
-
-Output:
-- Total clicks, impressions, CTR, avg position (7 days)
-- Top 10 queries by clicks
-- Top 10 pages by clicks
-- Week-over-week comparison
-
-### 2. Keyword Ranking Report
-
-```
-/30x-seo monitor keywords
-```
-
-Output:
-- All ranking keywords
-- Position, clicks, impressions, CTR per keyword
-- Sort by: position, clicks, impressions, or CTR
-
-### 3. Position Change Detection
-
-```
-/30x-seo monitor changes
-```
-
-Output:
-- Keywords that gained positions (rising)
-- Keywords that lost positions (declining)
-- New keywords (just started ranking)
-- Lost keywords (dropped out of top 100)
-
-### 4. Quick Win Opportunities
-
-```
-/30x-seo monitor opportunities
-```
-
-Find keywords with:
-- High impressions (>1000/month)
-- Low CTR (<3%)
-- Position 4-20 (page 1-2)
-
-These are "quick wins" - improve title/description to boost CTR.
+| 指标 | 含义 |
+|------|------|
+| **点击** | 用户点击了你的结果 |
+| **展示** | 你的结果在搜索中出现 |
+| **CTR** | 点击率（点击 / 展示） |
+| **位置** | 平均排名位置（1 = 第一） |
 
 ---
 
-## Date Ranges
+## 分析工作流
 
-Default: last 7 days
+### 1. 每周表现检查
 
-Specify custom range:
 ```
-/30x-seo monitor overview --days 30
-/30x-seo monitor keywords --days 90
+/seo monitor overview
 ```
 
+输出：
+- 总点击、展示、CTR、平均位置（7天）
+- 按点击排名前 10 查询
+- 按点击排名前 10 页面
+- 周环比对比
+
+### 2. 关键词排名报告
+
+```
+/seo monitor keywords
+```
+
+输出：
+- 所有排名关键词
+- 每个关键词的位置、点击、展示、CTR
+- 排序方式：位置、点击、展示或 CTR
+
+### 3. 位置变化检测
+
+```
+/seo monitor changes
+```
+
+输出：
+- 位置上升的关键词
+- 位置下降的关键词
+- 新关键词（刚开始排名）
+- 丢失的关键词（跌出前 100）
+
+### 4. 快速优化机会
+
+```
+/seo monitor opportunities
+```
+
+找出符合以下条件的关键词：
+- 高展示（>1000/月）
+- 低 CTR（<3%）
+- 位置 4-20（第 1-2 页）
+
+这些是"快速优化"机会 — 改进标题/描述以提升 CTR。
+
 ---
 
-## Output Format
+## 日期范围
 
-Reports include:
-1. **Summary table** — Key metrics at a glance
-2. **Detailed data** — Full keyword/page lists
-3. **Action items** — Specific recommendations
+默认：最近 7 天
 
----
-
-## Integration with Other Skills
-
-| Scenario | Next Step |
-|----------|-----------|
-| Found declining keyword | → `30x-seo-content-decay` to analyze page |
-| Low CTR on page 1 | → `30x-seo-page` to optimize title/meta |
-| Keyword cannibalization suspected | → `30x-seo-cannibalization` to check |
-| New keyword opportunity | → `30x-seo-content-brief` to plan content |
+指定自定义范围：
+```
+/seo monitor overview --days 30
+/seo monitor keywords --days 90
+```
 
 ---
 
-## Limitations
+## 输出格式
 
-- **Only your verified sites** — GSC only shows data for sites you own
-- **Data delay** — GSC data is 2-3 days behind
-- **90 day max** — Historical data limited to ~16 months, but API typically 90 days
-- **Sampled data** — High-traffic sites may show sampled data
+报告包含：
+1. **摘要表格** — 关键指标一览
+2. **详细数据** — 完整关键词/页面列表
+3. **行动项** — 具体建议
+
+---
+
+## 与其他技能集成
+
+| 场景 | 下一步 |
+|------|--------|
+| 发现下滑的关键词 | → `seo-content-decay` 分析页面 |
+| 第 1 页低 CTR | → `seo-page` 优化标题/meta |
+| 疑似关键词蚕食 | → `seo-cannibalization` 检查 |
+| 新关键词机会 | → `seo-content-brief` 规划内容 |
+
+---
+
+## 限制
+
+- **仅限已验证网站** — GSC 只显示你拥有的网站数据
+- **数据延迟** — GSC 数据延迟 2-3 天
+- **最多 90 天** — 历史数据限于约 16 个月，但 API 通常 90 天
+- **抽样数据** — 高流量网站可能显示抽样数据

@@ -1,9 +1,9 @@
 ---
 name: 30x-seo-content-decay
 description: >
-  Detect content decay - old content losing rankings/traffic that needs refresh.
-  Identifies pages published >6 months ago with declining performance.
-  Outputs refresh priority list with specific update recommendations.
+  检测内容衰退 - 排名/流量下降需要刷新的老内容。
+  识别发布超过 6 个月且表现下滑的页面。
+  输出刷新优先级列表及具体更新建议。
 metadata:
   version: 1.0.0
   category: content
@@ -13,11 +13,11 @@ allowed-tools:
   - Read
 ---
 
-# 30x-seo Content Decay
+# 内容衰退检测
 
 > 发现排名下降的老内容，提示刷新
 
-## 什么是 Content Decay
+## 什么是内容衰退
 
 内容会"腐烂"：
 - 信息过时（2023 的数据在 2026 没人看）
@@ -33,7 +33,7 @@ allowed-tools:
 
 | 指标 | 阈值 | 说明 |
 |------|------|------|
-| **发布时间** | >6 个月 | 新内容不算 decay |
+| **发布时间** | >6 个月 | 新内容不算衰退 |
 | **流量变化** | 下降 >20% | 对比 3 个月前 |
 | **排名变化** | 下降 >5 位 | 主要关键词 |
 | **点击率** | 下降 >15% | 标题可能需要更新 |
@@ -44,7 +44,7 @@ allowed-tools:
 
 ## 工作流程
 
-### 方式 A: 有 GSC 数据
+### 方式 A：有 GSC 数据
 
 ```
 用户提供 GSC 导出数据（CSV）
@@ -55,12 +55,12 @@ allowed-tools:
 - 平均排名趋势
 - CTR 趋势
 ↓
-识别 decay 内容
+识别衰退内容
 ↓
 输出刷新优先级列表
 ```
 
-### 方式 B: 无 GSC 数据
+### 方式 B：无 GSC 数据
 
 ```
 用户提供 URL 列表
@@ -70,7 +70,7 @@ allowed-tools:
 - 内容时效性信号（年份、"最新"等）
 - 竞品 SERP 分析（你的内容 vs Top 10）
 ↓
-识别可能 decay 的内容
+识别可能衰退的内容
 ↓
 输出建议列表
 ```
@@ -80,7 +80,7 @@ allowed-tools:
 ## 输出格式
 
 ```markdown
-# Content Decay Report
+# 内容衰退报告
 
 ## 高优先级刷新（流量影响大）
 
@@ -119,7 +119,7 @@ allowed-tools:
 
 ## 刷新策略
 
-### 轻度刷新（Quick Update）
+### 轻度刷新（快速更新）
 
 适用：信息小幅过时
 
@@ -128,7 +128,7 @@ allowed-tools:
 - 修复死链
 - 更新 dateModified
 
-### 中度刷新（Content Update）
+### 中度刷新（内容更新）
 
 适用：内容部分过时
 
@@ -137,7 +137,7 @@ allowed-tools:
 - 更新图片/截图
 - 添加新的 H2 章节
 
-### 重度刷新（Content Rewrite）
+### 重度刷新（内容重写）
 
 适用：内容大幅过时或意图变化
 
@@ -168,14 +168,14 @@ allowed-tools:
 | 上游 | 本技能 | 下游 |
 |------|--------|------|
 | GSC 数据 | **30x-seo-content-decay** | 30x-seo-content-brief |
-| sitemap | ↓ 识别 decay | 30x-seo-content-writer |
+| sitemap | ↓ 识别衰退 | 30x-seo-content-writer |
 | | | （刷新内容）|
 
 ---
 
 ## 最佳实践
 
-1. **定期检查**: 每季度跑一次 decay 检测
+1. **定期检查**: 每季度跑一次衰退检测
 2. **优先高价值页面**: 先刷新流量/转化高的页面
 3. **保留 URL**: 刷新而非新建，保留历史权重
 4. **更新 dateModified**: 告诉 Google 内容已更新

@@ -1,16 +1,15 @@
 ---
 name: 30x-seo-content-audit
 description: >
-  Content quality audit for both traditional SEO (E-E-A-T) and AI search
-  (citability, structure, authority). Use when user says "content audit",
-  "content quality", "E-E-A-T", "AI citability", "content analysis", or
-  "is my content good for SEO".
+  内容质量审计，同时检查传统 SEO（E-E-A-T）和 AI 搜索（可引用性、结构、权威性）。
+  当用户说"内容审计"、"内容质量"、"E-E-A-T"、"AI 可引用性"、"内容分析"
+  或"我的内容对 SEO 好吗"时使用。
 allowed-tools:
   - WebFetch
   - Read
 ---
 
-# Content Quality Audit
+# 内容质量审计
 
 > 同时检查传统 SEO（E-E-A-T）和 AI 搜索（可引用性）
 
@@ -23,163 +22,163 @@ allowed-tools:
 
 ---
 
-## Part 1: 传统 SEO - E-E-A-T 分析
+## 第一部分：传统 SEO - E-E-A-T 分析
 
-## E-E-A-T Framework (updated Sept 2025 QRG)
+## E-E-A-T 框架（2025年9月 QRG 更新版）
 
-Read `seo/references/eeat-framework.md` for full criteria.
+完整标准请参阅 `seo/references/eeat-framework.md`。
 
-### Experience (first-hand signals)
-- Original research, case studies, before/after results
-- Personal anecdotes, process documentation
-- Unique data, proprietary insights
-- Photos/videos from direct experience
+### 经验（第一手信号）
+- 原创研究、案例研究、前后对比结果
+- 个人经历、流程记录
+- 独家数据、专有见解
+- 直接经验的照片/视频
 
-### Expertise
-- Author credentials, certifications, bio
-- Professional background relevant to topic
-- Technical depth appropriate for audience
-- Accurate, well-sourced claims
+### 专业
+- 作者资质、认证、简介
+- 与主题相关的专业背景
+- 适合受众的技术深度
+- 准确、有来源支持的声明
 
-### Authoritativeness
-- External citations, backlinks from authoritative sources
-- Brand mentions, industry recognition
-- Published in recognized outlets
-- Cited by other experts
+### 权威
+- 外部引用、权威来源的外链
+- 品牌提及、行业认可
+- 在知名媒体发表
+- 被其他专家引用
 
-### Trustworthiness
-- Contact information, physical address
-- Privacy policy, terms of service
-- Customer testimonials, reviews
-- Date stamps, transparent corrections
-- Secure site (HTTPS)
+### 可信
+- 联系方式、实际地址
+- 隐私政策、服务条款
+- 客户推荐、评价
+- 日期标记、透明的更正记录
+- 安全网站（HTTPS）
 
-## Content Metrics
+## 内容指标
 
-### Word Count Analysis
-Compare against page type minimums:
-| Page Type | Minimum |
+### 字数分析
+按页面类型对比最低要求：
+| 页面类型 | 最低字数 |
 |-----------|---------|
-| Homepage | 500 |
-| Service page | 800 |
-| Blog post | 1,500 |
-| Product page | 300+ (400+ for complex products) |
-| Location page | 500-600 |
+| 首页 | 500 |
+| 服务页 | 800 |
+| 博客文章 | 1,500 |
+| 产品页 | 300+（复杂产品 400+）|
+| 地点页 | 500-600 |
 
-> **Important:** These are **topical coverage floors**, not targets. Google has confirmed word count is NOT a direct ranking factor. The goal is comprehensive topical coverage — a 500-word page that thoroughly answers the query will outrank a 2,000-word page that doesn't. Use these as guidelines for adequate coverage depth, not rigid requirements.
+> **重要**：这些是**主题覆盖下限**，不是目标。Google 已确认字数不是直接排名因素。目标是全面的主题覆盖——一篇完整回答问题的 500 字页面会超过一篇答非所问的 2,000 字页面。用作覆盖深度指南，而非硬性要求。
 
-### Readability
-- Flesch Reading Ease: target 60-70 for general audience
+### 可读性
+- Flesch 阅读难易度：一般受众目标 60-70
 
-> **Note:** Flesch Reading Ease is a useful proxy for content accessibility but is NOT a direct Google ranking factor. John Mueller has confirmed Google does not use basic readability scores for ranking. Yoast deprioritized Flesch scores in v19.3. Use readability analysis as a content quality indicator, not as an SEO metric to optimize directly.
-- Grade level: match target audience
-- Sentence length: average 15-20 words
-- Paragraph length: 2-4 sentences
+> **注意**：Flesch 阅读难易度是内容可及性的有用参考，但不是 Google 的直接排名因素。John Mueller 已确认 Google 不使用基本可读性分数进行排名。Yoast 在 v19.3 中降低了 Flesch 分数的权重。将可读性分析作为内容质量指标，而非直接优化的 SEO 指标。
+- 年级水平：匹配目标受众
+- 句子长度：平均 15-20 词
+- 段落长度：2-4 句
 
-### Keyword Optimization
-- Primary keyword in title, H1, first 100 words
-- Natural density (1-3%)
-- Semantic variations present
-- No keyword stuffing
+### 关键词优化
+- 主关键词在标题、H1、前 100 字
+- 自然密度（1-3%）
+- 存在语义变体
+- 不堆砌关键词
 
-### Content Structure
-- Logical heading hierarchy (H1 → H2 → H3)
-- Scannable sections with descriptive headings
-- Bullet/numbered lists where appropriate
-- Table of contents for long-form content
+### 内容结构
+- 逻辑标题层级（H1 → H2 → H3）
+- 可扫描的章节配描述性标题
+- 适当使用项目符号/编号列表
+- 长文配目录
 
-### Multimedia
-- Relevant images with proper alt text
-- Videos where appropriate
-- Infographics for complex data
-- Charts/graphs for statistics
+### 多媒体
+- 相关图片配适当的 alt 文本
+- 适当使用视频
+- 复杂数据用信息图
+- 统计数据用图表
 
-### Internal Linking
-- 3-5 relevant internal links per 1000 words
-- Descriptive anchor text
-- Links to related content
-- No orphan pages
+### 内链
+- 每 1000 字 3-5 个相关内链
+- 描述性锚文本
+- 链接到相关内容
+- 无孤立页面
 
-### External Linking
-- Cite authoritative sources
-- Open in new tab for user experience
-- Reasonable count (not excessive)
+### 外链
+- 引用权威来源
+- 新标签页打开提升用户体验
+- 数量合理（不过多）
 
-## AI Content Assessment (Sept 2025 QRG addition)
+## AI 内容评估（2025年9月 QRG 新增）
 
-Google's raters now formally assess whether content appears AI-generated.
+Google 评审员现在正式评估内容是否看起来是 AI 生成的。
 
-### Acceptable AI Content
-- Demonstrates genuine E-E-A-T
-- Provides unique value
-- Has human oversight and editing
-- Contains original insights
+### 可接受的 AI 内容
+- 展示真实的 E-E-A-T
+- 提供独特价值
+- 有人工监督和编辑
+- 包含原创见解
 
-### Low-Quality AI Content Markers
-- Generic phrasing, lack of specificity
-- No original insight
-- Repetitive structure across pages
-- No author attribution
-- Factual inaccuracies
+### 低质量 AI 内容标记
+- 通用措辞、缺乏具体性
+- 无原创见解
+- 跨页面重复结构
+- 无作者署名
+- 事实错误
 
-> **Helpful Content System (March 2024):** The Helpful Content System was merged into Google's core ranking algorithm during the March 2024 core update. It no longer operates as a standalone classifier. Helpfulness signals are now weighted within every core update — the same principles apply (people-first content, demonstrating E-E-A-T, satisfying user intent), but enforcement is continuous rather than through separate HCU updates.
+> **有用内容系统（2024年3月）**：有用内容系统在 2024年3月的核心更新中被合并到 Google 的核心排名算法中。它不再作为独立分类器运行。有用性信号现在在每次核心更新中被加权——同样的原则适用（以用户为先的内容、展示 E-E-A-T、满足用户意图），但执行是持续的，而非通过单独的 HCU 更新。
 
-## AI Citation Readiness (GEO signals)
+## AI 引用准备（GEO 信号）
 
-Optimize for AI search engines (ChatGPT, Perplexity, Google AI Overviews):
+为 AI 搜索引擎优化（ChatGPT、Perplexity、Google AI 概述）：
 
-- Clear, quotable statements with statistics/facts
-- Structured data (especially for data points)
-- Strong heading hierarchy (H1→H2→H3 flow)
-- Answer-first formatting for key questions
-- Tables and lists for comparative data
-- Clear attribution and source citations
+- 清晰、可引用的声明配统计/事实
+- 结构化数据（特别是数据点）
+- 强标题层级（H1→H2→H3 流程）
+- 关键问题答案前置
+- 对比数据用表格和列表
+- 清晰的归属和来源引用
 
-### AI Search Visibility & GEO (2025-2026)
+### AI 搜索可见性与 GEO（2025-2026）
 
-**Google AI Mode** launched publicly in May 2025 as a separate tab in Google Search, available in 180+ countries. Unlike AI Overviews (which appear above organic results), AI Mode provides a fully conversational search experience with **zero organic blue links** — making AI citation the only visibility mechanism.
+**Google AI 模式** 于 2025年5月作为 Google 搜索的独立标签公开发布，覆盖 180+ 国家。与 AI 概述（显示在自然结果上方）不同，AI 模式提供完全对话式搜索体验，**零自然蓝链接**——使 AI 引用成为唯一的可见性机制。
 
-**Key optimization strategies for AI citation:**
-- **Structured answers:** Clear question-answer formats, definition patterns, and step-by-step instructions that AI systems can extract and cite
-- **First-party data:** Original research, statistics, case studies, and unique datasets are highly cited by AI systems
-- **Schema markup:** Article, FAQ (for non-Google AI platforms), and structured content schemas help AI systems parse and attribute content
-- **Topical authority:** AI systems preferentially cite sources that demonstrate deep expertise — build content clusters, not isolated pages
-- **Entity clarity:** Ensure brand, authors, and key concepts are clearly defined with structured data (Organization, Person schema)
-- **Multi-platform tracking:** Monitor visibility across Google AI Overviews, AI Mode, ChatGPT, Perplexity, and Bing Copilot — not just traditional rankings. Treat AI citation as a standalone KPI alongside organic rankings and traffic.
+**AI 引用的关键优化策略：**
+- **结构化回答**：清晰的问答格式、定义模式和分步说明，便于 AI 系统提取和引用
+- **第一方数据**：原创研究、统计数据、案例研究和独家数据集被 AI 系统高度引用
+- **Schema 标记**：文章、FAQ（用于非 Google AI 平台）和结构化内容 schema 帮助 AI 系统解析和归属内容
+- **主题权威**：AI 系统优先引用展示深度专业知识的来源——建立内容集群，而非孤立页面
+- **实体清晰度**：确保品牌、作者和关键概念用结构化数据明确定义（Organization、Person schema）
+- **多平台追踪**：监控 Google AI 概述、AI 模式、ChatGPT、Perplexity 和 Bing Copilot 的可见性——不仅是传统排名。将 AI 引用作为与自然排名和流量并列的独立 KPI。
 
-**Generative Engine Optimization (GEO):**
-GEO is the emerging discipline of optimizing content specifically for AI-generated answers. Key GEO signals include: quotability (clear, concise extractable facts), attribution (source citations within your content), structure (well-organized heading hierarchy), and freshness (regularly updated data). Cross-reference the `seo-geo` skill for detailed GEO workflows.
+**生成式引擎优化（GEO）**：
+GEO 是专门为 AI 生成答案优化内容的新兴学科。关键 GEO 信号包括：可引用性（清晰、简洁的可提取事实）、归属（内容中的来源引用）、结构（组织良好的标题层级）和新鲜度（定期更新的数据）。详细 GEO 工作流请参阅 `seo-geo` 技能。
 
-## Content Freshness
+## 内容新鲜度
 
-- Publication date visible
-- Last updated date if content has been revised
-- Flag content older than 12 months without update for fast-changing topics
+- 发布日期可见
+- 如内容已修订显示最后更新日期
+- 对快速变化主题，标记超过 12 个月未更新的内容
 
-## Output
+## 输出
 
-### Content Quality Score: XX/100
+### 内容质量分数：XX/100
 
-### E-E-A-T Breakdown
-| Factor | Score | Key Signals |
+### E-E-A-T 明细
+| 因素 | 分数 | 关键信号 |
 |--------|-------|-------------|
-| Experience | XX/25 | ... |
-| Expertise | XX/25 | ... |
-| Authoritativeness | XX/25 | ... |
-| Trustworthiness | XX/25 | ... |
+| 经验 | XX/25 | ... |
+| 专业 | XX/25 | ... |
+| 权威 | XX/25 | ... |
+| 可信 | XX/25 | ... |
 
-### AI Citation Readiness: XX/100
+### AI 引用准备度：XX/100
 
-### Issues Found
-### Recommendations
+### 发现的问题
+### 建议
 
 ---
 
-## Part 2: AI 可引用性 - 三大支柱
+## 第二部分：AI 可引用性 - 三大支柱
 
-> 来源：Princeton GEO 研究 + 行业最佳实践
+> 来源：普林斯顿 GEO 研究 + 行业最佳实践
 
-### 支柱 1: 结构（可提取性）
+### 支柱 1：结构（可提取性）
 
 AI 系统提取的是段落，不是整页。每个关键主张应该能独立成文。
 
@@ -198,7 +197,7 @@ AI 系统提取的是段落，不是整页。每个关键主张应该能独立�
 - H2/H3 标题用问句形式（匹配用户搜索）
 - 对比内容用表格，步骤内容用列表
 
-### 支柱 2: 权威（可引用性）
+### 支柱 2：权威（可引用性）
 
 | 优化方法 | 可见性提升 | 怎么做 |
 |---------|:----------:|--------|
@@ -210,7 +209,7 @@ AI 系统提取的是段落，不是整页。每个关键主张应该能独立�
 
 **最佳组合**：流畅度 + 统计数据 = 最大提升
 
-### 支柱 3: 存在（第三方曝光）
+### 支柱 3：存在（第三方曝光）
 
 AI 不只引用你的网站，还引用你出现的地方。
 
@@ -230,10 +229,10 @@ AI 不只引用你的网站，还引用你出现的地方。
 内容质量审计报告
 
 1. 传统 SEO 得分: XX/100
-   - Experience: XX/25
-   - Expertise: XX/25
-   - Authoritativeness: XX/25
-   - Trustworthiness: XX/25
+   - 经验: XX/25
+   - 专业: XX/25
+   - 权威: XX/25
+   - 可信: XX/25
 
 2. AI 可引用性得分: XX/100
    - 结构可提取性: XX/33

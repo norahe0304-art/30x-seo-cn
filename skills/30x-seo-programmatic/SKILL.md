@@ -1,167 +1,166 @@
 ---
 name: 30x-seo-programmatic
 description: >
-  Programmatic SEO planning and analysis for pages generated at scale from data
-  sources. Covers template engines, URL patterns, internal linking automation,
-  thin content safeguards, and index bloat prevention. Use when user says
-  "programmatic SEO", "pages at scale", "dynamic pages", "template pages",
-  "generated pages", or "data-driven SEO".
+  程序化 SEO 规划和分析，用于从数据源规模化生成的页面。涵盖模板引擎、
+  URL 模式、内部链接自动化、薄内容防护和索引膨胀预防。当用户说
+  "程序化SEO"、"规模化页面"、"动态页面"、"模板页面"、
+  "生成页面"或"数据驱动SEO"时使用。
 allowed-tools:
   - WebFetch
   - Read
 ---
 
-# Programmatic SEO Analysis & Planning
+# 程序化 SEO 分析与规划
 
-Build and audit SEO pages generated at scale from structured data sources.
-Enforces quality gates to prevent thin content penalties and index bloat.
+构建和审核从结构化数据源规模化生成的 SEO 页面。
+执行质量门控以防止薄内容惩罚和索引膨胀。
 
-## Data Source Assessment
+## 数据源评估
 
-Evaluate the data powering programmatic pages:
-- **CSV/JSON files**: Row count, column uniqueness, missing values
-- **API endpoints**: Response structure, data freshness, rate limits
-- **Database queries**: Record count, field completeness, update frequency
-- Data quality checks:
-  - Each record must have enough unique attributes to generate distinct content
-  - Flag duplicate or near-duplicate records (>80% field overlap)
-  - Verify data freshness — stale data produces stale pages
+评估支持程序化页面的数据：
+- **CSV/JSON 文件**：行数、列唯一性、缺失值
+- **API 端点**：响应结构、数据新鲜度、速率限制
+- **数据库查询**：记录数、字段完整性、更新频率
+- 数据质量检查：
+  - 每条记录必须有足够的唯一属性来生成独特内容
+  - 标记重复或近似重复的记录（>80% 字段重叠）
+  - 验证数据新鲜度 — 陈旧数据产生陈旧页面
 
-## Template Engine Planning
+## 模板引擎规划
 
-Design templates that produce unique, valuable pages:
-- **Variable injection points**: Title, H1, body sections, meta description, schema
-- **Content blocks**: Static (shared across pages) vs dynamic (unique per page)
-- **Conditional logic**: Show/hide sections based on data availability
-- **Supplementary content**: Related items, contextual tips, user-generated content
-- Template review checklist:
-  - Each page must read as a standalone, valuable resource
-  - No "mad-libs" patterns (just swapping city/product names in identical text)
-  - Dynamic sections must add genuine information, not just keyword variations
+设计产生独特、有价值页面的模板：
+- **变量注入点**：标题、H1、正文部分、meta description、schema
+- **内容块**：静态（跨页面共享）vs 动态（每页独特）
+- **条件逻辑**：根据数据可用性显示/隐藏部分
+- **补充内容**：相关项目、上下文提示、用户生成内容
+- 模板审核清单：
+  - 每个页面必须作为独立、有价值的资源阅读
+  - 无"填空"模式（只是在相同文本中替换城市/产品名）
+  - 动态部分必须添加真正的信息，而不只是关键词变体
 
-## URL Pattern Strategy
+## URL 模式策略
 
-### Common Patterns
-- `/tools/[tool-name]` — Tool/product directory pages
-- `/[city]/[service]` — Location + service pages
-- `/integrations/[platform]` — Integration landing pages
-- `/glossary/[term]` — Definition/reference pages
-- `/templates/[template-name]` — Downloadable template pages
+### 常见模式
+- `/tools/[tool-name]` — 工具/产品目录页
+- `/[city]/[service]` — 地点 + 服务页
+- `/integrations/[platform]` — 集成落地页
+- `/glossary/[term]` — 定义/参考页
+- `/templates/[template-name]` — 可下载模板页
 
-### URL Rules
-- Lowercase, hyphenated slugs derived from data
-- Logical hierarchy reflecting site architecture
-- No duplicate slugs — enforce uniqueness at generation time
-- Keep URLs under 100 characters
-- No query parameters for primary content URLs
-- Consistent trailing slash usage (match existing site pattern)
+### URL 规则
+- 从数据派生的小写、连字符 slug
+- 反映网站架构的逻辑层级
+- 无重复 slug — 生成时强制唯一性
+- URL 保持在 100 字符以内
+- 主要内容 URL 不使用查询参数
+- 尾部斜杠使用一致（匹配现有网站模式）
 
-## Internal Linking Automation
+## 内部链接自动化
 
-- **Hub/spoke model**: Category hub pages linking to individual programmatic pages
-- **Related items**: Auto-link to 3-5 related pages based on data attributes
-- **Breadcrumbs**: Generate BreadcrumbList schema from URL hierarchy
-- **Cross-linking**: Link between programmatic pages sharing attributes (same category, same city, same feature)
-- **Anchor text**: Use descriptive, varied anchor text — avoid exact-match keyword repetition
-- Link density: 3-5 internal links per 1000 words (match seo-content guidelines)
+- **中心/辐射模型**：分类中心页链接到单个程序化页面
+- **相关项目**：根据数据属性自动链接到 3-5 个相关页面
+- **面包屑**：从 URL 层级生成 BreadcrumbList schema
+- **交叉链接**：共享属性的程序化页面之间链接（相同分类、相同城市、相同功能）
+- **锚文本**：使用描述性、多样的锚文本 — 避免完全匹配关键词重复
+- 链接密度：每 1000 字 3-5 个内部链接（符合 seo-content 指南）
 
-## Thin Content Safeguards
+## 薄内容防护
 
-### Quality Gates
+### 质量门控
 
-| Metric | Threshold | Action |
-|--------|-----------|--------|
-| Pages without content review | 100+ | ⚠️ WARNING — require content audit before publishing |
-| Pages without justification | 500+ | 🛑 HARD STOP — require explicit user approval and thin content audit |
-| Unique content per page | <40% | ❌ Flag as thin content — likely penalty risk |
-| Word count per page | <300 | ⚠️ Flag for review — may lack sufficient value |
+| 指标 | 阈值 | 行动 |
+|------|------|------|
+| 未经内容审核的页面 | 100+ | ⚠️ 警告 — 发布前需要内容审核 |
+| 未经说明理由的页面 | 500+ | 🛑 硬停止 — 需要明确用户批准和薄内容审核 |
+| 每页独特内容 | <40% | ❌ 标记为薄内容 — 可能有惩罚风险 |
+| 每页字数 | <300 | ⚠️ 标记待审核 — 可能缺乏足够价值 |
 
-### Scaled Content Abuse — Enforcement Context (2025-2026)
+### 规模化内容滥用 — 执法背景（2025-2026）
 
-Google's Scaled Content Abuse policy (introduced March 2024) saw major enforcement escalation in 2025:
+Google 的规模化内容滥用政策（2024年3月推出）在2025年大幅加强执法：
 
-- **June 2025:** Wave of manual actions targeting websites with AI-generated content at scale
-- **August 2025:** SpamBrain spam update enhanced pattern detection for AI-generated link schemes and content farms
-- **Result:** Google reported 45% reduction in low-quality, unoriginal content in search results post-March 2024 enforcement
+- **2025年6月：** 针对大规模 AI 生成内容网站的人工行动浪潮
+- **2025年8月：** SpamBrain 垃圾更新增强了对 AI 生成链接计划和内容农场的模式检测
+- **结果：** Google 报告2024年3月执法后搜索结果中低质量、非原创内容减少45%
 
-**Enhanced quality gates for programmatic pages:**
-- **Content differentiation:** ≥30-40% of content must be genuinely unique between any two programmatic pages (not just city/keyword string replacement)
-- **Human review:** Minimum 5-10% sample review of generated pages before publishing
-- **Progressive rollout:** Publish in batches of 50-100 pages. Monitor indexing and rankings for 2-4 weeks before expanding. Never publish 500+ programmatic pages simultaneously without explicit quality review.
-- **Standalone value test:** Each page should pass: "Would this page be worth publishing even if no other similar pages existed?"
-- **Site reputation abuse:** If publishing programmatic content under a high-authority domain (not your own), this may trigger site reputation abuse penalties. Google began enforcing this aggressively in November 2024.
+**程序化页面的增强质量门控：**
+- **内容差异化：** 任何两个程序化页面之间必须有 ≥30-40% 的内容是真正独特的（不只是城市/关键词字符串替换）
+- **人工审核：** 发布前最少抽样审核 5-10% 的生成页面
+- **渐进发布：** 分批发布 50-100 页。监控索引和排名 2-4 周后再扩展。未经明确质量审核，永远不要同时发布 500+ 程序化页面。
+- **独立价值测试：** 每个页面应通过："即使不存在其他类似页面，这个页面也值得发布吗？"
+- **网站声誉滥用：** 如果在高权威域名（非你自己的）下发布程序化内容，可能触发网站声誉滥用惩罚。Google 从2024年11月开始积极执法。
 
-> **Recommendation:** The WARNING gate at `<40% unique content` remains appropriate. Consider a HARD STOP at `<30%` unique content to prevent scaled content abuse risk.
+> **建议：** `<40% 独特内容` 的警告门控仍然适当。考虑在 `<30%` 独特内容时硬停止以防止规模化内容滥用风险。
 
-### Safe Programmatic Pages (OK at scale)
-✅ Integration pages (with real setup docs, API details, screenshots)
-✅ Template/tool pages (with downloadable content, usage instructions)
-✅ Glossary pages (200+ word definitions with examples, related terms)
-✅ Product pages (unique specs, reviews, comparison data)
-✅ Data-driven pages (unique statistics, charts, analysis per record)
+### 安全的程序化页面（可规模化）
+✅ 集成页面（有真实的设置文档、API 细节、截图）
+✅ 模板/工具页面（有可下载内容、使用说明）
+✅ 术语表页面（200+ 字定义，有示例、相关术语）
+✅ 产品页面（独特规格、评价、比较数据）
+✅ 数据驱动页面（每条记录独特的统计、图表、分析）
 
-### Penalty Risk (avoid at scale)
-❌ Location pages with only city name swapped in identical text
-❌ "Best [tool] for [industry]" without industry-specific value
-❌ "[Competitor] alternative" without real comparison data
-❌ AI-generated pages without human review and unique value-add
-❌ Pages where >60% of content is shared template boilerplate
+### 惩罚风险（避免规模化）
+❌ 只在相同文本中替换城市名的地区页面
+❌ 没有行业特定价值的 "最佳[工具]适用于[行业]"
+❌ 没有真实比较数据的 "[竞争对手]替代方案"
+❌ 没有人工审核和独特价值增加的 AI 生成页面
+❌ >60% 内容是共享模板样板的页面
 
-### Uniqueness Calculation
-Unique content % = (words unique to this page) / (total words on page) × 100
+### 独特性计算
+独特内容 % = (此页面独有的字数) / (页面总字数) × 100
 
-Measure against all other pages in the programmatic set. Shared headers, footers, and navigation are excluded from the calculation. Template boilerplate text IS included.
+对程序化集合中的所有其他页面进行测量。共享的页眉、页脚和导航排除在计算之外。模板样板文本包含在内。
 
-## Canonical Strategy
+## Canonical 策略
 
-- Every programmatic page must have a self-referencing canonical tag
-- Parameter variations (sort, filter, pagination) canonical to the base URL
-- Paginated series: canonical to page 1 or use rel=next/prev
-- If programmatic pages overlap with manual pages, the manual page is canonical
-- No canonical to a different domain unless intentional cross-domain setup
+- 每个程序化页面必须有自引用的 canonical 标签
+- 参数变体（排序、筛选、分页）canonical 到基础 URL
+- 分页系列：canonical 到第1页或使用 rel=next/prev
+- 如果程序化页面与手动页面重叠，手动页面是 canonical
+- 除非有意跨域设置，否则不要 canonical 到不同域
 
-## Sitemap Integration
+## 站点地图集成
 
-- Auto-generate sitemap entries for all programmatic pages
-- Split at 50,000 URLs per sitemap file (protocol limit)
-- Use sitemap index if multiple sitemap files needed
-- `<lastmod>` reflects actual data update timestamp (not generation time)
-- Exclude noindexed programmatic pages from sitemap
-- Register sitemap in robots.txt
-- Update sitemap dynamically as new records are added to data source
+- 为所有程序化页面自动生成站点地图条目
+- 每个站点地图文件在 50,000 URL 处拆分（协议限制）
+- 如需多个站点地图文件，使用站点地图索引
+- `<lastmod>` 反映实际数据更新时间戳（非生成时间）
+- 从站点地图中排除 noindex 的程序化页面
+- 在 robots.txt 中注册站点地图
+- 随着新记录添加到数据源，动态更新站点地图
 
-## Index Bloat Prevention
+## 索引膨胀预防
 
-- **Noindex low-value pages**: Pages that don't meet quality gates
-- **Pagination**: Noindex paginated results beyond page 1 (or use rel=next/prev)
-- **Faceted navigation**: Noindex filtered views, canonical to base category
-- **Crawl budget**: For sites with >10k programmatic pages, monitor crawl stats in Search Console
-- **Thin page consolidation**: Merge records with insufficient data into aggregated pages
-- **Regular audits**: Monthly review of indexed page count vs intended count
+- **Noindex 低价值页面**：不符合质量门控的页面
+- **分页**：Noindex 第1页之后的分页结果（或使用 rel=next/prev）
+- **分面导航**：Noindex 筛选视图，canonical 到基础分类
+- **抓取预算**：对于 >10k 程序化页面的网站，在 Search Console 中监控抓取统计
+- **薄页面合并**：将数据不足的记录合并到聚合页面
+- **定期审核**：每月审核索引页面数 vs 预期数
 
-## Output
+## 输出
 
-### Programmatic SEO Score: XX/100
+### 程序化 SEO 得分：XX/100
 
-### Assessment Summary
-| Category | Status | Score |
-|----------|--------|-------|
-| Data Quality | ✅/⚠️/❌ | XX/100 |
-| Template Uniqueness | ✅/⚠️/❌ | XX/100 |
-| URL Structure | ✅/⚠️/❌ | XX/100 |
-| Internal Linking | ✅/⚠️/❌ | XX/100 |
-| Thin Content Risk | ✅/⚠️/❌ | XX/100 |
-| Index Management | ✅/⚠️/❌ | XX/100 |
+### 评估摘要
+| 类别 | 状态 | 得分 |
+|------|------|------|
+| 数据质量 | ✅/⚠️/❌ | XX/100 |
+| 模板独特性 | ✅/⚠️/❌ | XX/100 |
+| URL 结构 | ✅/⚠️/❌ | XX/100 |
+| 内部链接 | ✅/⚠️/❌ | XX/100 |
+| 薄内容风险 | ✅/⚠️/❌ | XX/100 |
+| 索引管理 | ✅/⚠️/❌ | XX/100 |
 
-### Critical Issues (fix immediately)
-### High Priority (fix within 1 week)
-### Medium Priority (fix within 1 month)
-### Low Priority (backlog)
+### 严重问题（立即修复）
+### 高优先级（一周内修复）
+### 中优先级（一个月内修复）
+### 低优先级（待办）
 
-### Recommendations
-- Data source improvements
-- Template modifications
-- URL pattern adjustments
-- Quality gate compliance actions
+### 建议
+- 数据源改进
+- 模板修改
+- URL 模式调整
+- 质量门控合规行动
 
 [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md

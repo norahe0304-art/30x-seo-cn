@@ -1,18 +1,17 @@
 ---
 name: 30x-seo-geo-technical
 description: >
-  Technical SEO for AI search engines. Checks AI crawler accessibility,
-  llms.txt compliance, robots.txt configuration, server-side rendering.
-  Outputs problems + fixes (generates llms.txt, robots.txt modifications).
-  Use when user says "AI crawlers", "llms.txt", "GPTBot", "GEO technical".
+  AI 搜索引擎的技术 SEO。检查 AI 爬虫可访问性、llms.txt 合规性、
+  robots.txt 配置、服务端渲染。输出问题 + 修复（生成 llms.txt、robots.txt 修改）。
+  当用户说"AI 爬虫"、"llms.txt"、"GPTBot"、"GEO 技术"时使用。
 allowed-tools:
   - WebFetch
   - Read
 ---
 
-# GEO Technical（AI 搜索技术检查）
+# GEO 技术（AI 搜索技术检查）
 
-## What This Skill Does
+## 功能说明
 
 检查网站对 AI 搜索引擎的**技术可访问性**，发现问题并帮助修复。
 
@@ -21,9 +20,9 @@ allowed-tools:
 
 ---
 
-## Process
+## 流程
 
-### Step 1: Check AI Crawler Access（检查 AI 爬虫访问）
+### 步骤 1：检查 AI 爬虫访问
 
 读取 `robots.txt`，检查这些爬虫是否被允许：
 
@@ -57,7 +56,7 @@ User-agent: PerplexityBot
 Allow: /
 ```
 
-### Step 2: Check llms.txt（检查 llms.txt）
+### 步骤 2：检查 llms.txt
 
 检查 `/llms.txt` 是否存在：
 
@@ -83,7 +82,7 @@ Allow: /
 - 主营业务：XXX
 ```
 
-### Step 3: Check Server-Side Rendering（检查 SSR）
+### 步骤 3：检查服务端渲染（SSR）
 
 **AI 爬虫不执行 JavaScript**，关键内容必须在 HTML 中直接可见。
 
@@ -107,23 +106,23 @@ Allow: /
 - 预渲染关键页面
 - 确保 `<noscript>` 有内容
 
-### Step 4: Platform-Specific Check（平台检查）
+### 步骤 4：平台特定检查
 
 | 平台 | 技术要求 |
 |------|---------|
-| **Google AI Overviews** | 传统 SEO 基础 + Schema |
+| **Google AI 概述** | 传统 SEO 基础 + Schema |
 | **ChatGPT** | GPTBot 访问 + llms.txt |
 | **Perplexity** | PerplexityBot 访问 |
 | **Bing Copilot** | Bing 索引 + IndexNow |
 
 ---
 
-## Output（输出）
+## 输出
 
 ### 1. GEO 技术报告
 
 ```markdown
-# GEO Technical Report
+# GEO 技术报告
 
 ## AI 爬虫访问状态
 | 爬虫 | 状态 | 问题 |
@@ -162,7 +161,7 @@ Allow: /
 
 ---
 
-## Reference: AI Crawler Details
+## 参考：AI 爬虫详情
 
 ### robots.txt 完整配置示例
 
@@ -194,20 +193,20 @@ Disallow: /
 ### llms.txt 完整格式
 
 ```markdown
-# Site Name
-> Brief description of the site
+# 网站名称
+> 网站简要描述
 
-## Main Sections
-- [Page Title](url): Description
-- [Another Page](url): Description
+## 主要版块
+- [页面标题](url): 描述
+- [另一页面](url): 描述
 
-## Key Facts
-- Fact 1
-- Fact 2
+## 关键事实
+- 事实 1
+- 事实 2
 
-## Contact
-- Email: xxx
-- Social: xxx
+## 联系方式
+- 邮箱: xxx
+- 社交: xxx
 ```
 
 ### RSL 1.0（Really Simple Licensing）
@@ -218,7 +217,7 @@ Disallow: /
 
 ---
 
-## Integration
+## 与其他技能集成
 
 | 相关技能 | 用途 |
 |---------|------|

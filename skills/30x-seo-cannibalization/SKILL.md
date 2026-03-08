@@ -1,9 +1,8 @@
 ---
 name: 30x-seo-cannibalization
 description: >
-  Detect keyword cannibalization - multiple pages competing for the same keyword.
-  Identifies cannibalizing URLs and provides resolution strategies (merge, redirect,
-  differentiate, or delete).
+  检测关键词蚕食 - 多个页面竞争同一关键词。识别蚕食 URL 并提供解决策略
+  （合并、重定向、差异化或删除）。
 metadata:
   version: 1.0.0
   category: content
@@ -13,11 +12,11 @@ allowed-tools:
   - Read
 ---
 
-# 30x-seo Cannibalization
+# 关键词蚕食检测
 
 > 发现多个页面抢同一关键词的问题
 
-## 什么是 Keyword Cannibalization
+## 什么是关键词蚕食
 
 **问题**：网站有多个页面都想排同一个关键词
 
@@ -37,7 +36,7 @@ allowed-tools:
 
 ## 检测方法
 
-### 方式 A: 有 GSC 数据（推荐）
+### 方式 A：有 GSC 数据（推荐）
 
 ```
 导入 GSC "查询" 报告
@@ -60,7 +59,7 @@ allowed-tools:
 - 排名频繁波动（Google 在犹豫）
 - 两个页面排名都在 5-15 位（卡住了）
 
-### 方式 B: 无 GSC 数据
+### 方式 B：无 GSC 数据
 
 ```
 输入目标关键词列表
@@ -79,7 +78,7 @@ allowed-tools:
 ## 输出格式
 
 ```markdown
-# Keyword Cannibalization Report
+# 关键词蚕食报告
 
 ## 发现 X 组蚕食问题
 
@@ -166,7 +165,7 @@ B → 关键词 Y（相关但不同）
 ```
 
 **操作**：
-- 修改标题、H1、meta description
+- 修改标题、H1、元描述
 - 调整内容角度
 - 更新内链锚文本
 
@@ -191,7 +190,7 @@ B → 关键词 Y（相关但不同）
 /30x-seo cannibalization --gsc [csv文件]
 
 # 指定关键词列表
-/30x-seo cannibalization --keywords "keyword1, keyword2, ..."
+/30x-seo cannibalization --keywords "关键词1, 关键词2, ..."
 
 # 分析整站
 /30x-seo cannibalization https://example.com
@@ -217,7 +216,7 @@ B → 关键词 Y（相关但不同）
 
 1. **一个关键词 = 一个页面**
 2. 新内容前先查关键词映射
-3. 定期跑 cannibalization 检测
+3. 定期跑蚕食检测
 4. 内链锚文本要和目标关键词一致
 
 ---

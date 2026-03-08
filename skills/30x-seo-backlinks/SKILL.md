@@ -1,44 +1,43 @@
 ---
 name: 30x-seo-backlinks
 description: >
-  Comprehensive backlink analysis using DataForSEO API. Analyze backlink profiles,
-  find link building opportunities, detect toxic links, compare with competitors,
-  and identify link gaps. Use when user says "backlinks", "link building",
-  "referring domains", "link profile", "toxic links", "link gap", "competitor links",
-  or "domain authority".
+  使用 DataForSEO API 进行全面外链分析。分析外链概况、
+  寻找链接建设机会、检测有毒链接、与竞争对手比较、识别链接差距。
+  当用户说"外链"、"链接建设"、"引用域"、"链接概况"、"有毒链接"、
+  "链接差距"、"竞品链接"或"域名权重"时使用。
 allowed-tools:
   - Bash
   - Read
 ---
 
-# SEO Backlinks Analysis
+# SEO 外链分析
 
-Comprehensive backlink analysis and link building intelligence using DataForSEO API via direct curl calls.
+使用 DataForSEO API 通过直接 curl 调用进行全面外链分析和链接建设情报收集。
 
-## API Configuration
+## API 配置
 
-Credentials stored in `~/.config/dataforseo/auth` (Base64 encoded).
+凭据存储在 `~/.config/dataforseo/auth`（Base64 编码）。
 
 ```bash
-# Read auth token
+# 读取认证令牌
 AUTH=$(cat ~/.config/dataforseo/auth)
 ```
 
-## Quick Reference
+## 快速参考
 
-| Command | What it does |
-|---------|-------------|
-| `/seo backlinks profile <domain>` | Full backlink profile analysis |
-| `/seo backlinks compare <domain1> <domain2>` | Compare two domains' backlink profiles |
-| `/seo backlinks gap <your-domain> <competitor1> [competitor2]` | Find link gap opportunities |
-| `/seo backlinks toxic <domain>` | Identify potentially toxic/spammy links |
-| `/seo backlinks anchors <domain>` | Analyze anchor text distribution |
-| `/seo backlinks trend <domain>` | New/lost backlinks over time |
-| `/seo backlinks competitors <domain>` | Find competitors by backlink overlap |
+| 命令 | 功能 |
+|------|------|
+| `/seo backlinks profile <域名>` | 完整外链概况分析 |
+| `/seo backlinks compare <域名1> <域名2>` | 比较两个域名的外链概况 |
+| `/seo backlinks gap <你的域名> <竞品1> [竞品2]` | 寻找链接差距机会 |
+| `/seo backlinks toxic <域名>` | 识别潜在有毒/垃圾链接 |
+| `/seo backlinks anchors <域名>` | 分析锚文本分布 |
+| `/seo backlinks trend <域名>` | 新增/丢失外链趋势 |
+| `/seo backlinks competitors <域名>` | 按外链重叠找竞争对手 |
 
-## API Endpoints
+## API 端点
 
-### Backlink Summary
+### 外链摘要
 ```bash
 curl -s -X POST "https://api.dataforseo.com/v3/backlinks/summary/live" \
   -H "Authorization: Basic $(cat ~/.config/dataforseo/auth)" \
@@ -46,7 +45,7 @@ curl -s -X POST "https://api.dataforseo.com/v3/backlinks/summary/live" \
   -d '[{"target": "example.com"}]'
 ```
 
-### Get Backlinks
+### 获取外链
 ```bash
 curl -s -X POST "https://api.dataforseo.com/v3/backlinks/backlinks/live" \
   -H "Authorization: Basic $(cat ~/.config/dataforseo/auth)" \
@@ -54,7 +53,7 @@ curl -s -X POST "https://api.dataforseo.com/v3/backlinks/backlinks/live" \
   -d '[{"target": "example.com", "limit": 100, "order_by": ["rank,desc"]}]'
 ```
 
-### Anchor Text Analysis
+### 锚文本分析
 ```bash
 curl -s -X POST "https://api.dataforseo.com/v3/backlinks/anchors/live" \
   -H "Authorization: Basic $(cat ~/.config/dataforseo/auth)" \
@@ -62,7 +61,7 @@ curl -s -X POST "https://api.dataforseo.com/v3/backlinks/anchors/live" \
   -d '[{"target": "example.com", "limit": 100}]'
 ```
 
-### Bulk Backlinks (Multiple Domains)
+### 批量外链（多域名）
 ```bash
 curl -s -X POST "https://api.dataforseo.com/v3/backlinks/bulk_backlinks/live" \
   -H "Authorization: Basic $(cat ~/.config/dataforseo/auth)" \
@@ -70,7 +69,7 @@ curl -s -X POST "https://api.dataforseo.com/v3/backlinks/bulk_backlinks/live" \
   -d '[{"targets": ["domain1.com", "domain2.com", "domain3.com"]}]'
 ```
 
-### Bulk Referring Domains
+### 批量引用域
 ```bash
 curl -s -X POST "https://api.dataforseo.com/v3/backlinks/bulk_referring_domains/live" \
   -H "Authorization: Basic $(cat ~/.config/dataforseo/auth)" \
@@ -78,7 +77,7 @@ curl -s -X POST "https://api.dataforseo.com/v3/backlinks/bulk_referring_domains/
   -d '[{"targets": ["domain1.com", "domain2.com"]}]'
 ```
 
-### Bulk Ranks (Domain Authority)
+### 批量排名（域名权重）
 ```bash
 curl -s -X POST "https://api.dataforseo.com/v3/backlinks/bulk_ranks/live" \
   -H "Authorization: Basic $(cat ~/.config/dataforseo/auth)" \
@@ -86,7 +85,7 @@ curl -s -X POST "https://api.dataforseo.com/v3/backlinks/bulk_ranks/live" \
   -d '[{"targets": ["domain1.com", "domain2.com"]}]'
 ```
 
-### Bulk Spam Score
+### 批量垃圾分数
 ```bash
 curl -s -X POST "https://api.dataforseo.com/v3/backlinks/bulk_spam_score/live" \
   -H "Authorization: Basic $(cat ~/.config/dataforseo/auth)" \
@@ -94,7 +93,7 @@ curl -s -X POST "https://api.dataforseo.com/v3/backlinks/bulk_spam_score/live" \
   -d '[{"targets": ["domain1.com", "domain2.com"]}]'
 ```
 
-### Domain Intersection (Link Gap)
+### 域名交集（链接差距）
 ```bash
 curl -s -X POST "https://api.dataforseo.com/v3/backlinks/domain_intersection/live" \
   -H "Authorization: Basic $(cat ~/.config/dataforseo/auth)" \
@@ -102,7 +101,7 @@ curl -s -X POST "https://api.dataforseo.com/v3/backlinks/domain_intersection/liv
   -d '[{"targets": {"1": "competitor1.com", "2": "competitor2.com"}, "exclude_targets": ["your-domain.com"], "limit": 100}]'
 ```
 
-### Competitors by Backlinks
+### 按外链找竞争对手
 ```bash
 curl -s -X POST "https://api.dataforseo.com/v3/backlinks/competitors/live" \
   -H "Authorization: Basic $(cat ~/.config/dataforseo/auth)" \
@@ -110,7 +109,7 @@ curl -s -X POST "https://api.dataforseo.com/v3/backlinks/competitors/live" \
   -d '[{"target": "example.com", "limit": 20}]'
 ```
 
-### New/Lost Backlinks Timeline
+### 新增/丢失外链时间线
 ```bash
 curl -s -X POST "https://api.dataforseo.com/v3/backlinks/timeseries_new_lost_summary/live" \
   -H "Authorization: Basic $(cat ~/.config/dataforseo/auth)" \
@@ -118,7 +117,7 @@ curl -s -X POST "https://api.dataforseo.com/v3/backlinks/timeseries_new_lost_sum
   -d '[{"target": "example.com", "date_from": "2024-01-01"}]'
 ```
 
-### Referring Domains
+### 引用域
 ```bash
 curl -s -X POST "https://api.dataforseo.com/v3/backlinks/referring_domains/live" \
   -H "Authorization: Basic $(cat ~/.config/dataforseo/auth)" \
@@ -126,160 +125,160 @@ curl -s -X POST "https://api.dataforseo.com/v3/backlinks/referring_domains/live"
   -d '[{"target": "example.com", "limit": 100, "order_by": ["rank,desc"]}]'
 ```
 
-## Analysis Modes
+## 分析模式
 
-### 1. Backlink Profile Analysis
+### 1. 外链概况分析
 
-Get a comprehensive overview of a domain's backlink profile:
-
-```
-Input: domain (e.g., "example.com")
-Output:
-- Total backlinks count
-- Referring domains count
-- Domain rank (0-1000)
-- Spam score (0-100)
-- Dofollow vs nofollow ratio
-- Top referring domains
-- Anchor text distribution
-- New/lost links trend
-```
-
-### 2. Competitor Comparison
-
-Compare your backlink profile against competitors:
+获取域名外链概况的全面概述：
 
 ```
-Input: [your-domain, competitor1, competitor2, ...]
-Output:
-- Side-by-side metrics comparison
-- Unique referring domains per site
-- Shared referring domains
-- Gap opportunities
+输入：域名（如 "example.com"）
+输出：
+- 外链总数
+- 引用域数量
+- 域名排名（0-1000）
+- 垃圾分数（0-100）
+- Dofollow vs nofollow 比例
+- 顶级引用域
+- 锚文本分布
+- 新增/丢失链接趋势
 ```
 
-### 3. Link Gap Analysis
+### 2. 竞品对比
 
-Find domains that link to competitors but not to you:
-
-```
-Input: [your-domain, competitor1, competitor2]
-Output:
-- Domains linking to competitors but not you
-- Sorted by authority/relevance
-- Prioritized outreach list
-```
-
-This is the most valuable analysis for link building strategy.
-
-### 4. Toxic Link Detection
-
-Identify potentially harmful backlinks:
+将你的外链概况与竞争对手比较：
 
 ```
-Input: domain
-Output:
-- Links from high spam score domains
-- Suspicious anchor text patterns
-- Low-quality referring domains
-- Disavow candidates
+输入：[你的域名, 竞品1, 竞品2, ...]
+输出：
+- 并排指标对比
+- 每个网站的独特引用域
+- 共享引用域
+- 差距机会
 ```
 
-### 5. Anchor Text Analysis
+### 3. 链接差距分析
 
-Analyze anchor text distribution:
+找出链接到竞品但不链接到你的域名：
 
 ```
-Input: domain
-Output:
-- Anchor text distribution chart
-- Brand vs keyword vs generic ratio
-- Over-optimized anchor warnings
-- Natural vs unnatural patterns
+输入：[你的域名, 竞品1, 竞品2]
+输出：
+- 链接到竞品但不链到你的域名
+- 按权重/相关性排序
+- 优先外联列表
 ```
 
-**Healthy distribution guidelines:**
-- Brand anchors: 30-40%
-- Naked URLs: 20-30%
-- Generic (click here, etc.): 15-20%
-- Keyword-rich: 10-15% (over 20% = warning)
-- LSI/related: 5-10%
+这是链接建设策略中最有价值的分析。
 
-## Interpretation Guidelines
+### 4. 有毒链接检测
 
-### Domain Rank (0-1000)
-- 0-100: Low authority
-- 100-300: Moderate authority
-- 300-500: Good authority
-- 500-700: Strong authority
-- 700-1000: Excellent authority
+识别潜在有害的外链：
 
-### Spam Score (0-100)
-- 0-10: Clean profile
-- 10-30: Low risk
-- 30-60: Moderate risk (review needed)
-- 60-100: High risk (cleanup recommended)
+```
+输入：域名
+输出：
+- 来自高垃圾分数域名的链接
+- 可疑的锚文本模式
+- 低质量引用域
+- 拒绝候选名单
+```
 
-### Red Flags
-- Sudden spike in backlinks (potential negative SEO)
-- High percentage of nofollow links from unique domains
-- Anchor text dominated by exact-match keywords
-- Links from irrelevant industries/topics
-- Many links from same IP range or C-class
+### 5. 锚文本分析
 
-## Output Format
+分析锚文本分布：
 
-### Summary Report
+```
+输入：域名
+输出：
+- 锚文本分布图
+- 品牌 vs 关键词 vs 通用比例
+- 过度优化锚文本警告
+- 自然 vs 非自然模式
+```
+
+**健康分布指南：**
+- 品牌锚文本：30-40%
+- 裸链接 URL：20-30%
+- 通用（点击这里等）：15-20%
+- 关键词丰富：10-15%（超过 20% = 警告）
+- LSI/相关：5-10%
+
+## 解读指南
+
+### 域名排名（0-1000）
+- 0-100：低权重
+- 100-300：中等权重
+- 300-500：良好权重
+- 500-700：强权重
+- 700-1000：优秀权重
+
+### 垃圾分数（0-100）
+- 0-10：干净概况
+- 10-30：低风险
+- 30-60：中等风险（需要审核）
+- 60-100：高风险（建议清理）
+
+### 危险信号
+- 外链突然激增（可能是负面 SEO）
+- 来自独特域名的高比例 nofollow 链接
+- 锚文本被完全匹配关键词主导
+- 来自不相关行业/主题的链接
+- 来自相同 IP 范围或 C 类的许多链接
+
+## 输出格式
+
+### 摘要报告
 ```markdown
-# Backlink Profile: [domain]
+# 外链概况：[域名]
 
-## Overview
-- Total Backlinks: X
-- Referring Domains: X
-- Domain Rank: X/1000
-- Spam Score: X/100
+## 概述
+- 外链总数：X
+- 引用域：X
+- 域名排名：X/1000
+- 垃圾分数：X/100
 
-## Health Assessment
-[OK/WARN/BAD] Anchor distribution
-[OK/WARN/BAD] Referring domain quality
-[OK/WARN/BAD] Link velocity
-[OK/WARN/BAD] Spam indicators
+## 健康评估
+[OK/警告/差] 锚文本分布
+[OK/警告/差] 引用域质量
+[OK/警告/差] 链接速度
+[OK/警告/差] 垃圾指标
 
-## Top Referring Domains
-1. [domain] - X backlinks, rank Y
+## 顶级引用域
+1. [域名] - X 外链，排名 Y
 2. ...
 
-## Anchor Text Distribution
-[chart or table]
+## 锚文本分布
+[图表或表格]
 
-## Recommendations
-1. [Priority action]
-2. [Secondary action]
+## 建议
+1. [优先行动]
+2. [次要行动]
 ```
 
-## Link Building Prioritization
+## 链接建设优先级
 
-When generating outreach lists from link gap analysis:
+从链接差距分析生成外联列表时：
 
-**Tier 1 (High Priority)**
-- Domain rank > 500
-- Relevant to your industry
-- Editorial links (not directories)
+**第 1 层（高优先级）**
+- 域名排名 > 500
+- 与你的行业相关
+- 编辑链接（非目录）
 
-**Tier 2 (Medium Priority)**
-- Domain rank 200-500
-- Related industry or topic
-- Resource pages, roundups
+**第 2 层（中优先级）**
+- 域名排名 200-500
+- 相关行业或主题
+- 资源页、汇总
 
-**Tier 3 (Low Priority)**
-- Domain rank < 200
-- Directories, forums
-- Comment sections
+**第 3 层（低优先级）**
+- 域名排名 < 200
+- 目录、论坛
+- 评论区
 
-## Integration with Other SEO Skills
+## 与其他 SEO 技能集成
 
-- Use `seo-content` to analyze pages that attract backlinks
-- Use `seo-keywords` to find keywords for linkable content
-- Use `seo-serp` to track ranking impact of new links
+- 使用 `seo-content` 分析吸引外链的页面
+- 使用 `seo-keywords` 找可链接内容的关键词
+- 使用 `seo-serp` 追踪新链接的排名影响
 
-[PROTOCOL]: Update this header on changes, then check CLAUDE.md
+[PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md

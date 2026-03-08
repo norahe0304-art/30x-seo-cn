@@ -1,146 +1,146 @@
 ---
 name: 30x-seo-redirects
 description: >
-  Redirect chain audit and analysis. Detects redirect loops, long chains,
-  mixed protocols, and orphaned redirects. Use when user says "redirect audit",
-  "301 redirect", "redirect chain", "redirect loop", or "migration redirects".
+  重定向链审核与分析。检测重定向循环、长链、混合协议和孤立重定向。
+  当用户说"重定向审核"、"301重定向"、"重定向链"、"重定向循环"
+  或"迁移重定向"时使用。
 allowed-tools:
   - WebFetch
   - Read
 ---
 
-# Redirect Audit
+# 重定向审核
 
-## What This Skill Does
+## 这个技能做什么
 
-Analyzes website redirects to find problems that hurt SEO and user experience.
+分析网站重定向，找出损害 SEO 和用户体验的问题。
 
-## Why Redirects Matter
+## 为什么重定向很重要
 
-- **Every redirect = delay**: 301 redirects add 100-500ms latency
-- **Chains lose link equity**: Google follows max ~5 hops, then stops
-- **Wrong type = lost ranking**: 302 (temporary) doesn't pass full link juice
-- **Loops = crawl waste**: Googlebot hits loop, gives up, page not indexed
+- **每次重定向 = 延迟**：301 重定向增加 100-500ms 延迟
+- **链式重定向丢失链接权重**：Google 最多跟踪约 5 跳，然后停止
+- **类型错误 = 丢失排名**：302（临时）不传递完整链接权重
+- **循环 = 浪费抓取**：Googlebot 遇到循环后放弃，页面不被索引
 
-## Check Categories
+## 检查类别
 
-### 1. Redirect Chains
-A redirect pointing to another redirect, pointing to another...
-
-```
-BAD:  /old → /old-2 → /old-3 → /final  (3 hops, slow, loses equity)
-GOOD: /old → /final                     (1 hop, fast, full equity)
-```
-
-**Rule**: Maximum 1 redirect hop. More than 1 = fix immediately.
-
-### 2. Redirect Loops
-Page A redirects to B, B redirects back to A. Infinite loop.
+### 1. 重定向链
+一个重定向指向另一个重定向，再指向另一个...
 
 ```
-BAD:  /page-a → /page-b → /page-a  (loop!)
+差：  /old → /old-2 → /old-3 → /final  (3跳，慢，丢失权重)
+好：  /old → /final                     (1跳，快，完整权重)
 ```
 
-**Detection**: Follow redirects up to 10 hops. If same URL appears twice = loop.
+**规则**：最多 1 次重定向跳转。超过 1 次 = 立即修复。
 
-### 3. Redirect Type Audit
-
-| Type | When to Use | SEO Impact |
-|------|-------------|------------|
-| 301 | Permanent move | Passes ~95% link equity |
-| 302 | Temporary (A/B test, maintenance) | Passes less equity, can cause issues if permanent |
-| 307 | Temporary (preserves HTTP method) | Same as 302 |
-| 308 | Permanent (preserves HTTP method) | Same as 301 |
-| Meta refresh | NEVER for SEO | Bad UX, slow, not recommended |
-| JavaScript redirect | Avoid if possible | Googlebot may not follow |
-
-**Rule**: Permanent moves must use 301 or 308. Using 302 for permanent = error.
-
-### 4. Protocol Issues
+### 2. 重定向循环
+页面 A 重定向到 B，B 又重定向回 A。无限循环。
 
 ```
-BAD:  https://site.com → http://site.com  (downgrade, security warning)
-BAD:  http → https → http                 (mixed, confusing)
-GOOD: http://site.com → https://site.com  (upgrade, correct)
+差：  /page-a → /page-b → /page-a  (循环！)
 ```
 
-### 5. Domain Consistency
+**检测**：跟踪重定向最多 10 跳。如果相同 URL 出现两次 = 循环。
+
+### 3. 重定向类型审核
+
+| 类型 | 何时使用 | SEO 影响 |
+|------|----------|----------|
+| 301 | 永久迁移 | 传递约 95% 链接权重 |
+| 302 | 临时（A/B 测试、维护） | 传递较少权重，永久使用会导致问题 |
+| 307 | 临时（保留 HTTP 方法） | 同 302 |
+| 308 | 永久（保留 HTTP 方法） | 同 301 |
+| Meta refresh | SEO 永远不要用 | 体验差、慢、不推荐 |
+| JavaScript 重定向 | 尽量避免 | Googlebot 可能不跟踪 |
+
+**规则**：永久迁移必须使用 301 或 308。用 302 做永久迁移 = 错误。
+
+### 4. 协议问题
 
 ```
-BAD:  www.site.com → site.com → www.site.com  (inconsistent)
-GOOD: Pick ONE (www or non-www) and redirect all others to it
+差：  https://site.com → http://site.com  (降级，安全警告)
+差：  http → https → http                 (混合，混乱)
+好：  http://site.com → https://site.com  (升级，正确)
 ```
 
-### 6. Trailing Slash Consistency
+### 5. 域名一致性
 
 ```
-BAD:  /page → /page/ → /page  (loop risk)
-GOOD: Pick ONE pattern (/page or /page/) and redirect all others
+差：  www.site.com → site.com → www.site.com  (不一致)
+好：  选择一个（www 或非 www）并将所有其他重定向到它
 ```
 
-### 7. Post-Migration Orphans
-After site migration/redesign:
-- Old URLs that redirect to 404 or homepage (should go to equivalent new page)
-- Important pages with no redirect (losing all link equity)
-
-### 8. Soft 404s via Redirect
-Redirecting deleted pages to homepage = soft 404 penalty risk.
+### 6. 尾部斜杠一致性
 
 ```
-BAD:  /deleted-product → /  (Google sees this as soft 404)
-GOOD: /deleted-product → 410 Gone (or related category page)
+差：  /page → /page/ → /page  (循环风险)
+好：  选择一种模式（/page 或 /page/）并重定向所有其他
 ```
 
-## How to Run Audit
+### 7. 迁移后孤立页面
+网站迁移/重新设计后：
+- 重定向到 404 或首页的旧 URL（应该指向等效的新页面）
+- 没有重定向的重要页面（丢失所有链接权重）
 
-### Method 1: Crawl-based (recommended)
-Use squirrel audit or similar crawler to:
-1. Crawl entire site
-2. Follow all internal links
-3. Record redirect chains
+### 8. 通过重定向的软 404
+将已删除页面重定向到首页 = 软 404 惩罚风险。
 
-### Method 2: Log-based (for large sites)
-Analyze server access logs for:
-- All 301/302 responses
-- Most-hit redirect URLs
-- External referrers hitting redirects
+```
+差：  /deleted-product → /  (Google 视为软 404)
+好：  /deleted-product → 410 Gone (或相关分类页面)
+```
 
-### Method 3: URL list
-If you have a list of old URLs (from migration):
-1. Check each URL
-2. Record final destination
-3. Flag chains, loops, 404s
+## 如何执行审核
 
-## Output Format
+### 方法 1：基于爬取（推荐）
+使用爬虫工具：
+1. 爬取整个网站
+2. 跟踪所有内部链接
+3. 记录重定向链
 
-### Redirect Health Score: XX/100
+### 方法 2：基于日志（适用于大型网站）
+分析服务器访问日志：
+- 所有 301/302 响应
+- 最多访问的重定向 URL
+- 命中重定向的外部来源
 
-### Critical Issues (Fix Immediately)
-| Issue Type | Count | Example |
-|------------|-------|---------|
-| Redirect loops | X | /a → /b → /a |
-| 5+ hop chains | X | /old → ... → /new |
-| HTTPS downgrade | X | https → http |
+### 方法 3：URL 列表
+如果你有旧 URL 列表（来自迁移）：
+1. 检查每个 URL
+2. 记录最终目标
+3. 标记链、循环、404
 
-### High Priority (Fix This Week)
-| Issue Type | Count | Example |
-|------------|-------|---------|
-| 3-4 hop chains | X | /old → /mid → /new |
-| 302 used for permanent | X | /old-page 302→ /new-page |
-| Soft 404 redirects | X | /deleted → / |
+## 输出格式
 
-### Medium Priority (Fix This Month)
-| Issue Type | Count | Example |
-|------------|-------|---------|
-| 2 hop chains | X | /old → /mid → /new |
-| Inconsistent trailing slash | X | /page and /page/ both exist |
+### 重定向健康分数：XX/100
 
-### Redirect Map
-Top 20 most-accessed redirects and their chains:
-| Source URL | Hops | Final Destination | Type | Monthly Hits |
-|------------|------|-------------------|------|--------------|
+### 严重问题（立即修复）
+| 问题类型 | 数量 | 示例 |
+|----------|------|------|
+| 重定向循环 | X | /a → /b → /a |
+| 5+ 跳链 | X | /old → ... → /new |
+| HTTPS 降级 | X | https → http |
 
-### Recommendations
-1. [Specific fix instructions based on findings]
+### 高优先级（本周修复）
+| 问题类型 | 数量 | 示例 |
+|----------|------|------|
+| 3-4 跳链 | X | /old → /mid → /new |
+| 永久迁移用 302 | X | /old-page 302→ /new-page |
+| 软 404 重定向 | X | /deleted → / |
+
+### 中优先级（本月修复）
+| 问题类型 | 数量 | 示例 |
+|----------|------|------|
+| 2 跳链 | X | /old → /mid → /new |
+| 尾部斜杠不一致 | X | /page 和 /page/ 都存在 |
+
+### 重定向地图
+前 20 个最常访问的重定向及其链：
+| 源 URL | 跳数 | 最终目标 | 类型 | 月访问量 |
+|--------|------|----------|------|----------|
+
+### 建议
+1. [根据发现提供具体修复说明]
 
 [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md

@@ -1,252 +1,251 @@
 ---
 name: 30x-seo-keywords
 description: >
-  Comprehensive keyword research and analysis using DataForSEO API. Discover keyword
-  opportunities, analyze search volume and difficulty, find related keywords, track
-  rankings, and identify content gaps. Use when user says "keywords", "keyword research",
-  "search volume", "keyword difficulty", "ranking keywords", "keyword ideas",
-  "keyword suggestions", or "content gap".
+  使用 DataForSEO API 进行全面关键词研究和分析。发现关键词机会、
+  分析搜索量和难度、找相关关键词、追踪排名、识别内容差距。
+  当用户说"关键词"、"关键词研究"、"搜索量"、"关键词难度"、
+  "排名关键词"、"关键词建议"或"内容差距"时使用。
 allowed-tools:
   - Bash
   - Read
 ---
 
-# SEO Keywords Analysis
+# SEO 关键词分析
 
-Comprehensive keyword research and analysis using DataForSEO API via direct curl calls.
+使用 DataForSEO API 通过直接 curl 调用进行全面关键词研究和分析。
 
-## API Configuration
+## API 配置
 
-Credentials stored in `~/.config/dataforseo/auth` (Base64 encoded).
+凭据存储在 `~/.config/dataforseo/auth`（Base64 编码）。
 
 ```bash
-# Read auth token
+# 读取认证令牌
 AUTH=$(cat ~/.config/dataforseo/auth)
 ```
 
-## Quick Reference
+## 快速参考
 
-| Command | What it does |
-|---------|-------------|
-| `/seo keywords research <seed>` | Generate keyword ideas from seed keyword |
-| `/seo keywords volume <keyword1, keyword2, ...>` | Get search volume for keywords |
-| `/seo keywords difficulty <keyword1, keyword2, ...>` | Analyze keyword difficulty scores |
-| `/seo keywords site <domain>` | Find keywords a site ranks for |
-| `/seo keywords gap <your-domain> <competitor>` | Find keyword opportunities |
-| `/seo keywords intent <keyword1, keyword2, ...>` | Analyze search intent |
-| `/seo keywords trending` | Find trending search queries |
-| `/seo keywords history <keyword>` | Historical search volume data |
+| 命令 | 功能 |
+|------|------|
+| `/seo keywords research <种子词>` | 从种子关键词生成关键词建议 |
+| `/seo keywords volume <关键词1, 关键词2, ...>` | 获取关键词搜索量 |
+| `/seo keywords difficulty <关键词1, 关键词2, ...>` | 分析关键词难度分数 |
+| `/seo keywords site <域名>` | 找出网站排名的关键词 |
+| `/seo keywords gap <你的域名> <竞品>` | 找关键词机会 |
+| `/seo keywords intent <关键词1, 关键词2, ...>` | 分析搜索意图 |
+| `/seo keywords trending` | 找趋势搜索查询 |
+| `/seo keywords history <关键词>` | 历史搜索量数据 |
 
-## API Endpoints
+## API 端点
 
-### Keyword Ideas
+### 关键词建议
 ```bash
 curl -s -X POST "https://api.dataforseo.com/v3/dataforseo_labs/google/keyword_ideas/live" \
   -H "Authorization: Basic $(cat ~/.config/dataforseo/auth)" \
   -H "Content-Type: application/json" \
-  -d '[{"keywords": ["SEED_KEYWORD"], "location_name": "United States", "language_code": "en", "limit": 50}]'
+  -d '[{"keywords": ["种子关键词"], "location_name": "China", "language_code": "zh", "limit": 50}]'
 ```
 
-### Keyword Suggestions (Autocomplete)
+### 关键词联想（自动补全）
 ```bash
 curl -s -X POST "https://api.dataforseo.com/v3/dataforseo_labs/google/keyword_suggestions/live" \
   -H "Authorization: Basic $(cat ~/.config/dataforseo/auth)" \
   -H "Content-Type: application/json" \
-  -d '[{"keyword": "SEED_KEYWORD", "location_name": "United States", "language_code": "en", "limit": 50}]'
+  -d '[{"keyword": "种子关键词", "location_name": "China", "language_code": "zh", "limit": 50}]'
 ```
 
-### Related Keywords
+### 相关关键词
 ```bash
 curl -s -X POST "https://api.dataforseo.com/v3/dataforseo_labs/google/related_keywords/live" \
   -H "Authorization: Basic $(cat ~/.config/dataforseo/auth)" \
   -H "Content-Type: application/json" \
-  -d '[{"keyword": "SEED_KEYWORD", "location_name": "United States", "language_code": "en", "limit": 50}]'
+  -d '[{"keyword": "种子关键词", "location_name": "China", "language_code": "zh", "limit": 50}]'
 ```
 
-### Bulk Keyword Difficulty
+### 批量关键词难度
 ```bash
 curl -s -X POST "https://api.dataforseo.com/v3/dataforseo_labs/bulk_keyword_difficulty/live" \
   -H "Authorization: Basic $(cat ~/.config/dataforseo/auth)" \
   -H "Content-Type: application/json" \
-  -d '[{"keywords": ["kw1", "kw2", "kw3"], "location_name": "United States", "language_code": "en"}]'
+  -d '[{"keywords": ["关键词1", "关键词2", "关键词3"], "location_name": "China", "language_code": "zh"}]'
 ```
 
-### Search Volume (Google Ads Data)
+### 搜索量（Google Ads 数据）
 ```bash
 curl -s -X POST "https://api.dataforseo.com/v3/keywords_data/google_ads/search_volume/live" \
   -H "Authorization: Basic $(cat ~/.config/dataforseo/auth)" \
   -H "Content-Type: application/json" \
-  -d '[{"keywords": ["kw1", "kw2"], "location_code": 2840, "language_code": "en"}]'
+  -d '[{"keywords": ["关键词1", "关键词2"], "location_code": 2156, "language_code": "zh"}]'
 ```
 
-### Ranked Keywords (Site Analysis)
+### 排名关键词（网站分析）
 ```bash
 curl -s -X POST "https://api.dataforseo.com/v3/dataforseo_labs/google/ranked_keywords/live" \
   -H "Authorization: Basic $(cat ~/.config/dataforseo/auth)" \
   -H "Content-Type: application/json" \
-  -d '[{"target": "example.com", "location_name": "United States", "language_code": "en", "limit": 100}]'
+  -d '[{"target": "example.com", "location_name": "China", "language_code": "zh", "limit": 100}]'
 ```
 
-### Search Intent
+### 搜索意图
 ```bash
 curl -s -X POST "https://api.dataforseo.com/v3/dataforseo_labs/google/search_intent/live" \
   -H "Authorization: Basic $(cat ~/.config/dataforseo/auth)" \
   -H "Content-Type: application/json" \
-  -d '[{"keywords": ["kw1", "kw2"], "language_code": "en"}]'
+  -d '[{"keywords": ["关键词1", "关键词2"], "language_code": "zh"}]'
 ```
 
-### Historical Keyword Data
+### 历史关键词数据
 ```bash
 curl -s -X POST "https://api.dataforseo.com/v3/dataforseo_labs/google/historical_search_volume/live" \
   -H "Authorization: Basic $(cat ~/.config/dataforseo/auth)" \
   -H "Content-Type: application/json" \
-  -d '[{"keywords": ["KEYWORD"], "location_name": "United States", "language_code": "en"}]'
+  -d '[{"keywords": ["关键词"], "location_name": "China", "language_code": "zh"}]'
 ```
 
-## Analysis Modes
+## 分析模式
 
-### 1. Keyword Research (Ideas Generation)
+### 1. 关键词研究（建议生成）
 
-Generate keyword ideas from a seed keyword:
-
-```
-Input: seed keyword (e.g., "coffee maker")
-Output:
-- Related keyword ideas
-- Search volume per keyword
-- CPC and competition data
-- Keyword difficulty score
-- Search intent classification
-```
-
-### 2. Search Volume Analysis
-
-Get accurate search volume data:
+从种子关键词生成关键词建议：
 
 ```
-Input: list of keywords
-Output:
-- Monthly search volume
-- Search volume trend (12 months)
-- CPC estimate
-- Competition level (0-1)
-- Seasonal patterns
+输入：种子关键词（如 "咖啡机"）
+输出：
+- 相关关键词建议
+- 每个关键词的搜索量
+- CPC 和竞争数据
+- 关键词难度分数
+- 搜索意图分类
 ```
 
-### 3. Keyword Difficulty Assessment
+### 2. 搜索量分析
 
-Analyze ranking difficulty:
-
-```
-Input: list of keywords
-Output:
-- Difficulty score (0-100)
-- SERP feature presence
-- Top 10 competitor strength
-- Estimated effort to rank
-```
-
-**Difficulty Interpretation:**
-- 0-20: Easy (new sites can rank)
-- 20-40: Moderate (some authority needed)
-- 40-60: Hard (established sites only)
-- 60-80: Very Hard (high authority required)
-- 80-100: Extremely Hard (dominant players only)
-
-### 4. Site Keyword Analysis
-
-Find keywords a domain ranks for:
+获取准确的搜索量数据：
 
 ```
-Input: domain (e.g., "example.com")
-Output:
-- All ranking keywords
-- Position for each keyword
-- Search volume
-- Traffic estimate
-- Featured snippet presence
+输入：关键词列表
+输出：
+- 月搜索量
+- 搜索量趋势（12个月）
+- CPC 估算
+- 竞争程度（0-1）
+- 季节性模式
 ```
 
-### 5. Search Intent Analysis
+### 3. 关键词难度评估
 
-Classify keyword intent:
+分析排名难度：
 
 ```
-Input: list of keywords
-Output:
-- Intent type per keyword:
-  - Informational (how, what, why)
-  - Navigational (brand searches)
-  - Commercial (best, review, compare)
-  - Transactional (buy, price, discount)
-- Content format recommendations
+输入：关键词列表
+输出：
+- 难度分数（0-100）
+- SERP 特性出现情况
+- 前 10 竞品强度
+- 排名所需预估努力
 ```
 
-**Content Mapping:**
-| Intent | Content Type |
-|--------|-------------|
-| Informational | Blog posts, guides, tutorials |
-| Navigational | Landing pages, about pages |
-| Commercial | Comparison pages, reviews |
-| Transactional | Product pages, pricing pages |
+**难度解读：**
+- 0-20：简单（新网站可排名）
+- 20-40：中等（需要一定权重）
+- 40-60：困难（仅限成熟网站）
+- 60-80：非常困难（需要高权重）
+- 80-100：极其困难（仅限头部玩家）
 
-## Keyword Prioritization Framework
+### 4. 网站关键词分析
 
-### Priority Matrix
+找出域名排名的关键词：
 
-Score each keyword on these factors:
+```
+输入：域名（如 "example.com"）
+输出：
+- 所有排名关键词
+- 每个关键词的位置
+- 搜索量
+- 流量估算
+- 精选摘要出现情况
+```
 
-| Factor | Weight | Scoring |
-|--------|--------|---------|
-| Search Volume | 25% | High (3), Medium (2), Low (1) |
-| Difficulty | 30% | Easy (3), Medium (2), Hard (1) |
-| Business Relevance | 25% | High (3), Medium (2), Low (1) |
-| Intent Match | 20% | Perfect (3), Good (2), Partial (1) |
+### 5. 搜索意图分析
 
-### Quick Win Identification
+分类关键词意图：
 
-Quick wins have:
-- Search volume > 100/month
-- Difficulty < 40
-- Commercial or transactional intent
-- Direct business relevance
+```
+输入：关键词列表
+输出：
+- 每个关键词的意图类型：
+  - 信息型（怎么、什么、为什么）
+  - 导航型（品牌搜索）
+  - 商业型（最好、评测、对比）
+  - 交易型（购买、价格、优惠）
+- 内容格式建议
+```
 
-## Output Format
+**内容映射：**
+| 意图 | 内容类型 |
+|------|----------|
+| 信息型 | 博客文章、指南、教程 |
+| 导航型 | 落地页、关于页面 |
+| 商业型 | 对比页、评测 |
+| 交易型 | 产品页、定价页 |
 
-### Keyword Research Report
+## 关键词优先级框架
+
+### 优先级矩阵
+
+根据以下因素为每个关键词打分：
+
+| 因素 | 权重 | 评分 |
+|------|------|------|
+| 搜索量 | 25% | 高(3)、中(2)、低(1) |
+| 难度 | 30% | 简单(3)、中等(2)、困难(1) |
+| 业务相关性 | 25% | 高(3)、中(2)、低(1) |
+| 意图匹配 | 20% | 完美(3)、良好(2)、部分(1) |
+
+### 快速优化识别
+
+快速优化目标具备：
+- 搜索量 > 100/月
+- 难度 < 40
+- 商业或交易意图
+- 直接业务相关性
+
+## 输出格式
+
+### 关键词研究报告
 
 ```markdown
-# Keyword Research: [seed keyword]
+# 关键词研究：[种子关键词]
 
-## Overview
-- Total keywords found: X
-- Average monthly volume: X
-- Average difficulty: X
+## 概述
+- 找到的关键词总数：X
+- 平均月搜索量：X
+- 平均难度：X
 
-## Top Opportunities (Priority Sorted)
+## 热门机会（按优先级排序）
 
-| Keyword | Volume | Difficulty | Intent | Priority |
-|---------|--------|------------|--------|----------|
-| [kw1] | X | X | Info | High |
-| [kw2] | X | X | Trans | High |
+| 关键词 | 搜索量 | 难度 | 意图 | 优先级 |
+|--------|--------|------|------|--------|
+| [关键词1] | X | X | 信息 | 高 |
+| [关键词2] | X | X | 交易 | 高 |
 
-## Keyword Clusters
+## 关键词集群
 
-### Cluster 1: [Topic]
-- keyword a (vol: X, diff: X)
-- keyword b (vol: X, diff: X)
+### 集群 1：[主题]
+- 关键词 a（搜索量：X，难度：X）
+- 关键词 b（搜索量：X，难度：X）
 
-## Content Recommendations
+## 内容建议
 
-### Immediate Actions (Quick Wins)
-1. [Keyword] -> Create [content type]
-2. [Keyword] -> Create [content type]
+### 即时行动（快速优化）
+1. [关键词] -> 创建 [内容类型]
+2. [关键词] -> 创建 [内容类型]
 ```
 
-## Integration with Other SEO Skills
+## 与其他 SEO 技能集成
 
-- Use `seo-content` to create content for target keywords
-- Use `seo-backlinks` to build authority for competitive keywords
-- Use `seo-serp` to track ranking progress
+- 使用 `seo-content` 为目标关键词创建内容
+- 使用 `seo-backlinks` 为竞争性关键词建立权重
+- 使用 `seo-serp` 追踪排名进展
 
-[PROTOCOL]: Update this header on changes, then check CLAUDE.md
+[PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md

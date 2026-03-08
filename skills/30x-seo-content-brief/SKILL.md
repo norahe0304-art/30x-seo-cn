@@ -1,9 +1,9 @@
 ---
 name: 30x-seo-content-brief
 description: >
-  Generate content briefs by analyzing top-ranking SERP results. Extracts common
-  topics, identifies content gaps, and creates actionable briefs for content-writer.
-  Input: target keyword. Output: content brief with must-cover topics + gap opportunities.
+  通过分析排名前列的 SERP 结果生成内容 brief。提取共同主题，
+  识别内容差距，为 content-writer 创建可执行的 brief。
+  输入：目标关键词。输出：包含必须覆盖主题 + 差距机会的内容 brief。
 metadata:
   version: 1.0.0
   category: content
@@ -13,7 +13,7 @@ allowed-tools:
   - Read
 ---
 
-# 30x-seo Content Brief
+# 内容 Brief 生成
 
 > SERP 分析 → 内容 Brief → 超越竞品
 
@@ -31,7 +31,7 @@ allowed-tools:
 
 ## 工作流程
 
-### Step 1: SERP 抓取
+### 步骤 1：SERP 抓取
 
 ```
 输入: 目标关键词
@@ -39,27 +39,27 @@ allowed-tools:
 抓取 Top 10 结果的:
 - 标题
 - URL
-- Meta description
+- 元描述
 - 页面内容（H1, H2, H3 结构）
 - 字数
-- 内容类型（listicle, how-to, guide, comparison 等）
+- 内容类型（清单、教程、指南、对比等）
 ```
 
-### Step 2: 意图分析
+### 步骤 2：意图分析
 
 | 分析维度 | 说明 |
 |---------|------|
-| **搜索意图** | Informational / Commercial / Transactional / Navigational |
-| **内容格式** | 90% 是 listicle？那你也要写 listicle |
+| **搜索意图** | 信息型 / 商业型 / 交易型 / 导航型 |
+| **内容格式** | 90% 是清单？那你也要写清单 |
 | **内容深度** | 平均字数多少？你要超过平均 |
-| **SERP Features** | 有 Featured Snippet？PAA？Video？|
+| **SERP 特性** | 有精选摘要？PAA？视频？|
 
-### Step 3: 主题提取
+### 步骤 3：主题提取
 
 从 Top 10 提取共同覆盖的主题：
 
 ```
-示例关键词: "how to start a podcast"
+示例关键词: "如何开始播客"
 
 Top 10 共同覆盖:
 ✓ 设备选择 (10/10)
@@ -71,7 +71,7 @@ Top 10 共同覆盖:
 
 **规则**: 超过 50% 覆盖的主题 = 必须写
 
-### Step 4: Gap 分析
+### 步骤 4：Gap 分析
 
 找出竞品**没有覆盖**或**覆盖不足**的内容：
 
@@ -85,27 +85,27 @@ Gap 机会:
 
 **规则**: Gap = 你的差异化机会
 
-### Step 5: Brief 生成
+### 步骤 5：Brief 生成
 
 ---
 
-## 输出格式: Content Brief
+## 输出格式：内容 Brief
 
 ```markdown
-# Content Brief: [目标关键词]
+# 内容 Brief: [目标关键词]
 
 ## 搜索意图
-[Informational/Commercial/etc.] - [一句话描述用户想要什么]
+[信息型/商业型/等] - [一句话描述用户想要什么]
 
 ## 内容格式
-推荐: [Listicle / How-to Guide / Comparison / etc.]
+推荐: [清单 / 教程指南 / 对比 / 等]
 原因: Top 10 中 X/10 使用此格式
 
 ## 目标字数
 最低: [Top 10 平均字数]
 建议: [平均 + 20%] 以超越竞品
 
-## 必须覆盖的主题 (Must-Have)
+## 必须覆盖的主题（必选）
 
 | 主题 | 覆盖率 | 建议深度 |
 |------|--------|---------|
@@ -113,7 +113,7 @@ Gap 机会:
 | [主题2] | 9/10 | 详细 |
 | [主题3] | 8/10 | 中等 |
 
-## Gap 机会 (Differentiators)
+## Gap 机会（差异化）
 
 | Gap | 为什么是机会 | 建议角度 |
 |-----|-------------|---------|
@@ -129,15 +129,15 @@ Gap 机会:
 
 ## E-E-A-T 建议
 
-- **Experience**: 加入 [具体建议，如真实案例/截图]
-- **Expertise**: 引用 [数据来源/专家观点]
+- **经验**: 加入 [具体建议，如真实案例/截图]
+- **专业**: 引用 [数据来源/专家观点]
 - **原创价值**: [你能提供什么竞品没有的]
 
-## SERP Feature 机会
+## SERP 特性机会
 
-- [ ] Featured Snippet: [是否有机会，格式建议]
+- [ ] 精选摘要: [是否有机会，格式建议]
 - [ ] PAA: [相关问题列表]
-- [ ] Video: [是否需要视频]
+- [ ] 视频: [是否需要视频]
 
 ## 内链建议
 
@@ -150,8 +150,8 @@ Gap 机会:
 ## 使用方式
 
 ```bash
-# 生成 content brief
-/30x-seo content-brief "target keyword"
+# 生成内容 brief
+/30x-seo content-brief "目标关键词"
 
 # 然后用 brief 写内容
 /30x-seo content-writer --brief [brief文件]

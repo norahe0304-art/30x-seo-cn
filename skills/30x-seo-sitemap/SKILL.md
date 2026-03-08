@@ -1,74 +1,74 @@
 ---
 name: 30x-seo-sitemap
 description: >
-  Analyze existing XML sitemaps or generate new ones with industry templates.
-  Validates format, URLs, and structure. Use when user says "sitemap",
-  "generate sitemap", "sitemap issues", or "XML sitemap".
+  分析现有XML站点地图或使用行业模板生成新的站点地图。
+  验证格式、URL和结构。当用户说"站点地图"、"生成站点地图"、
+  "站点地图问题"或"XML站点地图"时使用。
 allowed-tools:
   - WebFetch
   - Read
 ---
 
-# Sitemap Analysis & Generation
+# 站点地图分析与生成
 
-## Mode 1: Analyze Existing Sitemap
+## 模式 1：分析现有站点地图
 
-### Validation Checks
-- Valid XML format
-- URL count <50,000 per file (protocol limit)
-- All URLs return HTTP 200
-- `<lastmod>` dates are accurate (not all identical)
-- No deprecated tags: `<priority>` and `<changefreq>` are ignored by Google
-- Sitemap referenced in robots.txt
-- Compare crawled pages vs sitemap — flag missing pages
+### 验证检查
+- 有效的 XML 格式
+- 每个文件 URL 数量 <50,000（协议限制）
+- 所有 URL 返回 HTTP 200
+- `<lastmod>` 日期准确（不是全部相同）
+- 无已弃用标签：`<priority>` 和 `<changefreq>` 被 Google 忽略
+- 站点地图在 robots.txt 中引用
+- 比较爬取的页面与站点地图 — 标记缺失的页面
 
-### Quality Signals
-- Sitemap index file if >50k URLs
-- Split by content type (pages, posts, images, videos)
-- No non-canonical URLs in sitemap
-- No noindexed URLs in sitemap
-- No redirected URLs in sitemap
-- HTTPS URLs only (no HTTP)
+### 质量信号
+- 如果 >50k URL，使用站点地图索引文件
+- 按内容类型拆分（页面、文章、图片、视频）
+- 站点地图中无非规范 URL
+- 站点地图中无 noindex URL
+- 站点地图中无重定向 URL
+- 仅 HTTPS URL（无 HTTP）
 
-### Common Issues
-| Issue | Severity | Fix |
-|-------|----------|-----|
-| >50k URLs in single file | Critical | Split with sitemap index |
-| Non-200 URLs | High | Remove or fix broken URLs |
-| Noindexed URLs included | High | Remove from sitemap |
-| Redirected URLs included | Medium | Update to final URLs |
-| All identical lastmod | Low | Use actual modification dates |
-| Priority/changefreq used | Info | Can remove (ignored by Google) |
+### 常见问题
+| 问题 | 严重性 | 修复 |
+|------|--------|------|
+| 单个文件 >50k URL | 严重 | 使用站点地图索引拆分 |
+| 非 200 URL | 高 | 移除或修复断链 |
+| 包含 noindex URL | 高 | 从站点地图中移除 |
+| 包含重定向 URL | 中 | 更新为最终 URL |
+| lastmod 全部相同 | 低 | 使用实际修改日期 |
+| 使用 priority/changefreq | 信息 | 可以移除（Google 忽略） |
 
-## Mode 2: Generate New Sitemap
+## 模式 2：生成新站点地图
 
-### Process
-1. Ask for business type (or auto-detect from existing site)
-2. Load industry template from `assets/` directory
-3. Interactive structure planning with user
-4. Apply quality gates:
-   - ⚠️ WARNING at 30+ location pages (require 60%+ unique content)
-   - 🛑 HARD STOP at 50+ location pages (require justification)
-5. Generate valid XML output
-6. Split at 50k URLs with sitemap index
-7. Generate STRUCTURE.md documentation
+### 流程
+1. 询问业务类型（或从现有网站自动检测）
+2. 从 `assets/` 目录加载行业模板
+3. 与用户交互式规划结构
+4. 应用质量门控：
+   - ⚠️ 警告：30+ 地区页面时（要求 60%+ 独特内容）
+   - 🛑 硬停止：50+ 地区页面时（需要理由说明）
+5. 生成有效的 XML 输出
+6. 在 50k URL 处使用站点地图索引拆分
+7. 生成 STRUCTURE.md 文档
 
-### Safe Programmatic Pages (OK at scale)
-✅ Integration pages (with real setup docs)
-✅ Template/tool pages (with downloadable content)
-✅ Glossary pages (200+ word definitions)
-✅ Product pages (unique specs, reviews)
-✅ User profile pages (user-generated content)
+### 安全的程序化页面（可规模化）
+✅ 集成页面（有真实的设置文档）
+✅ 模板/工具页面（有可下载内容）
+✅ 术语表页面（200+ 字定义）
+✅ 产品页面（独特规格、评价）
+✅ 用户个人资料页面（用户生成内容）
 
-### Penalty Risk (avoid at scale)
-❌ Location pages with only city name swapped
-❌ "Best [tool] for [industry]" without industry-specific value
-❌ "[Competitor] alternative" without real comparison data
-❌ AI-generated pages without human review and unique value
+### 惩罚风险（避免规模化）
+❌ 只替换城市名的地区页面
+❌ 没有行业特定价值的 "最佳[工具]适用于[行业]"
+❌ 没有真实比较数据的 "[竞争对手]替代方案"
+❌ 没有人工审核和独特价值的 AI 生成页面
 
-## Sitemap Format
+## 站点地图格式
 
-### Standard Sitemap
+### 标准站点地图
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -79,7 +79,7 @@ allowed-tools:
 </urlset>
 ```
 
-### Sitemap Index (for >50k URLs)
+### 站点地图索引（用于 >50k URL）
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -94,16 +94,16 @@ allowed-tools:
 </sitemapindex>
 ```
 
-## Output
+## 输出
 
-### For Analysis
-- `VALIDATION-REPORT.md` — analysis results
-- Issues list with severity
-- Recommendations
+### 分析输出
+- `VALIDATION-REPORT.md` — 分析结果
+- 按严重性排列的问题列表
+- 建议
 
-### For Generation
-- `sitemap.xml` (or split files with index)
-- `STRUCTURE.md` — site architecture documentation
-- URL count and organization summary
+### 生成输出
+- `sitemap.xml`（或带索引的拆分文件）
+- `STRUCTURE.md` — 网站架构文档
+- URL 数量和组织摘要
 
 [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md

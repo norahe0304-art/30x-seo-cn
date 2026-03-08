@@ -1,17 +1,16 @@
 ---
 name: 30x-seo-plan
 description: >
-  SEO strategy planning: competitor analysis, keyword strategy, content
-  calendar, and implementation roadmap. Use when user says "SEO plan",
-  "SEO strategy", "content calendar", or "SEO roadmap".
+  SEO 策略规划：竞品分析、关键词策略、内容日历和实施路线图。
+  当用户说"SEO 计划"、"SEO 策略"、"内容日历"或"SEO 路线图"时使用。
 allowed-tools:
   - WebFetch
   - Read
 ---
 
-# SEO Plan（SEO 策略规划）
+# SEO 策略规划
 
-## What This Skill Does
+## 功能说明
 
 制定 SEO 策略：分析竞品、规划关键词、制定内容日历、输出实施路线图。
 
@@ -22,7 +21,7 @@ allowed-tools:
 
 ---
 
-## Optional Input
+## 可选输入
 
 | 输入 | 来源 | 说明 |
 |------|------|------|
@@ -32,18 +31,18 @@ allowed-tools:
 
 ---
 
-## Process
+## 流程
 
-### Step 1: Discovery（收集信息）
+### 步骤 1：发现（收集信息）
 
-问用户：
+询问用户：
 - 业务类型（SaaS / 电商 / 本地服务 / 媒体 / 其他）
 - 目标受众（谁是你的客户？）
 - 主要竞品（3-5 个）
 - 目标（流量？转化？品牌？）
 - 现有网站？（有 → 分析现状；没有 → 新站规划）
 
-### Step 2: Competitor Analysis（竞品分析）
+### 步骤 2：竞品分析
 
 对每个竞品，分析：
 
@@ -58,7 +57,7 @@ allowed-tools:
 
 输出：`COMPETITOR-ANALYSIS.md`
 
-### Step 3: Keyword Strategy（关键词策略）
+### 步骤 3：关键词策略
 
 如果有 seo-keywords 输出 → 读取并整合
 如果没有 → 基于竞品分析 + 用户输入推断
@@ -70,7 +69,7 @@ allowed-tools:
 
 输出：整合到 `SEO-STRATEGY.md`
 
-### Step 4: Content Planning（内容规划）
+### 步骤 4：内容规划
 
 基于关键词策略，规划：
 
@@ -83,30 +82,30 @@ allowed-tools:
 输出：`CONTENT-CALENDAR.md`
 
 ```markdown
-# Content Calendar
+# 内容日历
 
-## Month 1
-| Week | Topic | Target Keyword | Type | Priority |
+## 第 1 个月
+| 周 | 主题 | 目标关键词 | 类型 | 优先级 |
 |------|-------|----------------|------|----------|
-| 1 | ... | ... | Pillar | High |
-| 2 | ... | ... | Cluster | Medium |
+| 1 | ... | ... | 支柱 | 高 |
+| 2 | ... | ... | 集群 | 中 |
 ```
 
-### Step 5: Implementation Roadmap（实施路线）
+### 步骤 5：实施路线图
 
 简化版路线图：
 
 | 阶段 | 时间 | 重点 |
 |------|------|------|
-| **启动** | Week 1-2 | 技术基础（→ seo-technical）、核心页面 |
-| **内容** | Week 3-8 | 按日历发布内容（→ seo-content-writer）|
-| **优化** | Week 9-12 | 监控排名、调整策略 |
+| **启动** | 第 1-2 周 | 技术基础（→ seo-technical）、核心页面 |
+| **内容** | 第 3-8 周 | 按日历发布内容（→ seo-content-writer）|
+| **优化** | 第 9-12 周 | 监控排名、调整策略 |
 
 输出：`IMPLEMENTATION-ROADMAP.md`
 
 ---
 
-## Output（输出文件）
+## 输出文件
 
 | 文件 | 内容 |
 |------|------|
@@ -117,7 +116,7 @@ allowed-tools:
 
 ---
 
-## Integration（与其他技能的关系）
+## 与其他技能集成
 
 ```
 seo-keywords ──(可选)──> seo-plan
@@ -136,17 +135,17 @@ seo-keywords ──(可选)──> seo-plan
 
 ---
 
-## Example
+## 示例
 
 ```
-User: /seo plan
+用户: /seo plan
 Claude: 请告诉我：
 1. 业务类型？
 2. 目标受众？
 3. 主要竞品？
 4. SEO 目标？
 
-User: SaaS 项目管理工具，目标是中小企业，竞品是 Asana、Monday、Notion
+用户: SaaS 项目管理工具，目标是中小企业，竞品是 Asana、Monday、Notion
 
 Claude: [执行竞品分析...]
         [制定关键词策略...]

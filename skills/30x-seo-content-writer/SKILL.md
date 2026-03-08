@@ -1,22 +1,20 @@
 ---
 name: 30x-seo-content-writer
 description: >
-  SEO-optimized content generation. Two modes: plan mode (reads seo-plan
-  output) or standalone mode (user provides keyword directly). Outputs
-  markdown files. Use when user says "write SEO blog", "generate SEO content",
-  "create blog post", or "SEO article".
+  SEO 优化内容生成。两种模式：计划模式（读取 seo-plan 输出）或独立模式（用户直接提供关键词）。
+  输出 markdown 文件。当用户说"写 SEO 博客"、"生成 SEO 内容"、"创建博客文章"或"SEO 文章"时使用。
 allowed-tools:
   - WebFetch
   - Read
 ---
 
-# SEO Content Writer
+# SEO 内容写作
 
-## What This Skill Does
+## 功能说明
 
 生成 SEO 优化的博客文章。
 
-## Two Modes（两种模式）
+## 两种模式
 
 | 模式 | 输入 | 适用场景 |
 |------|------|---------|
@@ -25,26 +23,26 @@ allowed-tools:
 
 ---
 
-## Mode 1: Plan Mode（计划模式）
+## 模式 1：计划模式
 
-### Prerequisites
+### 前提条件
 
 已有 SEO 计划（`/seo plan`）：
 - `CONTENT-CALENDAR.md` - 内容日历
 - `SEO-STRATEGY.md` - 关键词和主题策略
 
-### Process
+### 流程
 
 ```
 ┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
 │   seo-plan      │     │                 │     │                 │
-│   输出文件      │ ──> │    Generate     │ ──> │   Markdown      │
-│ CONTENT-CALENDAR│     │   SEO Content   │     │   博客文章      │
+│   输出文件      │ ──> │   生成 SEO 内容 │ ──> │   Markdown      │
+│ CONTENT-CALENDAR│     │                 │     │   博客文章      │
 │ SEO-STRATEGY    │     │                 │     │                 │
 └─────────────────┘     └─────────────────┘     └─────────────────┘
 ```
 
-### Context from Plan
+### 从计划获取的上下文
 
 | 信息 | 来源 | 用途 |
 |------|------|------|
@@ -54,119 +52,119 @@ allowed-tools:
 
 ---
 
-## Mode 2: Standalone Mode（独立模式）
+## 模式 2：独立模式
 
-### When to Use
+### 适用场景
 
 - 只想快速写一篇文章
 - 没有完整的 SEO 计划
 - 已经知道目标关键词
 
-### Required Input
+### 必需输入
 
-问用户：
+询问用户：
 
-1. **Topic/Title**: 文章主题
-2. **Target Keyword**: 主关键词
-3. **Secondary Keywords**: 次要关键词（可选）
-4. **Search Intent**: Informational / Commercial / Transactional
-5. **Target Length**: Short (800-1200) / Medium (1500-2000) / Long (2500+)
-6. **CTA Goal**: 读者应采取什么行动？
+1. **主题/标题**：文章主题
+2. **目标关键词**：主关键词
+3. **次要关键词**：次要关键词（可选）
+4. **搜索意图**：信息型 / 商业型 / 交易型
+5. **目标长度**：短篇 (800-1200) / 中篇 (1500-2000) / 长篇 (2500+)
+6. **CTA 目标**：读者应采取什么行动？
 
 ---
 
-## Content Generation（内容生成）
+## 内容生成
 
-### Article Structure
+### 文章结构
 
 ```markdown
-# [H1: Include primary keyword, 50-60 chars]
+# [H1：包含主关键词，50-60 字符]
 
-[Hook: Engaging first paragraph, mention keyword naturally]
+[开篇：吸引人的第一段，自然提及关键词]
 
-## [H2: Section with keyword variation]
+## [H2：包含关键词变体的章节]
 
-[Content with semantic keywords, 2-4 paragraphs]
+[包含语义关键词的内容，2-4 段]
 
-### [H3: Subsection if needed]
+### [H3：子章节（如需要）]
 
-[Supporting content]
+[支撑内容]
 
-## [H2: Another main section]
+## [H2：另一个主要章节]
 
-[Continue pattern...]
+[继续相同模式...]
 
-## Conclusion / Key Takeaways
+## 总结 / 要点
 
-[Summary, reiterate value, include CTA]
+[摘要，重申价值，包含 CTA]
 ```
 
-### SEO Requirements Checklist
+### SEO 要求清单
 
-| Element | Requirement |
+| 元素 | 要求 |
 |---------|-------------|
-| **Title (H1)** | Include primary keyword, 50-60 characters |
-| **Meta Description** | Include keyword, 150-160 characters, compelling |
-| **URL Slug** | Short, keyword-rich, hyphenated |
-| **First 100 Words** | Include primary keyword naturally |
-| **Headings** | H2s include keyword variations, logical hierarchy |
-| **Keyword Density** | 1-2%, natural placement |
-| **Internal Links** | 3-5 relevant internal links (placeholder: [Internal: topic]) |
-| **External Links** | 2-3 authoritative sources |
-| **Images** | Suggest placements with alt text descriptions |
-| **Readability** | Short paragraphs, bullet lists, scannable |
+| **标题 (H1)** | 包含主关键词，50-60 字符 |
+| **元描述** | 包含关键词，150-160 字符，有吸引力 |
+| **URL 别名** | 简短、关键词丰富、用连字符分隔 |
+| **前 100 字** | 自然包含主关键词 |
+| **标题结构** | H2 包含关键词变体，层级逻辑清晰 |
+| **关键词密度** | 1-2%，自然分布 |
+| **内链** | 3-5 个相关内链（占位符：[内链：主题]）|
+| **外链** | 2-3 个权威来源 |
+| **图片** | 建议位置并附带 alt 文本描述 |
+| **可读性** | 短段落、项目符号列表、易于扫读 |
 
-### E-E-A-T Signals to Include
+### E-E-A-T 信号
 
-| Signal | How to Include |
+| 信号 | 如何体现 |
 |--------|----------------|
-| **Experience** | First-hand examples, case studies, "we tested" |
-| **Expertise** | Technical depth, accurate information, citations |
-| **Authoritativeness** | Cite reputable sources, link to studies |
-| **Trustworthiness** | Clear attribution, honest claims, no exaggeration |
+| **经验** | 第一手案例、案例研究、"我们测试过" |
+| **专业** | 技术深度、准确信息、引用出处 |
+| **权威** | 引用权威来源、链接到研究 |
+| **可信** | 明确归属、诚实声明、不夸大 |
 
-### AI Citation Readiness (GEO)
+### AI 引用准备（GEO）
 
-For AI search visibility:
-- Include clear, quotable definitions
-- Use structured formats (tables, lists)
-- Answer questions directly in the first sentence
-- Include specific data points and statistics
-
----
-
-## Output Format
-
-### Deliverables
-
-1. **Blog Article** (Markdown format)
-   - Full article with SEO optimization
-   - Meta title and description
-   - Suggested URL slug
-
-2. **SEO Checklist** (verification)
-   - [ ] Primary keyword in title
-   - [ ] Primary keyword in first 100 words
-   - [ ] H2s with keyword variations
-   - [ ] Internal link placeholders
-   - [ ] External authoritative links
-   - [ ] Image suggestions with alt text
-   - [ ] CTA included
+为 AI 搜索可见性优化：
+- 包含清晰、可引用的定义
+- 使用结构化格式（表格、列表）
+- 在第一句话直接回答问题
+- 包含具体数据点和统计数据
 
 ---
 
-## Commands
+## 输出格式
+
+### 交付物
+
+1. **博客文章**（Markdown 格式）
+   - 包含 SEO 优化的完整文章
+   - 元标题和描述
+   - 建议的 URL 别名
+
+2. **SEO 检查清单**（验证）
+   - [ ] 标题包含主关键词
+   - [ ] 前 100 字包含主关键词
+   - [ ] H2 包含关键词变体
+   - [ ] 内链占位符
+   - [ ] 外链权威来源
+   - [ ] 图片建议附带 alt 文本
+   - [ ] 包含 CTA
+
+---
+
+## 命令
 
 | 命令 | 模式 |
 |------|------|
 | `/seo content-writer` | 自动检测（有 seo-plan 输出则计划模式，否则独立模式）|
-| `/seo content-writer "topic"` | 独立模式，直接指定主题 |
+| `/seo content-writer "主题"` | 独立模式，直接指定主题 |
 
 ---
 
-## Integration with Other Skills
+## 与其他技能集成
 
-| Skill | When to Use |
+| 技能 | 何时使用 |
 |-------|-------------|
 | **seo-plan** | 先制定计划，再用计划模式生成内容 |
 | **seo-internal-links suggest** | 写完后生成内链建议 |
@@ -174,18 +172,18 @@ For AI search visibility:
 
 ---
 
-## Quality Gates
+## 质量检查
 
-### Before Generation
-- [ ] Target keyword confirmed
-- [ ] Search intent understood
-- [ ] Length decided
+### 生成前
+- [ ] 目标关键词已确认
+- [ ] 搜索意图已理解
+- [ ] 长度已确定
 
-### After Generation
-- [ ] Keyword naturally integrated (not stuffed)
-- [ ] E-E-A-T signals present
-- [ ] Readability appropriate for audience
-- [ ] CTA aligned with business goal
-- [ ] No factual claims without sources
+### 生成后
+- [ ] 关键词自然融入（不堆砌）
+- [ ] E-E-A-T 信号已体现
+- [ ] 可读性适合目标受众
+- [ ] CTA 与业务目标一致
+- [ ] 事实声明有来源支持
 
 [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md

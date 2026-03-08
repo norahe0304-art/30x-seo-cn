@@ -1,18 +1,17 @@
 ---
 name: 30x-seo-internal-links
 description: >
-  Internal link analysis AND generation. Analyzes orphan pages, link equity,
-  anchor text. Also generates link suggestions for new content. Use when
-  user says "internal linking", "orphan pages", "link suggestions", "where
-  should I link", or "internal link recommendations".
+  内链分析与生成。分析孤立页面、链接权重、锚文本。
+  也为新内容生成链接建议。当用户说"内链"、"孤立页面"、
+  "链接建议"、"该链接到哪里"或"内链推荐"时使用。
 allowed-tools:
   - WebFetch
   - Read
 ---
 
-# Internal Link Analysis + Generation
+# 内链分析 + 生成
 
-## What This Skill Does
+## 功能说明
 
 **两个功能**：
 
@@ -21,216 +20,216 @@ allowed-tools:
 | **分析模式** | 网站 URL | 内链问题报告 |
 | **生成模式** | 新文章 + 网站结构 | 内链建议（链接到哪里、锚文本）|
 
-Good internal linking:
-- Helps Google find all your pages
-- Distributes "link juice" (ranking power) to important pages
-- Guides users through your content
+良好的内链：
+- 帮助 Google 发现所有页面
+- 向重要页面分配"链接权重"（排名能力）
+- 引导用户浏览内容
 
-## Why Internal Links Matter
+## 为什么内链重要
 
-- **Orphan pages** (no internal links) = Google can't find them = not indexed
-- **Deep pages** (6+ clicks from homepage) = Google thinks they're not important
-- **Link hoarding** (homepage links to everything) = diluted equity per link
-- **Poor anchor text** = Google doesn't understand what the linked page is about
+- **孤立页面**（无内链）= Google 找不到 = 未被索引
+- **深层页面**（距首页 6+ 次点击）= Google 认为不重要
+- **链接囤积**（首页链接到所有内容）= 每个链接权重稀释
+- **差劲锚文本** = Google 不理解链接页面的内容
 
-## Check Categories
+## 检查类别
 
-### 1. Orphan Pages
-Pages with ZERO internal links pointing to them.
+### 1. 孤立页面
+没有任何内链指向的页面。
 
-**How to find:**
-1. Crawl entire site to find all pages
-2. Check which pages have no inbound internal links
-3. Cross-reference with sitemap (orphan pages often only accessible via sitemap)
+**如何发现：**
+1. 爬取整站找到所有页面
+2. 检查哪些页面没有入站内链
+3. 与 sitemap 交叉对比（孤立页面通常只能通过 sitemap 访问）
 
-**Severity:**
-- Orphan + in sitemap = Medium (Google can find via sitemap, but weak)
-- Orphan + not in sitemap = Critical (Google may never find it)
+**严重程度：**
+- 孤立 + 在 sitemap = 中等（Google 可通过 sitemap 发现，但较弱）
+- 孤立 + 不在 sitemap = 严重（Google 可能永远找不到）
 
-### 2. Click Depth Analysis
+### 2. 点击深度分析
 
-| Depth | Meaning | SEO Impact |
+| 深度 | 含义 | SEO 影响 |
 |-------|---------|------------|
-| 1 click | Linked from homepage | Highest priority |
-| 2 clicks | Linked from main sections | High priority |
-| 3 clicks | Standard content | Normal priority |
-| 4+ clicks | Buried content | Lower priority |
-| 6+ clicks | Too deep | Likely not indexed well |
+| 1 次点击 | 从首页链接 | 最高优先级 |
+| 2 次点击 | 从主要版块链接 | 高优先级 |
+| 3 次点击 | 标准内容 | 正常优先级 |
+| 4+ 次点击 | 深埋内容 | 较低优先级 |
+| 6+ 次点击 | 太深 | 可能索引不好 |
 
-**Rule**: Important pages should be within 3 clicks of homepage.
+**规则**：重要页面应在距首页 3 次点击以内。
 
-### 3. Internal Link Distribution
+### 3. 内链分布
 
-**PageRank flow analysis:**
-- Which pages receive the most internal links?
-- Which pages receive the fewest?
-- Does distribution match business priority?
+**PageRank 流量分析：**
+- 哪些页面获得最多内链？
+- 哪些页面获得最少？
+- 分布是否匹配业务优先级？
 
-**Common problems:**
-| Problem | Description | Fix |
+**常见问题：**
+| 问题 | 描述 | 解决方案 |
 |---------|-------------|-----|
-| Homepage hoarding | Homepage has 500 outlinks | Consolidate navigation, use hub pages |
-| Orphan cluster | Group of pages only link to each other | Add links from main site sections |
-| Dead ends | Pages with no outbound internal links | Add contextual links to related content |
-| Link silos | Sections don't link between each other | Add cross-section contextual links |
+| 首页囤积 | 首页有 500 个出站链接 | 整合导航，使用枢纽页 |
+| 孤立集群 | 一组页面只相互链接 | 从主站版块添加链接 |
+| 死胡同 | 页面没有出站内链 | 添加到相关内容的上下文链接 |
+| 链接孤岛 | 版块之间不相互链接 | 添加跨版块上下文链接 |
 
-### 4. Anchor Text Analysis
+### 4. 锚文本分析
 
-**Good anchor text:**
-- Descriptive of target page content
-- Contains relevant keywords naturally
-- Varies across different linking pages
+**好的锚文本：**
+- 描述目标页面内容
+- 自然包含相关关键词
+- 在不同链接页面有变化
 
-**Bad anchor text patterns:**
-| Pattern | Example | Problem |
+**差劲锚文本模式：**
+| 模式 | 示例 | 问题 |
 |---------|---------|---------|
-| Generic | "click here", "read more" | No keyword signal |
-| Over-optimized | Every link = "best SEO tool" | Looks spammy |
-| Naked URLs | "https://site.com/page" | Wastes keyword opportunity |
-| Mismatched | Anchor = "dogs", target = cat page | Confusing signal |
+| 通用 | "点击这里"、"阅读更多" | 无关键词信号 |
+| 过度优化 | 每个链接 = "最好的 SEO 工具" | 看起来垃圾 |
+| 裸 URL | "https://site.com/page" | 浪费关键词机会 |
+| 不匹配 | 锚文本 = "狗"，目标 = 猫页面 | 信号混乱 |
 
-### 5. Broken Internal Links
-Links pointing to 404 pages within your own site.
+### 5. 断裂内链
+指向你网站内 404 页面的链接。
 
-**Impact:**
-- Wastes link equity
-- Bad user experience
-- Wastes crawl budget
+**影响：**
+- 浪费链接权重
+- 用户体验差
+- 浪费爬取预算
 
-### 6. Nofollow on Internal Links
-Using `rel="nofollow"` on internal links = bad practice.
+### 6. 内链上的 Nofollow
+在内链上使用 `rel="nofollow"` = 不好的做法。
 
-**When it's wrong:**
-- Regular content links marked nofollow
-- Navigation links marked nofollow
+**错误情况：**
+- 常规内容链接标记 nofollow
+- 导航链接标记 nofollow
 
-**When it's acceptable:**
-- User-generated content (comments)
-- Login/signup pages (PageRank sculpting is dead, but still ok)
+**可接受情况：**
+- 用户生成内容（评论）
+- 登录/注册页面（PageRank 雕刻已死，但仍可接受）
 
-### 7. Link Equity Sinks
-Pages that receive lots of internal links but provide no value:
-- Thank you pages
-- Login pages
-- Terms of service (linked from every page footer)
+### 7. 链接权重黑洞
+获得大量内链但不提供价值的页面：
+- 感谢页面
+- 登录页面
+- 服务条款（从每个页面页脚链接）
 
-**Solution:** Add `nofollow` or reduce links to low-value pages.
+**解决方案：** 添加 `nofollow` 或减少到低价值页面的链接。
 
-### 8. Contextual vs Navigation Links
+### 8. 上下文链接 vs 导航链接
 
-| Type | Description | SEO Value |
+| 类型 | 描述 | SEO 价值 |
 |------|-------------|-----------|
-| Navigation | Header, footer, sidebar | Lower (same on every page) |
-| Contextual | Within article content | Higher (unique, topically relevant) |
+| 导航 | 页眉、页脚、侧边栏 | 较低（每页相同）|
+| 上下文 | 文章内容中 | 较高（独特、主题相关）|
 
-**Goal:** Important pages should have BOTH navigation AND contextual links.
+**目标：** 重要页面应同时拥有导航和上下文链接。
 
-## Analysis Method
+## 分析方法
 
-### Step 1: Crawl Site
-- Use crawler to discover all pages
-- Record all internal links (source URL, target URL, anchor text)
+### 步骤 1：爬取网站
+- 使用爬虫发现所有页面
+- 记录所有内链（来源 URL、目标 URL、锚文本）
 
-### Step 2: Build Link Graph
-- Create adjacency matrix of page relationships
-- Calculate inbound/outbound link counts per page
+### 步骤 2：构建链接图
+- 创建页面关系邻接矩阵
+- 计算每页入站/出站链接数
 
-### Step 3: Calculate Metrics
-- **Click depth**: BFS from homepage
-- **Internal PageRank**: Simplified PageRank calculation
-- **Orphan detection**: Pages with 0 inbound links
+### 步骤 3：计算指标
+- **点击深度**：从首页的 BFS
+- **内部 PageRank**：简化 PageRank 计算
+- **孤立检测**：入站链接为 0 的页面
 
-### Step 4: Cross-Reference with Goals
-- Which pages should rank? (money pages, pillar content)
-- Do those pages have strong internal link support?
+### 步骤 4：与目标交叉对比
+- 哪些页面应该排名？（金钱页面、支柱内容）
+- 这些页面是否有强内链支持？
 
-## Output Format
+## 输出格式
 
-### Internal Link Health Score: XX/100
+### 内链健康分数：XX/100
 
-### Site Structure Overview
+### 网站结构概览
 ```
-Total pages: XXX
-Total internal links: XXX
-Average links per page: XX
-Max click depth: X
+总页面数：XXX
+总内链数：XXX
+每页平均链接数：XX
+最大点击深度：X
 
-Link Distribution:
-├── Depth 1: XX pages (XX%)
-├── Depth 2: XX pages (XX%)
-├── Depth 3: XX pages (XX%)
-├── Depth 4+: XX pages (XX%)
-└── Orphans: XX pages (XX%)
+链接分布：
+├── 深度 1: XX 页面 (XX%)
+├── 深度 2: XX 页面 (XX%)
+├── 深度 3: XX 页面 (XX%)
+├── 深度 4+: XX 页面 (XX%)
+└── 孤立: XX 页面 (XX%)
 ```
 
-### Critical Issues
+### 严重问题
 
-#### Orphan Pages (XX found)
-| URL | In Sitemap? | Suggested Link From |
+#### 孤立页面（发现 XX 个）
+| URL | 在 Sitemap？ | 建议链接来源 |
 |-----|-------------|---------------------|
 
-#### Deep Pages (6+ clicks) (XX found)
-| URL | Current Depth | Suggested Link From |
+#### 深层页面（6+ 次点击）（发现 XX 个）
+| URL | 当前深度 | 建议链接来源 |
 
-#### Broken Internal Links (XX found)
-| Source URL | Broken Link | Suggested Fix |
+#### 断裂内链（发现 XX 个）
+| 来源 URL | 断裂链接 | 建议修复 |
 
-### Link Equity Analysis
+### 链接权重分析
 
-#### Top 10 Pages by Internal Links
-| URL | Inbound Links | Is Priority Page? |
+#### 内链最多的前 10 页面
+| URL | 入站链接 | 是优先页面？ |
 
-#### Under-Linked Priority Pages
-| URL | Current Links | Recommended Links |
+#### 链接不足的优先页面
+| URL | 当前链接数 | 建议链接数 |
 
-### Anchor Text Report
+### 锚文本报告
 
-#### Over-Optimized Anchors
-| Anchor Text | Count | Target Pages |
+#### 过度优化锚文本
+| 锚文本 | 数量 | 目标页面 |
 
-#### Generic Anchors (fix these)
-| Anchor Text | Count | Better Alternative |
+#### 通用锚文本（需修复）
+| 锚文本 | 数量 | 更好的替代 |
 
-### Recommendations
-1. [Specific fix instructions based on findings]
+### 建议
+1. [基于发现的具体修复说明]
 
 ---
 
-## Part 2: Link Generation Mode（生成模式）
+## 第二部分：链接生成模式
 
-### When to Use
+### 适用场景
 
 写完新文章后，不知道该链接到哪里。
 
-### Input
+### 输入
 
 1. **新文章内容**（或 URL）
 2. **网站现有页面列表**（或网站 URL 让技能爬取）
 
-### Process
+### 流程
 
-#### Step 1: Analyze New Article
+#### 步骤 1：分析新文章
 - 提取文章主题、关键词
 - 识别可链接的概念/术语
 
-#### Step 2: Match with Existing Pages
+#### 步骤 2：匹配现有页面
 - 找出与新文章主题相关的现有页面
 - 按相关性排序
 
-#### Step 3: Generate Suggestions
+#### 步骤 3：生成建议
 
 **输出 3 类建议**：
 
 | 类型 | 说明 |
 |------|------|
-| **Outbound** | 新文章应该链接到哪些现有页面 |
-| **Inbound** | 哪些现有页面应该添加链接指向新文章 |
-| **Anchor Text** | 每个链接的建议锚文本 |
+| **出站** | 新文章应该链接到哪些现有页面 |
+| **入站** | 哪些现有页面应该添加链接指向新文章 |
+| **锚文本** | 每个链接的建议锚文本 |
 
-### Output Format
+### 输出格式
 
 ```markdown
-# Internal Link Suggestions
+# 内链建议
 
 ## 新文章信息
 - 标题: [文章标题]
@@ -238,7 +237,7 @@ Link Distribution:
 - 主题: [主要主题]
 - 关键词: [关键词列表]
 
-## Outbound Links（新文章 → 现有页面）
+## 出站链接（新文章 → 现有页面）
 
 | 链接位置 | 目标页面 | 建议锚文本 | 原因 |
 |---------|---------|-----------|------|
@@ -246,7 +245,7 @@ Link Distribution:
 | 第 5 段 "关键词研究" | /keyword-research | "关键词研究方法" | 深入阅读 |
 | 结尾 CTA | /services | "我们的服务" | 转化引导 |
 
-## Inbound Links（现有页面 → 新文章）
+## 入站链接（现有页面 → 新文章）
 
 | 来源页面 | 建议添加位置 | 建议锚文本 |
 |---------|-------------|-----------|
@@ -260,10 +259,10 @@ Link Distribution:
 - [ ] 更新 /seo-guide 添加反向链接
 ```
 
-### Example
+### 示例
 
 ```
-User: 我写了一篇关于"Core Web Vitals优化"的文章，应该链接到哪里？
+用户: 我写了一篇关于"Core Web Vitals优化"的文章，应该链接到哪里？
 
 Claude: [读取文章内容]
         [读取网站现有页面]
@@ -278,7 +277,7 @@ Claude: [读取文章内容]
 
 ---
 
-## Commands
+## 命令
 
 | 命令 | 模式 |
 |------|------|

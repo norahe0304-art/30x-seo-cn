@@ -1,340 +1,340 @@
 ---
 name: 30x-seo-serp
 description: >
-  Track SERP rankings, monitor position changes, analyze SERP features, and identify
-  ranking opportunities using DataForSEO. Alternative to Google Search Console for
-  ranking data. Use when user says "rankings", "SERP tracking", "position monitoring",
-  "rank tracking", "keyword positions", or "SERP analysis".
+  使用 DataForSEO 追踪 SERP 排名、监控位置变化、分析 SERP 特性、
+  识别排名机会。作为 Google Search Console 排名数据的替代选择。
+  当用户说"排名"、"SERP追踪"、"位置监控"、"排名追踪"、
+  "关键词位置"或"SERP分析"时使用。
 allowed-tools:
   - Bash
   - Read
 ---
 
-# SEO SERP Tracking
+# SEO SERP 追踪
 
-Track rankings, monitor SERP changes, and analyze search result features using DataForSEO API via direct curl calls.
+使用 DataForSEO API 通过直接 curl 调用追踪排名、监控 SERP 变化、分析搜索结果特性。
 
-## API Configuration
+## API 配置
 
-Credentials stored in `~/.config/dataforseo/auth` (Base64 encoded).
+凭据存储在 `~/.config/dataforseo/auth`（Base64 编码）。
 
 ```bash
-# Read auth token
+# 读取认证令牌
 AUTH=$(cat ~/.config/dataforseo/auth)
 ```
 
-## Quick Reference
+## 快速参考
 
-| Command | What it does |
-|---------|-------------|
-| `/seo serp rank <domain>` | Get all keywords domain ranks for |
-| `/seo serp check <keyword>` | Live SERP check for keyword |
-| `/seo serp history <keyword>` | Historical SERP changes |
-| `/seo serp features <keyword>` | Analyze SERP features present |
-| `/seo serp competitors <keyword>` | Who ranks for this keyword |
-| `/seo serp overview <domain>` | Domain ranking overview |
+| 命令 | 功能 |
+|------|------|
+| `/seo serp rank <域名>` | 获取域名排名的所有关键词 |
+| `/seo serp check <关键词>` | 关键词实时 SERP 检查 |
+| `/seo serp history <关键词>` | 历史 SERP 变化 |
+| `/seo serp features <关键词>` | 分析存在的 SERP 特性 |
+| `/seo serp competitors <关键词>` | 谁在排名这个关键词 |
+| `/seo serp overview <域名>` | 域名排名概述 |
 
-## API Endpoints
+## API 端点
 
-### Live SERP Check
+### 实时 SERP 检查
 ```bash
 curl -s -X POST "https://api.dataforseo.com/v3/serp/google/organic/live/advanced" \
   -H "Authorization: Basic $(cat ~/.config/dataforseo/auth)" \
   -H "Content-Type: application/json" \
-  -d '[{"keyword": "TARGET_KEYWORD", "location_name": "United States", "language_code": "en", "depth": 100}]'
+  -d '[{"keyword": "目标关键词", "location_name": "China", "language_code": "zh", "depth": 100}]'
 ```
 
-### Domain Rank Overview
+### 域名排名概述
 ```bash
 curl -s -X POST "https://api.dataforseo.com/v3/dataforseo_labs/google/domain_rank_overview/live" \
   -H "Authorization: Basic $(cat ~/.config/dataforseo/auth)" \
   -H "Content-Type: application/json" \
-  -d '[{"target": "example.com", "location_name": "United States", "language_code": "en"}]'
+  -d '[{"target": "example.com", "location_name": "China", "language_code": "zh"}]'
 ```
 
-### Ranked Keywords (Site Rankings)
+### 排名关键词（网站排名）
 ```bash
 curl -s -X POST "https://api.dataforseo.com/v3/dataforseo_labs/google/ranked_keywords/live" \
   -H "Authorization: Basic $(cat ~/.config/dataforseo/auth)" \
   -H "Content-Type: application/json" \
-  -d '[{"target": "example.com", "location_name": "United States", "language_code": "en", "limit": 100}]'
+  -d '[{"target": "example.com", "location_name": "China", "language_code": "zh", "limit": 100}]'
 ```
 
-### Historical SERP
+### 历史 SERP
 ```bash
 curl -s -X POST "https://api.dataforseo.com/v3/dataforseo_labs/google/historical_serps/live" \
   -H "Authorization: Basic $(cat ~/.config/dataforseo/auth)" \
   -H "Content-Type: application/json" \
-  -d '[{"keyword": "TARGET_KEYWORD", "location_name": "United States", "language_code": "en"}]'
+  -d '[{"keyword": "目标关键词", "location_name": "China", "language_code": "zh"}]'
 ```
 
-### SERP Competitors
+### SERP 竞争对手
 ```bash
 curl -s -X POST "https://api.dataforseo.com/v3/dataforseo_labs/google/serp_competitors/live" \
   -H "Authorization: Basic $(cat ~/.config/dataforseo/auth)" \
   -H "Content-Type: application/json" \
-  -d '[{"keywords": ["kw1", "kw2", "kw3"], "location_name": "United States", "language_code": "en"}]'
+  -d '[{"keywords": ["关键词1", "关键词2", "关键词3"], "location_name": "China", "language_code": "zh"}]'
 ```
 
-### Keyword Overview
+### 关键词概述
 ```bash
 curl -s -X POST "https://api.dataforseo.com/v3/dataforseo_labs/google/keyword_overview/live" \
   -H "Authorization: Basic $(cat ~/.config/dataforseo/auth)" \
   -H "Content-Type: application/json" \
-  -d '[{"keywords": ["kw1", "kw2"], "location_name": "United States", "language_code": "en"}]'
+  -d '[{"keywords": ["关键词1", "关键词2"], "location_name": "China", "language_code": "zh"}]'
 ```
 
-## Analysis Modes
+## 分析模式
 
-### 1. Domain Ranking Overview
+### 1. 域名排名概述
 
-Get complete ranking profile for a domain.
-
-```
-Input: domain (e.g., "example.com")
-Output:
-- Total ranking keywords
-- Position distribution (1-3, 4-10, 11-20, 21-100)
-- Estimated organic traffic
-- Top ranking keywords
-- SERP feature presence
-```
-
-**Position Distribution Chart:**
-```
-Position 1-3:   ############ 45 keywords
-Position 4-10:  #################### 89 keywords
-Position 11-20: ########## 42 keywords
-Position 21-50: ######## 35 keywords
-Position 51+:   #### 18 keywords
-```
-
-### 2. Live SERP Check
-
-Get current SERP for any keyword.
+获取域名的完整排名概况。
 
 ```
-Input: keyword, location (optional)
-Output:
-- Top 10/20/100 results
-- SERP features present
-- Ads above/below organic
-- Related searches
-- People Also Ask
+输入：域名（如 "example.com"）
+输出：
+- 排名关键词总数
+- 位置分布（1-3, 4-10, 11-20, 21-100）
+- 预估自然流量
+- 排名最高的关键词
+- SERP 特性出现情况
 ```
 
-**SERP Feature Detection:**
-| Feature | SEO Impact |
-|---------|-----------|
-| AI Overview | Reduces organic CTR |
-| Featured Snippet | High visibility opportunity |
-| People Also Ask | Content expansion signals |
-| Local Pack | Local SEO needed |
-| Image Pack | Image optimization opportunity |
-| Video Carousel | Video content opportunity |
-| Knowledge Panel | Brand authority signal |
-
-### 3. Historical SERP Analysis
-
-Track SERP changes over time.
-
+**位置分布图：**
 ```
-Input: keyword
-Output:
-- SERP snapshots over time
-- Position changes per domain
-- Feature appearance/disappearance
-- Volatility assessment
+位置 1-3:   ############ 45 个关键词
+位置 4-10:  #################### 89 个关键词
+位置 11-20: ########## 42 个关键词
+位置 21-50: ######## 35 个关键词
+位置 51+:   #### 18 个关键词
 ```
 
-**Use cases:**
-- Track algorithm update impact
-- Identify ranking trends
-- Detect competitor movements
-- Plan content updates
+### 2. 实时 SERP 检查
 
-### 4. SERP Competitor Analysis
-
-Find who's competing for keywords.
+获取任意关键词的当前 SERP。
 
 ```
-Input: keyword(s)
-Output:
-- All ranking domains
-- Average position per domain
-- Traffic share estimates
-- Content type analysis
+输入：关键词，位置（可选）
+输出：
+- 前 10/20/100 结果
+- 存在的 SERP 特性
+- 自然结果上下方的广告
+- 相关搜索
+- 相关问题
 ```
 
-### 5. Keyword Position Check
+**SERP 特性检测：**
+| 特性 | SEO 影响 |
+|------|----------|
+| AI 概览 | 降低自然 CTR |
+| 精选摘要 | 高可见性机会 |
+| 相关问题 | 内容扩展信号 |
+| 本地结果 | 需要本地 SEO |
+| 图片包 | 图片优化机会 |
+| 视频轮播 | 视频内容机会 |
+| 知识面板 | 品牌权威信号 |
 
-Check specific keyword positions for your domain.
+### 3. 历史 SERP 分析
+
+追踪 SERP 随时间的变化。
 
 ```
-Input: domain, keywords[]
-Output:
-- Current position per keyword
-- URL ranking for each
-- SERP features captured
-- Position change from last check
+输入：关键词
+输出：
+- 随时间的 SERP 快照
+- 每个域名的位置变化
+- 特性出现/消失
+- 波动性评估
 ```
 
-## Ranking Metrics
+**用例：**
+- 追踪算法更新影响
+- 识别排名趋势
+- 检测竞品动向
+- 规划内容更新
 
-### Position Tiers
+### 4. SERP 竞争对手分析
 
-| Tier | Positions | CTR Estimate | Priority |
-|------|-----------|--------------|----------|
-| Premium | 1-3 | 15-30% | Defend |
-| Strong | 4-10 | 2-8% | Optimize |
-| Striking Distance | 11-20 | 1-2% | Push |
-| Opportunity | 21-50 | <1% | Content gap |
-| Long-tail | 51+ | Minimal | Low priority |
+找出谁在竞争关键词。
 
-### Traffic Estimation
+```
+输入：关键词
+输出：
+- 所有排名域名
+- 每个域名的平均位置
+- 流量份额估算
+- 内容类型分析
+```
 
-DataForSEO provides estimated traffic based on:
-- Search volume
-- Position
-- CTR model
-- SERP features present
+### 5. 关键词位置检查
 
-**Note:** These are estimates, not actual traffic data.
+检查你的域名的特定关键词位置。
 
-## Output Formats
+```
+输入：域名，关键词[]
+输出：
+- 每个关键词的当前位置
+- 每个排名的 URL
+- 捕获的 SERP 特性
+- 与上次检查的位置变化
+```
 
-### Ranking Report
+## 排名指标
+
+### 位置层级
+
+| 层级 | 位置 | 预估 CTR | 优先级 |
+|------|------|----------|--------|
+| 优质 | 1-3 | 15-30% | 防守 |
+| 强势 | 4-10 | 2-8% | 优化 |
+| 攻击距离 | 11-20 | 1-2% | 推进 |
+| 机会 | 21-50 | <1% | 内容差距 |
+| 长尾 | 51+ | 极低 | 低优先级 |
+
+### 流量估算
+
+DataForSEO 基于以下因素提供流量估算：
+- 搜索量
+- 位置
+- CTR 模型
+- 存在的 SERP 特性
+
+**注意：** 这些是估算，不是实际流量数据。
+
+## 输出格式
+
+### 排名报告
 
 ```markdown
-# SERP Rankings: [domain]
-Generated: [Date]
+# SERP 排名：[域名]
+生成时间：[日期]
 
-## Overview
-- Total Keywords: X
-- Estimated Monthly Traffic: X
-- Average Position: X
-- Keywords in Top 10: X
+## 概述
+- 关键词总数：X
+- 预估月流量：X
+- 平均位置：X
+- 前 10 关键词数：X
 
-## Position Distribution
+## 位置分布
 
-| Position | Keywords | % of Total |
-|----------|----------|------------|
+| 位置 | 关键词数 | 占比 |
+|------|----------|------|
 | 1-3 | X | X% |
 | 4-10 | X | X% |
 | 11-20 | X | X% |
 | 21-50 | X | X% |
 | 51+ | X | X% |
 
-## Top Keywords
+## 热门关键词
 
-| Keyword | Position | Volume | URL |
-|---------|----------|--------|-----|
-| [kw1] | 3 | 5,400 | /page1 |
-| [kw2] | 7 | 3,200 | /page2 |
+| 关键词 | 位置 | 搜索量 | URL |
+|--------|------|--------|-----|
+| [关键词1] | 3 | 5,400 | /page1 |
+| [关键词2] | 7 | 3,200 | /page2 |
 
-## SERP Features Captured
+## 捕获的 SERP 特性
 
-| Feature | Count | Keywords |
-|---------|-------|----------|
-| Featured Snippet | 5 | kw1, kw2, ... |
-| People Also Ask | 12 | ... |
+| 特性 | 数量 | 关键词 |
+|------|------|--------|
+| 精选摘要 | 5 | 关键词1, 关键词2, ... |
+| 相关问题 | 12 | ... |
 
-## Opportunities
+## 机会
 
-### Striking Distance (Position 11-20)
-Keywords close to page 1 - prioritize optimization:
-1. [keyword] - Position 12, Volume 2,400
-2. [keyword] - Position 15, Volume 1,800
+### 攻击距离（位置 11-20）
+接近第 1 页的关键词 - 优先优化：
+1. [关键词] - 位置 12，搜索量 2,400
+2. [关键词] - 位置 15，搜索量 1,800
 ```
 
-### SERP Analysis Report
+### SERP 分析报告
 
 ```markdown
-# SERP Analysis: "[keyword]"
-Location: [location]
-Generated: [Date]
+# SERP 分析："[关键词]"
+位置：[位置]
+生成时间：[日期]
 
-## SERP Composition
+## SERP 组成
 
-### Above the Fold
-- Ads: 4
-- AI Overview: Yes
-- Featured Snippet: Yes (domain.com)
+### 首屏以上
+- 广告：4
+- AI 概览：是
+- 精选摘要：是 (domain.com)
 
-### Organic Results
-1. domain1.com/page - Title
-2. domain2.com/page - Title
+### 自然结果
+1. domain1.com/page - 标题
+2. domain2.com/page - 标题
 ...
 
-### SERP Features Present
-- [x] AI Overview
-- [x] Featured Snippet
-- [x] People Also Ask (4 questions)
-- [ ] Local Pack
-- [x] Image Pack
-- [ ] Video Carousel
+### 存在的 SERP 特性
+- [x] AI 概览
+- [x] 精选摘要
+- [x] 相关问题（4 个问题）
+- [ ] 本地结果
+- [x] 图片包
+- [ ] 视频轮播
 
-## Recommendations
-1. Content type to create: [based on top results]
-2. Target word count: [based on analysis]
-3. SERP feature to target: [based on gaps]
+## 建议
+1. 要创建的内容类型：[基于排名前列结果]
+2. 目标字数：[基于分析]
+3. 要瞄准的 SERP 特性：[基于差距]
 ```
 
-## Comparison: DataForSEO vs GSC
+## 对比：DataForSEO vs GSC
 
-| Capability | DataForSEO (this skill) | GSC |
-|------------|------------------------|-----|
-| Ranking data | Yes (estimated) | Yes (actual) |
-| Click data | No | Yes |
-| Impression data | No | Yes |
-| CTR data | No | Yes |
-| Any domain | Yes | Only verified |
-| Historical depth | Months | 16 months |
-| Real-time SERP | Yes | No |
-| SERP features | Detailed | Limited |
+| 功能 | DataForSEO（此技能） | GSC |
+|------|---------------------|-----|
+| 排名数据 | 是（估算） | 是（实际） |
+| 点击数据 | 否 | 是 |
+| 展示数据 | 否 | 是 |
+| CTR 数据 | 否 | 是 |
+| 任意域名 | 是 | 仅已验证 |
+| 历史深度 | 数月 | 16 个月 |
+| 实时 SERP | 是 | 否 |
+| SERP 特性 | 详细 | 有限 |
 
-**Use DataForSEO when:**
-- Analyzing competitors
-- Real-time SERP checks
-- SERP feature analysis
-- No GSC access
+**使用 DataForSEO 当：**
+- 分析竞争对手
+- 实时 SERP 检查
+- SERP 特性分析
+- 无 GSC 访问权限
 
-**Use GSC when:**
-- Actual click/impression data needed
-- CTR optimization
-- Your own verified properties
+**使用 GSC 当：**
+- 需要实际点击/展示数据
+- CTR 优化
+- 你自己的已验证资产
 
-## Integration with Other Skills
+## 与其他技能集成
 
-- Use `seo-keywords` to find keywords to track
-- Use `seo-content` to optimize underperforming pages
-- Use `seo-backlinks` to understand ranking factors
+- 使用 `seo-keywords` 找要追踪的关键词
+- 使用 `seo-content` 优化表现不佳的页面
+- 使用 `seo-backlinks` 理解排名因素
 
-## Best Practices
+## 最佳实践
 
-### Tracking Setup
+### 追踪设置
 
-1. **Core keywords** - 20-50 most important terms
-2. **Brand keywords** - Brand name variations
-3. **Competitor keywords** - Where competitors rank
-4. **Opportunity keywords** - Striking distance terms
+1. **核心关键词** - 20-50 个最重要的词
+2. **品牌关键词** - 品牌名变体
+3. **竞品关键词** - 竞争对手排名的词
+4. **机会关键词** - 攻击距离词
 
-### Monitoring Cadence
+### 监控频率
 
-| Keyword Type | Check Frequency |
-|--------------|-----------------|
-| Core (top 20) | Weekly |
-| Secondary (21-50) | Bi-weekly |
-| Long-tail (51+) | Monthly |
-| Competitor tracking | Weekly |
+| 关键词类型 | 检查频率 |
+|------------|----------|
+| 核心（前 20） | 每周 |
+| 次要（21-50） | 两周一次 |
+| 长尾（51+） | 每月 |
+| 竞品追踪 | 每周 |
 
-### Action Triggers
+### 行动触发
 
-| Signal | Action |
-|--------|--------|
-| Position drop >5 | Investigate content/links |
-| New competitor in top 5 | Analyze their content |
-| SERP feature lost | Re-optimize for feature |
-| Position 11-15 | Push to page 1 |
+| 信号 | 行动 |
+|------|------|
+| 位置下降 >5 | 调查内容/链接 |
+| 新竞品进入前 5 | 分析其内容 |
+| 丢失 SERP 特性 | 重新优化特性 |
+| 位置 11-15 | 推进到第 1 页 |
 
-[PROTOCOL]: Update this header on changes, then check CLAUDE.md
+[PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md
