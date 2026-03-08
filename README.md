@@ -1,13 +1,13 @@
 ```
-  _____ _____       _____  _____ _____
- |____ |  _  |     /  ___||  ___|  _  |
-     / / | | |_  __\ `--. | |__ | | | |
-     \ \ | | \ \/ / `--. \|  __|| | | |
- .___/ / \_/ />  < /\__/ /| |___\ \_/ /
- \____/\___//_/\_\\____/ \____/ \___/
+██████╗  ██████╗ ██╗  ██╗    ███████╗███████╗ ██████╗
+╚════██╗██╔═══██╗╚██╗██╔╝    ██╔════╝██╔════╝██╔═══██╗
+ █████╔╝██║   ██║ ╚███╔╝     ███████╗█████╗  ██║   ██║
+ ╚═══██╗██║   ██║ ██╔██╗     ╚════██║██╔══╝  ██║   ██║
+██████╔╝╚██████╔╝██╔╝ ██╗    ███████║███████╗╚██████╔╝
+╚═════╝  ╚═════╝ ╚═╝  ╚═╝    ╚══════╝╚══════╝ ╚═════╝
 ```
 
-> 22 个生产级 SEO 技能 + Squirrelscan CLI，8 大类，专为 Claude Code 打造。覆盖审计、技术 SEO、链接、内容、规划、程序化 SEO、监控、数据全链路。
+> 23 个生产级 SEO 技能 + Squirrelscan CLI，8 大类，专为 Claude Code 打造。覆盖审计、技术 SEO、链接、内容、规划、程序化 SEO、监控、数据全链路。
 
 ## 为什么选择 30x SEO？
 
@@ -33,7 +33,7 @@ chmod 600 ~/.config/dataforseo/auth
 
 ---
 
-## 技能全览（8 大类 22 技能 + 1 总控）
+## 技能全览（8 大类 23 技能 + 1 总控）
 
 ### 总控编排器
 
@@ -91,11 +91,12 @@ chmod 600 ~/.config/dataforseo/auth
 | `30x-seo-programmatic` | 规模化内容：数据源、模板、质量门控、索引控制 |
 | `30x-seo-competitor-pages` | X vs Y 对比页、替代品页面、特性矩阵 |
 
-### 七、监控类（2 技能）
+### 七、监控类（3 技能）
 
 | 技能 | 功能 |
 |------|------|
-| `30x-seo-serp` | 实时 SERP、排名追踪、历史数据、SERP 特性 *（需 DataForSEO）* |
+| `30x-seo-monitor` | 监控自己网站：排名、点击、CTR、位置变化 *（需 Google Search Console）* |
+| `30x-seo-serp` | 追踪任意网站 SERP 排名、特性、历史数据 *（需 DataForSEO）* |
 | `30x-seo-ai-visibility` | 追踪 ChatGPT、Claude、Perplexity、Gemini、AI Overview 中的品牌曝光 *（需 DataForSEO）* |
 
 ### 八、数据类（1 技能）
@@ -136,8 +137,10 @@ squirrelscan audit https://example.com --format llm
 /30x-seo competitor-pages generate
 
 # 监控
-/30x-seo serp check "关键词"                  # 需 DataForSEO
-/30x-seo ai-visibility domain example.com     # 需 DataForSEO
+/30x-seo monitor overview                     # GSC - 自己网站
+/30x-seo monitor keywords                     # GSC - 自己排名
+/30x-seo serp check "关键词"                  # DataForSEO - 任意网站
+/30x-seo ai-visibility domain example.com     # DataForSEO
 
 # 数据
 /30x-seo keywords research "种子关键词"        # 需 DataForSEO
@@ -155,10 +158,10 @@ squirrelscan audit https://example.com --format llm
 | 内容 | 6 | WebFetch |
 | 规划 | 2 | WebFetch |
 | 程序化 SEO | 2 | WebFetch |
-| 监控 | 2 | DataForSEO |
+| 监控 | 3 | GSC + DataForSEO |
 | 数据 | 1 | DataForSEO |
 
-**18 个技能无需任何 API。4 个技能需要 DataForSEO。**
+**18 个技能无需任何 API。4 个技能需要 DataForSEO。1 个技能需要 Google Search Console。**
 
 ---
 
